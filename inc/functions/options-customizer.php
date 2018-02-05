@@ -519,7 +519,7 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 			'blog_homepage_toggle',
 			array(
 				'label'          => __( 'Enable blog posts on home page?', 'mayflower' ),
-				'description'    => __( 'Show recent blog posts below home page content. Only applies if homepage it set to a static page.', 'mayflower' ),
+				'description'    => __( 'Show recent blog posts below home page content. Only applies if homepage is set to a static page.', 'mayflower' ),
 				'section'        => 'mayflower_home',
 				'settings'       => 'theme_mayflower_options[blog_homepage_toggle]',
 				'active_callback' => 'is_front_page',
