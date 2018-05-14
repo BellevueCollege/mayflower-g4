@@ -9,7 +9,7 @@
     "Firefox ESR"
   ],
   "dependencies": {
-    "npm": "^6.0.0"
+    "npm": "^6.0.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
