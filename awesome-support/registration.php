@@ -49,9 +49,9 @@ $wrapper_class = 'allow' !== $registration ? 'wpas-login-only' : 'wpas-login-reg
 		<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 		  <div class="panel-body">
 			<p class="lead">If you are not currently a student, you can create an account in order to submit requests</p>
-			<?php do_action('wpas_before_login_form'); ?>
-
-	
+			  <?php do_action('wpas_before_login_form'); ?>
+			
+			
 			<form class="wpas-form" id="wpas_form_login" method="post" role="form" action="<?php echo wpas_get_login_url(); ?>">
 				<h3><?php _e( 'Log in', 'awesome-support' ); ?></h3>
 				<?php
