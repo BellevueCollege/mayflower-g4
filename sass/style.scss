@@ -510,7 +510,8 @@ ul.header-social-links li {
 	.wp-widget.widget_tag_cloud,
 	.wp-widget.widget_bc_contact_widget,
 	.wp-widget.widget_bc_location_widget,
-	.wp-widget.widget_listcategorypostswidget {
+	.wp-widget.widget_listcategorypostswidget,
+	.wp-widget.gform_widget {
 		box-shadow: 0px 2px 2px darken($bg-color, 10%);
 	}
 	.wp-widget.widget_archive select,
@@ -742,6 +743,35 @@ ul.really_simple_twitter_widget li a{
 .gform_widget ul.gform_fields {
 	border: none;
 }
+
+.gform_widget {
+	.gform_wrapper {
+		.gform_body{
+			div.ginput_container {
+				margin-top: 0 !important;
+			}
+
+			.field_sublabel_below .ginput_complex.ginput_container label,
+			.field_sublabel_below div[class*=gfield_time_].ginput_container label {
+				margin: 1px 0 0 1px !important;
+			}
+		}
+
+		.gform_footer{
+			display: inline-block;
+			padding: 0 !important;
+			margin: .5em 0 0 !important;
+		}
+
+		@media screen and (min-width: $breakpoint-bs-md){
+			.top_label input.medium, .top_label select.medium {
+				width: 100% !important;
+			}
+		}
+
+	}
+}
+
 
 /* Asides */
 section.post,
