@@ -120,10 +120,6 @@ $mayflower_theme_version = wp_get_theme(); ?>
 										<li><a href="<?php echo esc_url( $mayflower_options['twitter'] ); ?>" title="Twitter"><img src="<?php echo esc_url( $globals_url ); ?>i/twitter.png" alt="twitter" /></a></li>
 									<?php } ?>
 
-									<?php if ( ! empty( $mayflower_options['flickr'] ) ) { ?>
-										<li><a href="<?php echo esc_url( $mayflower_options['flickr'] ); ?>" title="Flickr"><img src="<?php echo esc_url( $globals_url ); ?>i/flickr.png" alt="flickr" /></a></li>
-									<?php } ?>
-
 									<?php if ( ! empty( $mayflower_options['youtube'] ) ) { ?>
 										<li><a href="<?php echo esc_url( $mayflower_options['youtube'] ); ?>" title="YouTube"><img src="<?php echo esc_url( $globals_url ); ?>i/youtube.png" alt="youtube" /></a></li>
 									<?php } ?>
