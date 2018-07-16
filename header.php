@@ -124,6 +124,10 @@ $mayflower_theme_version = wp_get_theme(); ?>
 										<li><a href="<?php echo esc_url( $mayflower_options['youtube'] ); ?>" title="YouTube"><img src="<?php echo esc_url( $globals_url ); ?>i/youtube.png" alt="youtube" /></a></li>
 									<?php } ?>
 
+									<?php if ( ! empty( $mayflower_options['instagram'] ) ) { ?>
+										<li><a href="<?php echo esc_url( $mayflower_options['instagram'] ); ?>" title="Instagram"><img src="<?php echo esc_url( $globals_url ); ?>i/instagram.png" alt="instagram" /></a></li>
+									<?php } ?>
+
 									<?php if ( ! empty( $mayflower_options['linkedin'] ) ) { ?>
 										<li><a href="<?php echo esc_url( $mayflower_options['linkedin'] ); ?>" title="LinkedIn"><img src="<?php echo esc_url( $globals_url ); ?>i/linkedin.png" alt="facebook" /></a></li>
 									<?php } ?>
