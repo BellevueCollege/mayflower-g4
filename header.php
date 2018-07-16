@@ -129,7 +129,7 @@ $mayflower_theme_version = wp_get_theme(); ?>
 									<?php } ?>
 
 									<?php if ( ! empty( $mayflower_options['linkedin'] ) ) { ?>
-										<li><a href="<?php echo esc_url( $mayflower_options['linkedin'] ); ?>" title="LinkedIn"><img src="<?php echo esc_url( $globals_url ); ?>i/linkedin.png" alt="facebook" /></a></li>
+										<li><a href="<?php echo esc_url( $mayflower_options['linkedin'] ); ?>" title="LinkedIn"><img src="<?php echo esc_url( $globals_url ); ?>i/linkedin.png" alt="linkedin" /></a></li>
 									<?php } ?>
 								</ul>
 							</div><!-- social-media -->
