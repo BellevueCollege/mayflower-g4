@@ -19,19 +19,19 @@ $wrapper_class = 'allow' !== $registration ? 'wpas-login-only' : 'wpas-login-reg
 
 <div class="wpas <?php echo $wrapper_class; ?>">
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-	  <div class="panel panel-default">
+		<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="headingOne">
-		  <h4 class="panel-title">
-			<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-				Login with your Bellevue College NetID
-			</a>
-		  </h4>
+			<h4 class="panel-title">
+				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					Login with your Bellevue College NetID
+				</a>
+			</h4>
 		</div>
 		<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-sm-8 col-md-offset-2">
-						<p><a href="<?php echo wp_login_url( get_permalink() ) ?>" class="btn btn-lg btn-block btn-primary">
+						<p><a href="<?php echo wp_login_url( get_permalink() ) ?>&option=saml_user_login" class="btn btn-lg btn-block btn-primary">
 							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log In</a></p>
 					</div>
 				</div>
@@ -49,9 +49,9 @@ $wrapper_class = 'allow' !== $registration ? 'wpas-login-only' : 'wpas-login-reg
 		<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 		  <div class="panel-body">
 			<p class="lead">If you are not currently a student, you can create an account in order to submit requests</p>
-			  <?php do_action('wpas_before_login_form'); ?>
-			
-			
+			<?php do_action('wpas_before_login_form'); ?>
+
+	
 			<form class="wpas-form" id="wpas_form_login" method="post" role="form" action="<?php echo wpas_get_login_url(); ?>">
 				<h3><?php _e( 'Log in', 'awesome-support' ); ?></h3>
 				<?php
