@@ -16,6 +16,14 @@ Mayflower has the following dependencies:
 Specific configuration and release information is available in [Bellevue College Docs](https://github.com/BellevueCollege/docs/tree/master/mayflower). 
 
 == Changelog ==
+= 2.19 =
+* Add formatting for Awesome Support plugin
+* Fix header spacing on lite (requires Globals changes)
+* Replace flickr with instagram
+* Improve Gravity Forms sidebar formatting
+* Improve CE Program display/SEO
+
+
 = 2.18 =
 * Update mobile header in Mayflower Lite
 * Add front-end alt text warnings for website managers
@@ -282,6 +290,9 @@ Fix post display on site and post homepages
 
 
 == Upgrade Notice ==
+= 2.19 =
+Formatting fixes and major revision of CE Program display
+
 = 2.18 =
 New header navigation on mobile, and front-end warnings for alt text.
 
