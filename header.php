@@ -45,6 +45,27 @@ $mayflower_theme_version = wp_get_theme(); ?>
 
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
 
+	<!--- Open Graph Tags -->
+	<meta property="og:title" content="<?php echo get_the_title() . ' :: ' . get_bloginfo( 'name', 'display' ) . ' @ Bellevue College' ?>" />
+	<?php if ( 'post' === get_post_type( ) ) : ?>
+		<meta property="og:type" content="article" />
+		<meta property="article:published_time" content="<?php echo get_the_date('c') ?>" />
+		<meta property="article:modified_time" content="<?php echo get_the_modified_date('c') ?>" />
+		
+	<?php else: ?>
+		<meta property="og:type" content="website" />
+	<?php endif; ?>
+
+	<?php if ( get_the_post_thumbnail_url( get_the_ID(),'medium') ) : ?>
+		<meta property="og:image" content="<?php echo get_the_post_thumbnail_url( get_the_ID(),'medium') ?>" />
+	<?php else: ?>
+		<meta property="og:image" content="https://s.bellevuecollege.edu/bc-og-default.jpg" />
+	<?php endif; ?>
+
+	<meta property="og:url" content="<?php echo get_permalink() ?>" />
+	<meta property="og:site_name" content="Bellevue College" />
+	
+
 	<?php wp_head(); ?>
 </head>
 
