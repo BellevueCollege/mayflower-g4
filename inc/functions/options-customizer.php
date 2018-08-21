@@ -61,9 +61,9 @@ $mayflower_theme_option_defaults = array(
 	'blog_number_posts'       => '5',
 	'facebook'                => '',
 	'twitter'                 => '',
-	'flickr'                  => '',
 	'linkedin'                => '',
 	'youtube'                 => '',
+	'instagram'               => '',
 	'hide_searchform'         => false,
 	'limit_searchform_scope'  => false,
 	'custom_search_url'       => '',
@@ -567,11 +567,6 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 		'default'           => $mayflower_theme_option_defaults['twitter'],
 		'sanitize_callback' => 'sanitize_ext_url',
 	) );
-	$wp_customize->add_setting( 'theme_mayflower_options[flickr]' , array(
-		'type'              => 'option',
-		'default'           => $mayflower_theme_option_defaults['flickr'],
-		'sanitize_callback' => 'sanitize_ext_url',
-	) );
 	$wp_customize->add_setting( 'theme_mayflower_options[linkedin]' , array(
 		'type'              => 'option',
 		'default'           => $mayflower_theme_option_defaults['linkedin'],
@@ -580,6 +575,11 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 	$wp_customize->add_setting( 'theme_mayflower_options[youtube]' , array(
 		'type'              => 'option',
 		'default'           => $mayflower_theme_option_defaults['youtube'],
+		'sanitize_callback' => 'sanitize_ext_url',
+	) );
+	$wp_customize->add_setting( 'theme_mayflower_options[instagram]' , array(
+		'type'              => 'option',
+		'default'           => $mayflower_theme_option_defaults['instagram'],
 		'sanitize_callback' => 'sanitize_ext_url',
 	) );
 	$wp_customize->add_control(
@@ -609,18 +609,6 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 		new WP_Customize_Control(
 			$wp_customize,
-			'flickr',
-			array(
-				'label'          => __( 'Flickr', 'mayflower' ),
-				'section'        => 'mayflower_social',
-				'settings'       => 'theme_mayflower_options[flickr]',
-				'type'           => 'text',
-			)
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Control(
-			$wp_customize,
 			'linkedin',
 			array(
 				'label'          => __( 'LinkedIn', 'mayflower' ),
@@ -638,6 +626,18 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 				'label'          => __( 'YouTube', 'mayflower' ),
 				'section'        => 'mayflower_social',
 				'settings'       => 'theme_mayflower_options[youtube]',
+				'type'           => 'text',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'instagram',
+			array(
+				'label'          => __( 'Instagram', 'mayflower' ),
+				'section'        => 'mayflower_social',
+				'settings'       => 'theme_mayflower_options[instagram]',
 				'type'           => 'text',
 			)
 		)

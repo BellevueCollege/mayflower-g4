@@ -100,7 +100,7 @@ $mayflower_theme_version = wp_get_theme(); ?>
 								<p class="site-title">
 									<a title="Return to Home Page" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 								</p>
-								<p class="site-description"><?php bloginfo( 'description' ); ?></p>
+								<p class="site-description <?php if ( get_bloginfo( 'description' ) ){ echo 'site-description-margin'; } ?>"><?php bloginfo( 'description' ); ?></p>
 							<?php endif; // end no header image ?>
 						</div><!-- #site-branding -->
 						<div id="header-actions-container" class="<?php
@@ -110,7 +110,10 @@ $mayflower_theme_version = wp_get_theme(); ?>
 						if ( '' === get_bloginfo( 'description' ) ) {
 							echo 'header-social-links-no-margin ';
 						} ?>">
-							<div class="social-media">
+							<div class="social-media <?php 
+								if( empty( $mayflower_options['facebook'] ) && empty( $mayflower_options['twitter'] ) && empty( $mayflower_options['youtube'] ) && empty( $mayflower_options['instagram'] ) && empty( $mayflower_options['linkedin'] ) ){
+									echo 'social-media-no-margin'; 
+								} ?>">
 								<ul>
 									<?php if ( ! empty( $mayflower_options['facebook'] ) ) { ?>
 										<li><a href="<?php echo esc_url( $mayflower_options['facebook'] ); ?>" title="Facebook"><img src="<?php echo esc_url( $globals_url ); ?>i/facebook.png" alt="facebook" /></a></li>
@@ -120,16 +123,16 @@ $mayflower_theme_version = wp_get_theme(); ?>
 										<li><a href="<?php echo esc_url( $mayflower_options['twitter'] ); ?>" title="Twitter"><img src="<?php echo esc_url( $globals_url ); ?>i/twitter.png" alt="twitter" /></a></li>
 									<?php } ?>
 
-									<?php if ( ! empty( $mayflower_options['flickr'] ) ) { ?>
-										<li><a href="<?php echo esc_url( $mayflower_options['flickr'] ); ?>" title="Flickr"><img src="<?php echo esc_url( $globals_url ); ?>i/flickr.png" alt="flickr" /></a></li>
-									<?php } ?>
-
 									<?php if ( ! empty( $mayflower_options['youtube'] ) ) { ?>
 										<li><a href="<?php echo esc_url( $mayflower_options['youtube'] ); ?>" title="YouTube"><img src="<?php echo esc_url( $globals_url ); ?>i/youtube.png" alt="youtube" /></a></li>
 									<?php } ?>
 
+									<?php if ( ! empty( $mayflower_options['instagram'] ) ) { ?>
+										<li><a href="<?php echo esc_url( $mayflower_options['instagram'] ); ?>" title="Instagram"><img src="<?php echo esc_url( $globals_url ); ?>i/instagram.png" alt="instagram" /></a></li>
+									<?php } ?>
+
 									<?php if ( ! empty( $mayflower_options['linkedin'] ) ) { ?>
-										<li><a href="<?php echo esc_url( $mayflower_options['linkedin'] ); ?>" title="LinkedIn"><img src="<?php echo esc_url( $globals_url ); ?>i/linkedin.png" alt="facebook" /></a></li>
+										<li><a href="<?php echo esc_url( $mayflower_options['linkedin'] ); ?>" title="LinkedIn"><img src="<?php echo esc_url( $globals_url ); ?>i/linkedin.png" alt="linkedin" /></a></li>
 									<?php } ?>
 								</ul>
 							</div><!-- social-media -->
