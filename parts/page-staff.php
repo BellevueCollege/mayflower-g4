@@ -26,7 +26,7 @@
 	$mayflower_options = mayflower_get_options();
 	if( $mayflower_options['staff_layout'] == 'list-view' ) { ?>
 
-      <div class="content-padding top-spacing15">
+      	<div class="content-padding top-spacing15">
 				<?php
 					// Start showing staff list
 					$loop = new WP_Query( array( 'post_type' => 'staff', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC') );
@@ -36,71 +36,73 @@
 
 
 			    <div class="media">
-			    <a class="pull-left" href="<?php the_permalink(); ?>">
-				<?php
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail('thumbnail', array('class' => 'media-object img-responsive img-thumbnail'));
-					}
-					else {
-						echo '<img alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
-					}
-				?>
+					<div class="staff-details-card">
+						<a class="pull-left" href="<?php the_permalink(); ?>">
+						<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail('thumbnail', array('class' => 'media-object img-responsive img-thumbnail', 'alt' => the_title_attribute( array('after' => ' Picture', 'echo' => false) ) ) );
+							}
+							else {
+								echo '<img class="media-object img-responsive img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
+							}
+						?>
 
-				    </a>
+							</a>
 
-				<div class="media-body">
-					<div class="caption staff-details content-padding">
-						<?php $post_meta_data = get_post_custom($post->ID); ?>
-							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						<div class="media-body">
+							<div class="caption staff-details content-padding staff-details-top">
+								<?php $post_meta_data = get_post_custom($post->ID); ?>
+									<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-							<?php if (isset($post_meta_data['_staff_position'][0])) { ?>
-								<h3>
-									<?php echo $post_meta_data['_staff_position'][0]; ?>
-								</h3>
-							<?php } ?>
+									<?php if (isset($post_meta_data['_staff_position'][0])) { ?>
+										<h3>
+											<?php echo $post_meta_data['_staff_position'][0]; ?>
+										</h3>
+									<?php } ?>
 
-							<ul>
+									<ul>
 
-								<?php if (isset($post_meta_data['_staff_email'][0])) { ?>
-									<li>
-										<strong>Email: </strong>
-										<a href="mailto:<?php echo $post_meta_data['_staff_email'][0];  ?>"><?php echo $post_meta_data['_staff_email'][0]; ?></a>
-									</li>
-								<?php } ?>
+										<?php if (isset($post_meta_data['_staff_email'][0])) { ?>
+											<li>
+												<strong>Email: </strong>
+												<a href="mailto:<?php echo $post_meta_data['_staff_email'][0];  ?>"><?php echo $post_meta_data['_staff_email'][0]; ?></a>
+											</li>
+										<?php } ?>
 
-								<?php if (isset($post_meta_data['_staff_phone'][0])) { ?>
-									<li>
-										<strong>Phone: </strong>
-										<?php echo $post_meta_data['_staff_phone'][0];  ?>
-									</li>
-								<?php } ?>
+										<?php if (isset($post_meta_data['_staff_phone'][0])) { ?>
+											<li>
+												<strong>Phone: </strong>
+												<?php echo $post_meta_data['_staff_phone'][0];  ?>
+											</li>
+										<?php } ?>
 
-								<?php if (isset($post_meta_data['_staff_office_location'][0])) { ?>
-									<li>
-										<strong>Office Location: </strong>
-										<?php echo $post_meta_data['_staff_office_location'][0];  ?>
-									</li>
-								<?php } ?>
+										<?php if (isset($post_meta_data['_staff_office_location'][0])) { ?>
+											<li>
+												<strong>Office Location: </strong>
+												<?php echo $post_meta_data['_staff_office_location'][0];  ?>
+											</li>
+										<?php } ?>
 
-								<?php if (isset($post_meta_data['_staff_office_hours'][0])) { ?>
-									<li>
-										<strong>Office Hours: </strong><?php echo $post_meta_data['_staff_office_hours'][0];  ?>
-									</li>
-								<?php } ?>
+										<?php if (isset($post_meta_data['_staff_office_hours'][0])) { ?>
+											<li>
+												<strong>Office Hours: </strong>
+												<?php echo $post_meta_data['_staff_office_hours'][0];  ?>
+											</li>
+										<?php } ?>
 
-							</ul>
-							<?php if(empty($post->post_content)) {  } else { ?>
-										<h3 class="staff-biography">Biography:</h3>
-										<?php the_excerpt();  ?>
-								<?php } ?>
-						</div><!-- caption -->
-
-				   </div><!-- media-body -->
+									</ul>
+									<?php if(empty($post->post_content)) {  } else { ?>
+												<h3 class="staff-biography">Biography:</h3>
+												<?php the_excerpt();  ?>
+										<?php } ?>
+							</div><!-- caption -->
+						</div><!-- media-body -->
+					</div> <!-- staff-details-card -->
 			    </div><!-- media -->
 
 				<hr />
 				<?php endwhile; wp_reset_postdata(); ?>
-			</div><!-- content-padding -->
+		</div><!-- content-padding -->
 	<?php } elseif( $mayflower_options['staff_layout'] == 'grid-view' ) {  ?>
 	<?php
 		// ########################
@@ -118,15 +120,18 @@
                 }
 	?>
 
-		<div class="col-md-4">
+		<div class="col-md-4 staff-details-col">
 			<div class="content-padding">
+				<div class="staff-details-card-grid">
 					<?php if(has_post_thumbnail()) { ?>
 					<a href="<?php the_permalink(); ?>">
-						<?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail');  ?>
+						<?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail', array( 'class' => 'media-object img-responsive img-thumbnail', 'alt' => the_title_attribute( array('after' => ' Picture', 'echo' => false) ) ) ); ?>
 					</a>
-					<?php } else { }?>
+					<?php } else {
+						echo '<img class="media-object img-responsive img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
+					}?>
 
-					<div class="caption staff-details">
+					<div class="caption staff-details staff-details-grid-top">
 						<?php $post_meta_data = get_post_custom($post->ID); ?>
 							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 								<?php if (isset($post_meta_data['_staff_position'][0])) { ?>
@@ -135,7 +140,8 @@
 								</p>
 							<?php } ?>
 
-					</div><!-- caption staff-details -->
+					</div><!-- caption staff-details staff-details-grid-top-->
+				</div> <!-- staff-details-card-grid-->
 			</div><!-- content-padding -->
 		</div> <!-- end of col-md-4 -->
 				<?php if ($count == $columnNum) {
