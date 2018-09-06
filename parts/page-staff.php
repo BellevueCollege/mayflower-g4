@@ -26,7 +26,11 @@
 	$mayflower_options = mayflower_get_options();
 	if( $mayflower_options['staff_layout'] == 'list-view' ) { ?>
 
-      	<div class="content-padding top-spacing15">
+		<?php if ( $mayflower_options['staff_picture_toggle'] == true ) { ?>
+      		<div class="content-padding top-spacing15 staff-details">
+		<?php } else { ?>
+			<div class="top-spacing15 staff-details">
+		<?php } ?>
 				<?php
 					// Start showing staff list
 					$loop = new WP_Query( array( 'post_type' => 'staff', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC') );
@@ -39,12 +43,14 @@
 					<div class="staff-details-card">
 						<a class="pull-left" href="<?php the_permalink(); ?>">
 						<?php
+						if ( $mayflower_options['staff_picture_toggle'] == true ) {
 							if ( has_post_thumbnail() ) {
 								the_post_thumbnail('thumbnail', array('class' => 'media-object img-responsive img-thumbnail', 'alt' => the_title_attribute( array('after' => ' Picture', 'echo' => false) ) ) );
 							}
 							else {
 								echo '<img class="media-object img-responsive img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
 							}
+						}
 						?>
 
 							</a>
@@ -69,32 +75,40 @@
 											</li>
 										<?php } ?>
 
-										<?php if (isset($post_meta_data['_staff_phone'][0])) { ?>
-											<li>
-												<strong>Phone: </strong>
-												<?php echo $post_meta_data['_staff_phone'][0];  ?>
-											</li>
-										<?php } ?>
+										<?php 
+										if ( $mayflower_options['staff_phone_toggle'] == true ) {
+											if (isset($post_meta_data['_staff_phone'][0])) { ?>
+												<li>
+													<strong>Phone: </strong>
+													<?php echo $post_meta_data['_staff_phone'][0];  ?>
+												</li>
+										<?php } } ?>
 
-										<?php if (isset($post_meta_data['_staff_office_location'][0])) { ?>
-											<li>
-												<strong>Office Location: </strong>
-												<?php echo $post_meta_data['_staff_office_location'][0];  ?>
-											</li>
-										<?php } ?>
-
-										<?php if (isset($post_meta_data['_staff_office_hours'][0])) { ?>
+										<?php 
+										if ( $mayflower_options['staff_location_toggle'] == true ) {
+											if (isset($post_meta_data['_staff_office_location'][0])) { ?>
+												<li>
+													<strong>Office Location: </strong>
+													<?php echo $post_meta_data['_staff_office_location'][0];  ?>
+												</li>
+										<?php } } ?>
+										
+										<?php 
+										if ( $mayflower_options['staff_hours_toggle'] == true ) {
+											if (isset($post_meta_data['_staff_office_hours'][0])) { ?>
 											<li>
 												<strong>Office Hours: </strong>
 												<?php echo $post_meta_data['_staff_office_hours'][0];  ?>
 											</li>
-										<?php } ?>
+										<?php } } ?>
 
 									</ul>
-									<?php if(empty($post->post_content)) {  } else { ?>
+									<?php 
+									if ( $mayflower_options['staff_bio_toggle'] == true ) {
+										if(empty($post->post_content)) {  } else { ?>
 												<h3 class="staff-biography">Biography:</h3>
 												<?php the_excerpt();  ?>
-										<?php } ?>
+									<?php } } ?>
 							</div><!-- caption -->
 						</div><!-- media-body -->
 					</div> <!-- staff-details-card -->
@@ -123,13 +137,16 @@
 		<div class="col-md-4 staff-details-col">
 			<div class="content-padding">
 				<div class="staff-details-card-grid">
-					<?php if(has_post_thumbnail()) { ?>
-					<a href="<?php the_permalink(); ?>">
-						<?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail', array( 'class' => 'media-object img-responsive img-thumbnail', 'alt' => the_title_attribute( array('after' => ' Picture', 'echo' => false) ) ) ); ?>
-					</a>
-					<?php } else {
-						echo '<img class="media-object img-responsive img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
-					}?>
+					<?php 
+					if ( $mayflower_options['staff_picture_toggle'] == true ) {
+						if(has_post_thumbnail()) { ?>
+						<a href="<?php the_permalink(); ?>">
+							<?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail', array( 'class' => 'media-object img-responsive img-thumbnail', 'alt' => the_title_attribute( array('after' => ' Picture', 'echo' => false) ) ) ); ?>
+						</a>
+						<?php } else {
+							echo '<img class="media-object img-responsive img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
+						}
+					} ?>
 
 					<div class="caption staff-details staff-details-grid-top">
 						<?php $post_meta_data = get_post_custom($post->ID); ?>
