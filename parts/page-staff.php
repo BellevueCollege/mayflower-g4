@@ -130,7 +130,11 @@
 		while ( $loop->have_posts() ) : $loop->the_post();
                 $count++;
                 if ($count == 1) {
-                    echo '<div class="row top-spacing15">';
+					if ( $mayflower_options['staff_picture_toggle'] == true ) {
+						echo '<div class="row top-spacing15">';
+					} else {
+						echo '<div class="row top-spacing15 staff-details-grid-top">';
+					}
                 }
 	?>
 

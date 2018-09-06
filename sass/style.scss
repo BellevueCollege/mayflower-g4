@@ -370,6 +370,12 @@ li.media {
 	}
 }
 
+@media screen and (max-width: $breakpoint-bs-sm) {
+	.staff-details-grid-top.top-spacing15 {
+		margin-top: 0;
+	}
+}
+
 @media screen and (max-width: $breakpoint-bs-md) {
 	.col-md-4.staff-details-col:first-child, .col-md-4.staff-details-col:first-child + .col-md-4.staff-details-col  {
 		margin-bottom: 1em;
