@@ -105,10 +105,35 @@
 									</ul>
 									<?php 
 									if ( $mayflower_options['staff_bio_toggle'] == true ) {
-										if(empty($post->post_content)) {  } else { ?>
-												<h3 class="staff-biography">Biography:</h3>
-												<?php the_excerpt();  ?>
-									<?php } } ?>
+										if (empty($post->post_content) ) {  
+											if ( $mayflower_options['staff_more_toggle'] == true ) { ?>
+												<p>
+													<a href="<?php the_permalink(); ?>">...more about <?php the_title(); ?></a>
+												</p>
+										<?php }
+										} else { //post content not empty ?>
+											<h3 class="staff-biography">Biography:</h3>
+											<?php $content_array = explode(' ', get_the_content());
+											$content_count = count($content_array);
+											if ( $content_count >= 55 ) { //echo excerpt if content is greater/equal to 55 words
+												echo the_excerpt();
+											} else { //echo excerpt and 'more' link if content is less than 55 words
+												echo the_excerpt();
+												if ( $mayflower_options['staff_more_toggle'] == true ) { ?>
+													<p>
+														<a href="<?php the_permalink(); ?>">...more about <?php the_title(); ?></a>
+													</p>
+												<?php }
+											}
+											?>
+									<?php } 
+									} else { //staff_bio_toggle == false
+										if ( $mayflower_options['staff_more_toggle'] == true ) { ?>
+											<p>
+												<a href="<?php the_permalink(); ?>">...more about <?php the_title(); ?></a>
+											</p>
+									<?php } 
+									} ?>
 							</div><!-- caption -->
 						</div><!-- media-body -->
 					</div> <!-- staff-details-card -->
@@ -160,7 +185,9 @@
 									<?php echo $post_meta_data['_staff_position'][0]; ?>
 								</p>
 							<?php } ?>
-
+							<p>
+								<a href="<?php the_permalink(); ?>">... more about <?php the_title(); ?></a>
+							</p>
 					</div><!-- caption staff-details staff-details-grid-top-->
 				</div> <!-- staff-details-card-grid-->
 			</div><!-- content-padding -->
