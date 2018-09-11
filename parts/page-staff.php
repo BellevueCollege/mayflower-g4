@@ -184,10 +184,12 @@
 								<p>
 									<?php echo $post_meta_data['_staff_position'][0]; ?>
 								</p>
-							<?php } ?>
+							<?php } 
+							if ( $mayflower_options['staff_more_toggle'] == true ) { ?>
 							<p>
 								<a href="<?php the_permalink(); ?>">... more about <?php the_title(); ?></a>
 							</p>
+							<?php } ?>
 					</div><!-- caption staff-details staff-details-grid-top-->
 				</div> <!-- staff-details-card-grid-->
 			</div><!-- content-padding -->

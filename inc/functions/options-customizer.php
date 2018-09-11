@@ -356,6 +356,18 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'staff_more_toggle',
+			array(
+				'label'          => __( 'List Staff "More About" Link', 'mayflower' ),
+				'section'        => 'mayflower_general',
+				'settings'       => 'theme_mayflower_options[staff_more_toggle]',
+				'type'           => 'checkbox',
+			)
+		)
+	);
+	$wp_customize->add_control(
 		new Mayflower_Customize_Misc_Control(
 			$wp_customize,
 			'mayflower_staff-info-list-heading',
@@ -410,18 +422,6 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 				'label'          => __( 'List Staff Biography', 'mayflower' ),
 				'section'        => 'mayflower_general',
 				'settings'       => 'theme_mayflower_options[staff_bio_toggle]',
-				'type'           => 'checkbox',
-			)
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Control(
-			$wp_customize,
-			'staff_more_toggle',
-			array(
-				'label'          => __( 'List Staff "More About" Link', 'mayflower' ),
-				'section'        => 'mayflower_general',
-				'settings'       => 'theme_mayflower_options[staff_more_toggle]',
 				'type'           => 'checkbox',
 			)
 		)
