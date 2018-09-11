@@ -16,11 +16,13 @@
 				<div class="media-body">
 					<div class="caption staff-details content-padding staff-details-top">
 						<?php $post_meta_data = get_post_custom($post->ID); ?>
-							<h2><?php the_title(); ?></h2>
+							<div class="staff-details-header">
+								<h2><?php the_title(); ?></h2>
 
-							<?php if (isset($post_meta_data['_staff_position'][0])) { ?>
-								<h3><?php echo $post_meta_data['_staff_position'][0]; ?></h3>
-							<?php } ?>
+								<?php if (isset($post_meta_data['_staff_position'][0])) { ?>
+									<h3><?php echo $post_meta_data['_staff_position'][0]; ?></h3>
+								<?php } ?>
+							</div>
 
 							<ul>
 								<?php if (isset($post_meta_data['_staff_email'][0])) { ?>
@@ -57,10 +59,12 @@
 				</div><!-- media-body -->
 				<div class="row">
 					<div class="col-sm-12 staff-details">
-						<?php if(empty($post->post_content)) {  } else { ?>
-							<h3 class="staff-biography staff-biography-single">Biography:</h3>
-							<?php the_content();  ?>
-						<?php } ?>
+						<div class="staff-biography-single content-padding">
+							<?php if(empty($post->post_content)) {  } else { ?>
+								<h3 class="staff-biography">Biography:</h3>
+								<?php the_content();  ?>
+							<?php } ?>
+						</div>
 					</div> <!-- col-sm-12 -->
 				</div> <!-- row -->
 			</div> <!-- staff-details-card -->

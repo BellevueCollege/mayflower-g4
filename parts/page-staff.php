@@ -58,13 +58,15 @@
 						<div class="media-body">
 							<div class="caption staff-details content-padding staff-details-top">
 								<?php $post_meta_data = get_post_custom($post->ID); ?>
-									<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+									<div class="staff-details-header">
+										<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-									<?php if (isset($post_meta_data['_staff_position'][0])) { ?>
-										<h3>
-											<?php echo $post_meta_data['_staff_position'][0]; ?>
-										</h3>
-									<?php } ?>
+										<?php if (isset($post_meta_data['_staff_position'][0])) { ?>
+											<h3>
+												<?php echo $post_meta_data['_staff_position'][0]; ?>
+											</h3>
+										<?php } ?>
+									</div>
 
 									<ul>
 
