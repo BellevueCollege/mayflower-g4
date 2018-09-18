@@ -282,14 +282,30 @@ remove_action( 'wp_head', 'wp_generator' );
  * Gutenberg beta plugin v2.0
  */
 
-function mayflower_gutenberg_blacklist_blocks() {
+ /**
+ * Enqueue block editor style
+ */
+add_action( 'enqueue_block_editor_assets', 'mayflower_block_editor_styles' );
+
+function mayflower_block_editor_styles() {
+	wp_enqueue_style( 'mayflower-block-editor-styles', get_theme_file_uri( 'css/block-editor.css' ), false, '1.0', 'all' );
+}
+
+/**
+ * Disable blocks
+ */
+add_action( 'enqueue_block_editor_assets', 'mayflower_blacklist_blocks' );
+
+function mayflower_blacklist_blocks() {
 	wp_enqueue_script(
-		'mayflower-gutenberg-blacklist-blocks',
-		get_template_directory_uri() . '/js/gutenberg.js',
-		array( 'wp-blocks', 'wp-element' )
+		'mayflower-blacklist-blocks',
+		get_theme_file_uri( 'js/blocks-blacklist.js', __FILE__ ),
+		array( 'wp-blocks' )
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'mayflower_gutenberg_blacklist_blocks' );
+
+
+
 
 /**
  * Customize WordPress Visual Editor

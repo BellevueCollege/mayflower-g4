@@ -1,0 +1,74 @@
+/* Custom Editor Styles
+ * Loaded in the TinyMCE Visual Editor
+ */
+
+/* Not SCSS, so can't use vars. Just here for reference! *
+$brand-info:            #afd7ff; // Lightened BC Brand Blue to meet a11y requirements
+$brand-warning:         #F2C01E; // BC Brand Yellow
+$brand-danger:          #C4122F; // BC Brand Red
+*/
+
+/* Main column width */
+body.gutenberg-editor-page .editor-post-title__block,
+body.gutenberg-editor-page .editor-default-block-appender,
+body.gutenberg-editor-page .editor-block-list__block {
+    max-width: 810px !important;
+}
+
+/* Width of "wide" blocks */
+body.gutenberg-editor-page .editor-block-list__block[data-align="wide"] {
+    max-width: 870px !important;
+}
+
+/* Width of "full-wide" blocks */
+body.gutenberg-editor-page .editor-block-list__block[data-align="full"] {
+    max-width: none !important;
+}
+
+/* Images - alt text issues */
+
+body.gutenberg-editor-page .editor-block-list__block img[alt=""] {
+	outline: 4px dashed #F2C01E;
+	outline-offset: .25em;
+}
+
+body.gutenberg-editor-page .editor-block-list__block img:not([alt]),
+body.gutenberg-editor-page .editor-block-list__block a img[alt=""] {
+	outline: 4px dashed #C4122F;
+	outline-offset: .25em;
+}
+
+
+/* Style things */
+
+/* Style Quote Block */
+body.gutenberg-editor-page .editor-block-list__block blockquote.wp-block-quote::before {
+    display: block;
+    content: "\201C";
+    font-size: 6rem;
+    position: absolute;
+    left: 0.1em;
+    top: -.5em;
+    color: #777777;
+}
+body.gutenberg-editor-page .editor-block-list__block blockquote.wp-block-quote {
+	border-left: #eee 5px solid;
+	padding-left: 3em;
+}
+body.gutenberg-editor-page .editor-block-list__block blockquote.wp-block-quote,
+body.gutenberg-editor-page .editor-block-list__block blockquote.wp-block-quote p,
+body.gutenberg-editor-page .editor-block-list__block blockquote.wp-block-quote cite {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.2em;
+	margin: 0;
+}
+body.gutenberg-editor-page .editor-block-list__block blockquote.wp-block-quote cite {
+	font-style: italic;
+	color: inherit;
+}
+
+
+/* .gallery img[alt=""] {
+	outline: initial !important;
+	outline-offset: initial;
+} */

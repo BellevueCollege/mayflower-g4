@@ -305,19 +305,69 @@ function mayflower_setup() {
 	 *
 	 * Gutenberg beta plugin v2.0
 	 */
-	add_theme_support( 'gutenberg', array(
-		'colors' => array(
-			'#003D79',
-			'#317131',
-			'#afd7ff',
-			'#F2C01E',
-			'#C4122F',
-			'#162F57',
-			'#000',
-			'#E36F1E',
-			'#FFF',
+
+	// Define custom color pallette
+	add_theme_support( 'editor-color-palette', array(
+		array(
+			'name'  => __( 'White', 'mayflower' ),
+			'slug'  => 'white',
+			'color' => '#fff',
+		),
+		array(
+			'name'  => __( 'Black', 'mayflower' ),
+			'slug'  => 'black',
+			'color' => '#000',
+		),
+		array(
+			'name'  => __( 'BC Blue', 'mayflower' ),
+			'slug'  => 'bc-blue',
+			'color' => '#003D79',
+		),
+		array(
+			'name'  => __( 'BC Silver', 'mayflower' ),
+			'slug'  => 'bc-silver',
+			'color' => '#A7A9AC',
+		),
+		array(
+			'name'  => __( 'BC Red', 'mayflower' ),
+			'slug'  => 'bc-red',
+			'color' => '#C4122F',
+		),
+		array(
+			'name'  => __( 'BC Green', 'mayflower' ),
+			'slug'  => 'bc-green',
+			'color' => '#AAB720',
+		),
+		array(
+			'name'  => __( 'BC Dark Blue', 'mayflower' ),
+			'slug'  => 'bc-dark-blue',
+			'color' => '#162F57',
+		),
+		array(
+			'name'  => __( 'BC Orange', 'mayflower' ),
+			'slug'  => 'bc-orange',
+			'color' => '#E36F1E',
+		),
+		array(
+			'name'  => __( 'BC Gold', 'mayflower' ),
+			'slug'  => 'bc-gold',
+			'color' => '#F2C01E',
 		),
 	) );
+
+	// Remove custom color option
+	add_theme_support( 'disable-custom-colors' );
+
+	// Custom sizes
+	add_theme_support( 'editor-font-sizes', array(
+		array(
+			'name'      => __( 'regular', 'mayflower' ),
+			'shortName' => __( 'Standard', 'mayflower' ),
+			'size'      => 16,
+			'slug'      => 'regular',
+		),
+	) );
+
 }
 
 add_action( 'after_setup_theme', 'mayflower_setup', 10 );
