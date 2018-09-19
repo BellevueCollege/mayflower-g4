@@ -608,6 +608,12 @@ function mayflower_scripts() {
 		wp_enqueue_script( 'a11y-warnings-js', get_template_directory_uri() . '/js/a11y-warnings.js#deferload', array( 'jquery' ), time(), true );
 		wp_enqueue_style( 'a11y-warnings-css', get_template_directory_uri() . '/css/a11y-warnings.css', null, time() );
 	}
+
+	if ( is_page_template( 'page-nav-page-fluid-grid.php' ) ) {
+		wp_enqueue_script( 'imagesloaded' );
+		wp_enqueue_script( 'masonry' );
+		wp_enqueue_script( 'page-nav-page-fluid-grid', get_template_directory_uri() . '/js/page-nav-page-fluid-grid.js', array( 'imagesloaded', 'masonry' ), time(), true ); // REPLACE time()!
+	}
 }
 
 
