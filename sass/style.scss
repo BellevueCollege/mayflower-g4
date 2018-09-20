@@ -394,6 +394,7 @@ $fluid-grid-min-column-width: 200px;
 .staff-biography-single.content-padding {
 	@media screen and (min-width: $breakpoint-bs-sm) {
 		padding: 0;
+		margin-top: 1em;
 	}
 }
 	/*
