@@ -288,6 +288,7 @@ remove_action( 'wp_head', 'wp_generator' );
 add_action( 'enqueue_block_editor_assets', 'mayflower_block_editor_styles' );
 
 function mayflower_block_editor_styles() {
+	wp_enqueue_style( 'mayflower-block-editor-bootstrap3', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', false, '3.3.7', 'all' );
 	wp_enqueue_style( 'mayflower-block-editor-styles', get_theme_file_uri( 'css/block-editor.css' ), false, '1.0', 'all' );
 }
 

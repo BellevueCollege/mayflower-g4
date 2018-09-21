@@ -67,6 +67,72 @@ body.gutenberg-editor-page .editor-block-list__block blockquote.wp-block-quote c
 	color: inherit;
 }
 
+body.gutenberg-editor-page .editor-block-list__block .alignnone {
+    margin: 20px 20px 5px 0;
+}
+
+body.gutenberg-editor-page .editor-block-list__block .alignnone,
+body.gutenberg-editor-page .editor-block-list__block .alignright,
+body.gutenberg-editor-page .editor-block-list__block .alignleft,
+body.gutenberg-editor-page .editor-block-list__block .aligncenter {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+@media screen and (min-width: 768px) {
+    body.gutenberg-editor-page .editor-block-list__block .alignright {
+        float:right;
+        margin: .5em 0 1em 1em;
+    }
+
+    body.gutenberg-editor-page .editor-block-list__block .alignleft {
+        float: left;
+        margin: .5em 1em 1em 0;
+    }
+
+    body.gutenberg-editor-page .editor-block-list__block .aligncenter {
+        display: block;
+        margin: .5em auto .5em auto;
+    }
+}
+
+
+body.gutenberg-editor-page .editor-block-list__block .wp-post-image.alignright,
+body.gutenberg-editor-page .editor-block-list__block .wp-post-image.alignleft,
+body.gutenberg-editor-page .editor-block-list__block .wp-caption.alignright,
+body.gutenberg-editor-page .editor-block-list__block .wp-caption.alignleft,
+body.gutenberg-editor-page .editor-block-list__block .wp-post-image.aligncenter,
+body.gutenberg-editor-page .editor-block-list__block .wp-caption.aligncenter,
+body.gutenberg-editor-page .editor-block-list__block .wp-post-image.alignnone,
+body.gutenberg-editor-page .editor-block-list__block .wp-caption.alignnone {
+	max-width: 100%;
+}
+
+body.gutenberg-editor-page .editor-block-list__block .wp-caption.alignnone {
+    margin: 20px 20px 5px 0;
+}
+
+body.gutenberg-editor-page .editor-block-list__block .wp-caption .wp-caption-text,
+body.gutenberg-editor-page .editor-block-list__block .gallery-caption,
+body.gutenberg-editor-page .editor-block-list__block .entry-caption {
+    font-size: .85em;
+    line-height: 16px;
+    margin: .25em 0;
+	padding: 0 .25em;
+}
+body.gutenberg-editor-page .editor-block-list__block .wp-caption-dd  {
+	margin: 0;
+	padding: 0;
+}
+
+body.gutenberg-editor-page .editor-block-list__block .content-row {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+body.gutenberg-editor-page .editor-block-list__block .row-padding {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
 
 /* .gallery img[alt=""] {
 	outline: initial !important;
