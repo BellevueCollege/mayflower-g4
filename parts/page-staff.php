@@ -4,15 +4,15 @@
 	<!-- Don't display empty the_content or surround divs -->
 		<div class="page-content">
 			<div class="content-padding">
-			<h1><?php the_title(); ?></h1>
+				<h1><?php the_title(); ?></h1>
 			</div><!-- content-padding -->
 		</div><!-- page-content -->
 	<?php else : ?>
 	<!-- Do stuff when the_content has content -->
 		<div class="page-content">
 			<div class="content-padding">
-			<h1><?php the_title(); ?></h1>
-			<?php the_content(); ?>
+				<h1><?php the_title(); ?></h1>
+				<?php the_content(); ?>
 			</div><!-- content-padding -->
 		</div><!-- page-content -->
 
@@ -24,6 +24,7 @@
 
 <?php
 // Ensure Mayflower Options are available to loaded file
-$mayflower_options = mayflower_get_options();
-
-require_once get_template_directory() . '/inc/mayflower-staff/output.php';
+$mayflower_options = mayflower_get_options(); ?>
+<div class="content-padding">
+	<?php require get_template_directory() . '/inc/mayflower-staff/output.php'; ?>
+</div>
