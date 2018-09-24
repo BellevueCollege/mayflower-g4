@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) || die( 'Sorry, no direct access allowed' );
 
 // Version # used to invalidate stylesheet caching
-define( 'MAYFLOWER_STYLE_VERSION', '2.17' );
+define( 'MAYFLOWER_STYLE_VERSION', '2.20' );
 
 /* Load  theme options framework
  *
