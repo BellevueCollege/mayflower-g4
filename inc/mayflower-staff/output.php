@@ -81,7 +81,7 @@ if ( $mayflower_options['staff_layout'] == 'list-view' ) {
 
 					</ul>
 					<?php if ( $mayflower_options['staff_bio_toggle'] == true ) {
-						if (empty($post->post_content) ) {  
+						if ( '' === get_post()->post_content ) {
 							if ( $mayflower_options['staff_more_toggle'] == true ) { ?>
 								<p>
 									<a href="<?php the_permalink(); ?>">...more about <?php the_title(); ?></a>
