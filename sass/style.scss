@@ -316,6 +316,8 @@ $fluid-grid-min-column-width: 200px;
 /* ----- Staff CPT styles - to move  ----- */
 /* ###################################### */
 
+/* Note- these are replicated in block for editor styles! */
+
 .staff-details h1,
 .staff-details h2,
 .staff-details h3 {
@@ -748,6 +750,66 @@ ul.header-social-links li {
 	}
 	
 }
+
+/* Support for Gutenberg */
+
+.has-white-color {
+	color: #fff;
+}
+.has-black-color {
+	color: #000;
+}
+.has-bc-blue-color {
+	color: #003D79;
+}
+.has-bc-silver-color {
+	color: #A7A9AC;
+}
+.has-bc-red-color {
+	color: #C4122F;
+}
+.has-bc-green-color {
+	color: #AAB720;
+}
+.has-bc-dark-blue-color {
+	color: #162F57;
+}
+.has-bc-orange-color {
+	color: #E36F1E;
+}
+.has-bc-gold-color {
+	color: #F2C01E;
+}
+
+.has-white-background-color {
+	background: #fff;
+}
+.has-black-background-color {
+	background: #000;
+}
+.has-bc-blue-background-color {
+	background: #003D79;
+}
+.has-bc-silver-background-color {
+	background: #A7A9AC;
+}
+.has-bc-red-background-color {
+	background: #C4122F;
+}
+.has-bc-green-background-color {
+	background: #AAB720;
+}
+.has-bc-dark-blue-background-color {
+	background: #162F57;
+}
+.has-bc-orange-background-color {
+	background: #E36F1E;
+}
+.has-bc-gold-background-color {
+	background: #F2C01E;
+}
+
+
 
 /* Styles for Simple Twitter Tweets plugin
  * https://wordpress.org/plugins/simple-twitter-tweets/
