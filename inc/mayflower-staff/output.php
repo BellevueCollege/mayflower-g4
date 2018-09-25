@@ -12,7 +12,7 @@ $loop = new WP_Query( array(
 
 
 
-if ( $mayflower_options['staff_layout'] == 'list-view' ) {
+if ( 'list-view' === $mayflower_options['staff_layout'] && $mayflower_options['staff_toggle'] ) {
 	if ( $mayflower_options['staff_picture_toggle'] == true ) { ?>
 		<div class="top-spacing15 staff-details">
 	<?php } else { ?>
@@ -119,7 +119,7 @@ if ( $mayflower_options['staff_layout'] == 'list-view' ) {
 		<?php endwhile; ?>
 	</div><!-- padding -->
 	
-<?php } elseif ( $mayflower_options['staff_layout'] == 'grid-view' ) { ?>
+<?php } elseif ( 'grid-view' === $mayflower_options['staff_layout'] && $mayflower_options['staff_toggle'] ) { ?>
 	<?php
 	// ########################
 	// Start showing staff grid
@@ -177,6 +177,8 @@ if ( $mayflower_options['staff_layout'] == 'list-view' ) {
 			echo '</div> <!-- .row -->';
 		} ?>
 
-<?php } // end elseif
+<?php } elseif ( ! $mayflower_options['staff_toggle'] ) {
+	echo '<p class="alert alert-danger">Staff functionality is not currently enabled on this website</p>';
+}
 
- wp_reset_postdata();
+wp_reset_postdata();
