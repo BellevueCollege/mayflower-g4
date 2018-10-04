@@ -20,71 +20,8 @@
 			wp_reset_postdata();
 		?>
 	<div class="clearfix"></div>
-	<section class="content-padding nav-page nav-page-list">
 
-		<?php
-			$args = array(
-				'post_type' => 'page',
-				'posts_per_page' => -1,
-				'order' => 'ASC',
-				'orderby' => 'menu_order title',
-				'post_status' => 'publish',
-				'post_parent' => $post->ID
-			);
-			$loop = new WP_Query( $args );
+	<?php require get_template_directory() . '/inc/nav-page/list.php'; ?>
 
-			while ( $loop->have_posts() ) : $loop->the_post();
-		?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-						<h2 <?php post_class() ?>>
-							<a href="<?php the_permalink(); ?>"><?php the_title();?></a>
-						</h2>
-
-						<div class="media">
-							<?php
-								if ( has_post_thumbnail() ) {
-									?>
-
-									 <div class="pull-left wp-caption">
-										<a href="<?php the_permalink(); ?>">
-											<?php
-												the_post_thumbnail('thumbnail', array('class' => 'media-object')); ?>
-										</a>
-									 </div><!-- wp-caption -->
-								<?php
-									}
-									else {	}
-								?>
-
-							<div class="media-body">
-
-								<div class="media-content content-padding">
-									<?php the_excerpt(); ?>
-									<?php edit_post_link( 'edit', '<small>', '</small>' ); ?>
-								</div><!-- media-content -->
-
-								<?php
-								if (is_single($post)){
-								?>
-
-								<?php
-								} else {
-								?>
-								   <p>
-										<!--<a class="btn btn-default btn-sm primary-read-more" href="<?php the_permalink(); ?>">
-									Read More <i class="icon-chevron-right"></i>
-										</a>-->
-									</p>
-								<?php
-
-								}
-								?>
-							</div><!-- media-body -->
-						</div><!-- media -->
-					</article>
-				<?php endwhile;?>
-				<?php wp_reset_postdata(); ?>
-
-	</section><!-- content-padding .nav-page -->
 </main>
