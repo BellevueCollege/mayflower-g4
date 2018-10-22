@@ -16,6 +16,10 @@ Mayflower has the following dependencies:
 Specific configuration and release information is available in [Bellevue College Docs](https://github.com/BellevueCollege/docs/tree/master/mayflower). 
 
 == Changelog ==
+
+= 2.20.1 =
+* Fix issue where staff settings would default to different display prefs than before update
+
 = 2.20 =
 * Add initial support for Gutenberg editor
   * Custom color pallette
