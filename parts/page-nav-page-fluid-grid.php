@@ -13,10 +13,11 @@
 			</article>
 		<?php endif; ?>
 
-<?php endwhile; ?>
+	<?php endwhile; ?>
 
-<?php wp_reset_postdata(); ?>
-<div class="clearfix"></div>
-<?php require get_template_directory() . '/inc/nav-page/grid.php'; ?>
-
+	<?php wp_reset_postdata(); ?>
+	<div class="clearfix"></div>
+	<div class="content-padding">
+		<?php require get_template_directory() . '/inc/nav-page/fluid-grid.php'; ?>
+	</div>
 </main>

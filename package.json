@@ -1,6 +1,6 @@
 {
   "name": "mayflower",
-  "version": "2.15.1",
+  "version": "2.20.0",
   "description": "The Bellevue College Theme",
   "main": " ",
   "browserslist": [
@@ -9,15 +9,15 @@
     "Firefox ESR"
   ],
   "dependencies": {
-    "npm": "^6.2.0"
+    "npm": "^6.4.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
+    "gulp-autoprefixer": "^6.0.0",
     "gulp-notify": "^3.2.0",
-    "gulp-sass": "^3.2.1",
+    "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^2.0.1",
+    "gulp-uglify": "^3.0.1",
     "uglify-save-license": "^0.4.1"
   },
   "scripts": {

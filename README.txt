@@ -2,7 +2,7 @@
 Contributors: Bellevue College Integration Team
 Tags: blue, white, two-columns, three-columns, left-sidebar, right-sidebar, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, post-formats, theme-options, accessibility-ready
 Requires at least: 4.4
-Tested up to: 4.8.1
+Tested up to: 4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,15 @@ Mayflower has the following dependencies:
 Specific configuration and release information is available in [Bellevue College Docs](https://github.com/BellevueCollege/docs/tree/master/mayflower). 
 
 == Changelog ==
+= 2.20 =
+* Add initial support for Gutenberg editor
+  * Custom color pallette
+  * Remove unsupported blocks
+  * Refactor Staff Layouts and Grid Layouts
+* Add Open Graph support to improve twitter & facebook cards
+* Improve styling of Nav and Staff pages
+* Add Fluid Grid nav page template
+
 = 2.19 =
 * Add formatting for Awesome Support plugin
 * Fix header spacing on lite (requires Globals changes)

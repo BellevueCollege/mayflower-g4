@@ -49,6 +49,12 @@ $mayflower_theme_option_defaults = array(
 	'default_layout'          => 'sidebar-content',
 	'staff_toggle'            => false,
 	'staff_layout'            => 'list-view',
+	'staff_picture_toggle'    => false,
+	'staff_phone_toggle'      => false,
+	'staff_location_toggle'   => false,
+	'staff_hours_toggle'      => false,
+	'staff_bio_toggle'        => false,
+	'staff_more_toggle'       => false,
 	'display_post_date'       => true,
 	'display_post_author'     => false,
 	'slider_toggle'           => false,
@@ -166,6 +172,36 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 		'type'              => 'option',
 		'default'           => $mayflower_theme_option_defaults['staff_layout'],
 		'sanitize_callback' => 'sanitize_key',
+	) );
+	$wp_customize->add_setting( 'theme_mayflower_options[staff_picture_toggle]' , array(
+		'type'              => 'option',
+		'default'           => $mayflower_theme_option_defaults['staff_picture_toggle'],
+		'sanitize_callback' => 'sanitize_boolean',
+	) );
+	$wp_customize->add_setting( 'theme_mayflower_options[staff_phone_toggle]' , array(
+		'type'              => 'option',
+		'default'           => $mayflower_theme_option_defaults['staff_phone_toggle'],
+		'sanitize_callback' => 'sanitize_boolean',
+	) );
+	$wp_customize->add_setting( 'theme_mayflower_options[staff_location_toggle]' , array(
+		'type'              => 'option',
+		'default'           => $mayflower_theme_option_defaults['staff_location_toggle'],
+		'sanitize_callback' => 'sanitize_boolean',
+	) );
+	$wp_customize->add_setting( 'theme_mayflower_options[staff_hours_toggle]' , array(
+		'type'              => 'option',
+		'default'           => $mayflower_theme_option_defaults['staff_hours_toggle'],
+		'sanitize_callback' => 'sanitize_boolean',
+	) );
+	$wp_customize->add_setting( 'theme_mayflower_options[staff_bio_toggle]' , array(
+		'type'              => 'option',
+		'default'           => $mayflower_theme_option_defaults['staff_bio_toggle'],
+		'sanitize_callback' => 'sanitize_boolean',
+	) );
+	$wp_customize->add_setting( 'theme_mayflower_options[staff_more_toggle]' , array(
+		'type'              => 'option',
+		'default'           => $mayflower_theme_option_defaults['staff_more_toggle'],
+		'sanitize_callback' => 'sanitize_boolean',
 	) );
 	$wp_customize->add_setting( 'theme_mayflower_options[display_post_date]' , array(
 		'type'              => 'option',
@@ -293,6 +329,100 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 					'list-view'  => __( 'List View', 'mayflower' ),
 					'grid-view'  => __( 'Grid View', 'mayflower' ),
 				),
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new Mayflower_Customize_Misc_Control(
+			$wp_customize,
+			'mayflower_staff-info-all-heading',
+			array(
+				'section' => 'mayflower_general',
+				'label'   => __( 'Staff Information', 'mayflower' ),
+				'type'    => 'heading',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'staff_picture_toggle',
+			array(
+				'label'          => __( 'List Staff Picture', 'mayflower' ),
+				'section'        => 'mayflower_general',
+				'settings'       => 'theme_mayflower_options[staff_picture_toggle]',
+				'type'           => 'checkbox',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'staff_more_toggle',
+			array(
+				'label'          => __( 'List Staff "More About" Link', 'mayflower' ),
+				'section'        => 'mayflower_general',
+				'settings'       => 'theme_mayflower_options[staff_more_toggle]',
+				'type'           => 'checkbox',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new Mayflower_Customize_Misc_Control(
+			$wp_customize,
+			'mayflower_staff-info-list-heading',
+			array(
+				'section' => 'mayflower_general',
+				'label'   => __( 'Staff Information - List View Layout Only', 'mayflower' ),
+				'type'    => 'heading',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'staff_phone_toggle',
+			array(
+				'label'          => __( 'List Staff Phone Number', 'mayflower' ),
+				'section'        => 'mayflower_general',
+				'settings'       => 'theme_mayflower_options[staff_phone_toggle]',
+				'type'           => 'checkbox',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'staff_location_toggle',
+			array(
+				'label'          => __( 'List Staff Office Location', 'mayflower' ),
+				'section'        => 'mayflower_general',
+				'settings'       => 'theme_mayflower_options[staff_location_toggle]',
+				'type'           => 'checkbox',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'staff_hours_toggle',
+			array(
+				'label'          => __( 'List Staff Office Hours', 'mayflower' ),
+				'section'        => 'mayflower_general',
+				'settings'       => 'theme_mayflower_options[staff_hours_toggle]',
+				'type'           => 'checkbox',
+			)
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'staff_bio_toggle',
+			array(
+				'label'          => __( 'List Staff Biography', 'mayflower' ),
+				'section'        => 'mayflower_general',
+				'settings'       => 'theme_mayflower_options[staff_bio_toggle]',
+				'type'           => 'checkbox',
 			)
 		)
 	);

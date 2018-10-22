@@ -4,7 +4,7 @@ Theme URI: http://www.bellevuecollege.edu/its/
 Description: The Bellevue College Theme
 Author: Bellevue College Integration
 Author URI: http://www.bellevuecollege.edu
-Version: 2.19 #{versionStamp}#
+Version: 2.20 #{versionStamp}#
 GitHub Theme URI: bellevuecollege/mayflower
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -258,9 +258,65 @@ div.nav-page {
 li.media {
 	margin-left: 0;
 }
+
+$fluid-grid-min-column-width: 200px;
+/**
+ * Fluid Grid Page Template
+ **/
+.child-pages.fluid-grid {
+
+	div {
+		padding: 0 1em 1em 1em;
+		border: 1px solid #ccc;
+	}
+
+	div.hasimage {
+		border-top: 1px solid #fff0;
+	}
+
+	div.grid-sizer,
+	& > article { 
+		width: calc(50% - 10px);
+		padding: 0;
+		border: 0;
+		min-width: $fluid-grid-min-column-width;
+		margin-bottom: 20px;
+		background: #fff;
+	}
+}
+
+.child-pages.fluid-grid:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+@media screen and (max-width: ($fluid-grid-min-column-width+30px)*2) {
+	.child-pages.fluid-grid {
+		div.grid-sizer,
+		& > article { 
+			width: 100%;
+
+		}
+	}
+}
+
+
+@media screen and (min-width: $breakpoint-bs-sm) {
+	.child-pages.fluid-grid {
+		div.grid-sizer,
+		& > article { 
+			width: calc(33.3333% - 10px);
+
+		}
+	}
+}
+
 /* ####################################### */
 /* ----- Staff CPT styles - to move  ----- */
 /* ###################################### */
+
+/* Note- these are replicated in block for editor styles! */
 
 .staff-details h1,
 .staff-details h2,
@@ -272,20 +328,117 @@ li.media {
 /*.staff-details h3 {
 	margin-bottom: 21px;
 }*/
+.staff-details h2 {
+	margin-bottom: 0.25em;
+	color: #000;
+}
+
 .staff-details h3 {
 	font-style: normal;
 	color: #000;
 }
 
 .staff-details ul {
-	margin: 0;
 	padding: 0;
-	margin-bottom: 1em;
+	margin: 1em 0;
 
 }
 .staff-details li {
 	list-style: none;
-	margin-left: 1em;
+}
+
+.staff-details-top {
+	margin-top: 1em;
+
+	@media screen and (min-width: $breakpoint-bs-sm) {
+		margin-top: 0;
+	}
+
+}
+
+.staff-details-card {
+	.pull-left {
+		float: none !important;
+	}
+
+	.media-body{
+		float: left;
+		width: 100%;
+	}
+
+	img {
+		margin: auto;
+	}
+	
+	@media screen and (min-width: $breakpoint-bs-sm) {
+		.pull-left {
+			float: left !important;
+		}
+
+		.media-body {
+			float: none;
+			width: 100%;
+		}
+
+		img {
+			margin: 0;
+		}
+	}
+}
+
+.staff-details-header {
+	text-align: center;
+	@media screen and (min-width: $breakpoint-bs-sm) {
+		text-align: initial;
+	}
+}
+
+.staff-biography-single.content-padding {
+	@media screen and (min-width: $breakpoint-bs-sm) {
+		padding: 0;
+		margin-top: 1em;
+	}
+}
+	/*
+	* Staff Grid-only styles
+	*/
+
+.staff-details-grid-top {
+	margin-top: 1em;
+}
+
+.staff-details-card-grid {
+	text-align: center;
+	border-bottom: 1px solid #eeeeee;
+
+	@media screen and (min-width: $breakpoint-bs-md) {
+		border-bottom: none;
+	}
+
+	img {
+		margin: auto;
+	}
+
+	a {
+		display: inline-block;
+		margin-bottom: -7px;
+	}
+}
+
+@media screen and (max-width: $breakpoint-bs-sm) {
+	.staff-details-grid-top.top-spacing15 {
+		margin-top: 0;
+	}
+}
+
+@media screen and (max-width: $breakpoint-bs-md) {
+	.col-md-4.staff-details-col:first-child, .col-md-4.staff-details-col:first-child + .col-md-4.staff-details-col  {
+		margin-bottom: 1em;
+	}
+
+	.row.top-spacing15:last-child {
+		margin-bottom: 1em;
+	}
 }
 
 /* ####################################### */
@@ -597,6 +750,66 @@ ul.header-social-links li {
 	}
 	
 }
+
+/* Support for Gutenberg */
+
+.has-white-color {
+	color: #fff;
+}
+.has-black-color {
+	color: #000;
+}
+.has-bc-blue-color {
+	color: #003D79;
+}
+.has-bc-silver-color {
+	color: #A7A9AC;
+}
+.has-bc-red-color {
+	color: #C4122F;
+}
+.has-bc-green-color {
+	color: #AAB720;
+}
+.has-bc-dark-blue-color {
+	color: #162F57;
+}
+.has-bc-orange-color {
+	color: #E36F1E;
+}
+.has-bc-gold-color {
+	color: #F2C01E;
+}
+
+.has-white-background-color {
+	background: #fff;
+}
+.has-black-background-color {
+	background: #000;
+}
+.has-bc-blue-background-color {
+	background: #003D79;
+}
+.has-bc-silver-background-color {
+	background: #A7A9AC;
+}
+.has-bc-red-background-color {
+	background: #C4122F;
+}
+.has-bc-green-background-color {
+	background: #AAB720;
+}
+.has-bc-dark-blue-background-color {
+	background: #162F57;
+}
+.has-bc-orange-background-color {
+	background: #E36F1E;
+}
+.has-bc-gold-background-color {
+	background: #F2C01E;
+}
+
+
 
 /* Styles for Simple Twitter Tweets plugin
  * https://wordpress.org/plugins/simple-twitter-tweets/

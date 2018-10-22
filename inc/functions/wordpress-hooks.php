@@ -275,6 +275,40 @@ function mayflower_remove_default_widgets() {
 remove_action( 'wp_head', 'wp_generator' );
 
 /**
+ * Gutenberg Time!
+ *
+ * Add hooks for Gutenberg features
+ *
+ * Gutenberg beta plugin v2.0
+ */
+
+ /**
+ * Enqueue block editor style
+ */
+add_action( 'enqueue_block_editor_assets', 'mayflower_block_editor_styles' );
+
+function mayflower_block_editor_styles() {
+	wp_enqueue_style( 'mayflower-block-editor-bootstrap3', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', false, '3.3.7', 'all' );
+	wp_enqueue_style( 'mayflower-block-editor-styles', get_theme_file_uri( 'css/block-editor.css' ), false, '1.0', 'all' );
+}
+
+/**
+ * Disable blocks
+ */
+add_action( 'enqueue_block_editor_assets', 'mayflower_blacklist_blocks' );
+
+function mayflower_blacklist_blocks() {
+	wp_enqueue_script(
+		'mayflower-blacklist-blocks',
+		get_theme_file_uri( 'js/blocks-blacklist.js', __FILE__ ),
+		array( 'wp-blocks' )
+	);
+}
+
+
+
+
+/**
  * Customize WordPress Visual Editor
  *
  * Add and change stylesheets and buttons in the
@@ -607,6 +641,12 @@ function mayflower_scripts() {
 	if ( current_user_can( 'edit_posts' ) ) {
 		wp_enqueue_script( 'a11y-warnings-js', get_template_directory_uri() . '/js/a11y-warnings.js#deferload', array( 'jquery' ), time(), true );
 		wp_enqueue_style( 'a11y-warnings-css', get_template_directory_uri() . '/css/a11y-warnings.css', null, time() );
+	}
+
+	if ( is_page_template( 'page-nav-page-fluid-grid.php' ) ) {
+		wp_enqueue_script( 'imagesloaded' );
+		wp_enqueue_script( 'masonry' );
+		wp_enqueue_script( 'page-nav-page-fluid-grid', get_template_directory_uri() . '/js/page-nav-page-fluid-grid.js', array( 'imagesloaded', 'masonry' ), MAYFLOWER_STYLE_VERSION, true );
 	}
 }
 
