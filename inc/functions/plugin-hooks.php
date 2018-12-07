@@ -95,7 +95,9 @@ add_action( 'update_option_sidebars_widgets', function() {
  *
  * Start tab index at position 9 so we don't conflict with skip to links or wp admin bar
  */
-add_filter( 'gform_tabindex', create_function( '', 'return 9;' ) ); // Do we need this? uses positive tabindex = bad
+add_filter( 'gform_tabindex', function(){
+	return 9;
+} ); // Do we need this? uses positive tabindex = bad
 
 /**
  * Filter GravityForms buttons
