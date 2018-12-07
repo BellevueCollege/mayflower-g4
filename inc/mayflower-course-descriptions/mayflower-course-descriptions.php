@@ -104,7 +104,7 @@ function add_coursedesc_popup() {
                     <select id="add_subject">
                         <option value="">  <?php _e("Select Subject", "mayflower"); ?>  </option>
                             <?php
-                            $json_subjects_url = "http://www.bellevuecollege.edu/classes/Api/Subjects?format=json";
+                            $json_subjects_url = "http://www2.bellevuecollege.edu/classes/Api/Subjects?format=json";
                             //$json = file_get_contents($json_subjects_url,0,null,null);
                             $json = wp_remote_get($json_subjects_url);
                             if(!empty($json) && !empty($json['body']))
@@ -146,7 +146,7 @@ function add_coursedesc_popup() {
  * */
 function get_course_callback() {
     $subject = $_POST['subject'];
-    $json_subjects_url = "http://www.bellevuecollege.edu/classes/All/".$subject."?format=json";
+    $json_subjects_url = "http://www2.bellevuecollege.edu/classes/All/".$subject."?format=json";
     $json = wp_remote_get($json_subjects_url);
 
     if(!empty($json) && !empty($json['body']))
@@ -168,7 +168,7 @@ function coursedescription_func( $atts ) {
 		$subject = trim( html_entity_decode( $subject ) );
 		// $url = "http://www.bellevuecollege.edu/classes/All/".$subject."?format=json";
 
-		$url = 'https://www.bellevuecollege.edu/data/api/v1/course/' . urlencode( $subject ) . '/'. urlencode( trim( $course_id ) );
+		$url = 'https://www2.bellevuecollege.edu/data/api/v1/course/' . urlencode( $subject ) . '/'. urlencode( trim( $course_id ) );
 		$data = wp_remote_get( $url );
 
 		if ( ! empty( $data ) && ! empty ( $data['body'] ) && ! empty ( $data['body'] ) ) {
@@ -202,7 +202,7 @@ function mayflower_course_html( $data, $show_description = false ) {
 		. $course->title . ' - ' 
 		. ( $course->isVariableCredits ? 'variable' : $course->credits ) . ' credits';
 
-		$url = 'https://www.bellevuecollege.edu/classes/All/' . $course->subject . '/' .
+		$url = 'https://www2.bellevuecollege.edu/classes/All/' . $course->subject . '/' .
 			$course->courseNumber;
 
 		$description = $course->description;
