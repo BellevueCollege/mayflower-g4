@@ -16,6 +16,9 @@ Mayflower has the following dependencies:
 Specific configuration and release information is available in [Bellevue College Docs](https://github.com/BellevueCollege/docs/tree/master/mayflower). 
 
 == Changelog ==
+= 2.21.1 =
+* Fix PHP Notice
+
 = 2.21 =
 * Update Course Description shortcode to use Data API
 * Bug fixes
