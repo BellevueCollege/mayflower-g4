@@ -111,39 +111,6 @@ function mayflower_filter_widget_title( $title ) {
 }
 
 /**
- * Output number of comments, excluding pings
- *
- * Filter Hook: get_comments_number
- *
- * Filter 'get_comments_number' to display correct
- * number of comments (count only comments, not
- * trackbacks/pingbacks)
- *
- * @link	http://codex.wordpress.org/Function_Reference/is_admin	Codex Reference: is_admin()
- * @link	http://codex.wordpress.org/Function_Reference/get_comments	Codex Reference: get_comments()
- * @link	http://codex.wordpress.org/Function_Reference/separate_comments	Codex Reference: separate_comments()
- * @link	http://php.net/manual/en/function.count.php	PHP Reference: count()
- *
- * @link	http://www.wpbeginner.com/wp-tutorials/display-the-most-accurate-comment-count-in-wordpress/ WPBeginner
- *
- * @since	Oenology 2.0
- */
-add_filter( 'get_comments_number', 'mayflower_comment_count', 0 );
-
-function mayflower_comment_count( $count ) {
-	// Only filter the comments number
-	// in the front-end display
-	if ( ! is_admin() ) {
-		global $id;
-		$comments_by_type = &separate_comments( get_comments( 'status=approve&post_id=' . $id ) );
-		return count( $comments_by_type['comment'] );
-	} else {
-		return $count;
-	}
-}
-// Hook custom comment number into 'get_comments_number'
-
-/**
  * Output default Post Title if none is provided
  *
  * Filter Hook: the_title
