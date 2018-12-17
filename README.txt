@@ -16,6 +16,11 @@ Mayflower has the following dependencies:
 Specific configuration and release information is available in [Bellevue College Docs](https://github.com/BellevueCollege/docs/tree/master/mayflower). 
 
 == Changelog ==
+= 2.21.2 =
+* Fix spelling issue on 404 page
+* Disable Text and Media block
+* Fix Search on Mayflower Lite when on non-www subdomains
+
 = 2.21.1 =
 * Fix PHP Notice
 
