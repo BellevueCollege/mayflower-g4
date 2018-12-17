@@ -8,7 +8,7 @@ if ( ! ( is_array( $mayflower_options ) ) ) {
 
 // Set variables for ease of use/configuration
 $limit_searchform_scope  = $mayflower_options['limit_searchform_scope'];
-$search_url_default      = '/search/';
+$search_url_default      = 'https://www.bellevuecollege.edu/search/';
 $search_url              = ( $limit_searchform_scope && ( '' !== $mayflower_options['custom_search_url'] ) ) ?
 								$mayflower_options['custom_search_url'] : $search_url_default;
 $search_field_id         = $limit_searchform_scope ? 'college-search-field-custom' : 'college-search-field' ;
