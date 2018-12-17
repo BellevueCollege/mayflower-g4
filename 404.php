@@ -14,7 +14,7 @@ get_header(); ?>
 		/** These are the error messages that are randomly displayed */
 
 		$errmsgs = "It was here, we promise!
-		We've lead you astray...
+		We've led you astray...
 		Oh no!
 		You've found a broken link!";
 
