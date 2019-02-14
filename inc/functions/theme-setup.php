@@ -368,6 +368,8 @@ function mayflower_setup() {
 		),
 	) );
 
+	add_theme_support('disable-custom-font-sizes');
+
 }
 
 add_action( 'after_setup_theme', 'mayflower_setup', 10 );
