@@ -12,7 +12,8 @@ var saveLicense  = require('uglify-save-license');
 var config = {
   sassPath: './sass',
   cssPath:  '.',
-  npmPath:  './node_modules'
+  npmPath:  './node_modules',
+  globalsPath:  './node_modules/globals/g/3'
 }
 
 /**
@@ -27,6 +28,7 @@ var sassOptions = {
   outputStyle: 'compressed',
   sourceComments: false,
   includePaths: [
+      config.npmPath + '/bootstrap-sass/assets/stylesheets',
       config.sassPath
   ],
   precision: 10
@@ -37,6 +39,7 @@ var sassDevOptions = {
   outputStyle: 'nested',
   sourceComments: true,
   includePaths: [
+      config.npmPath + '/bootstrap-sass/assets/stylesheets',
       config.sassPath
   ],
   precision: 10
@@ -73,6 +76,18 @@ gulp.task('sass-dev', function() {
       .pipe(gulp.dest(config.cssPath));
 });
 
+gulp.task('editor-sass-dev', function() {
+  return gulp
+      .src(config.sassPath + '/block-editor.scss')
+      .pipe(sourcemaps.init())
+      .pipe(sass(sassDevOptions).on('error', notify.onError(function (error) {
+          return "Error: " + error.message;
+      })))
+      .pipe(autoprefixer())
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest('./css'));
+});
+
 gulp.task('sass', function() {
   return gulp
       .src(config.sassPath + '/style.scss')
@@ -86,17 +101,19 @@ gulp.task('sass', function() {
 // Watch function (sass) - dev use only
 gulp.task('watch',function() {
   gulp
-    .watch(config.sassPath + '/**/*.scss', ['sass-dev']);
+    .watch(config.sassPath + '/**/*.scss', ['sass-dev', 'editor-sass-dev']);
 });
 
 
 
 // Dev - full dev build
 gulp.task('dev', [
-            'sass-dev'
+            'sass-dev',
+            'editor-sass-dev'
           ]);
 
 // Default - full production build
 gulp.task('default', [
-            'sass'
+            'sass',
+            'editor-sass-dev'
           ]);

@@ -255,7 +255,6 @@ remove_action( 'wp_head', 'wp_generator' );
 add_action( 'enqueue_block_editor_assets', 'mayflower_block_editor_styles' );
 
 function mayflower_block_editor_styles() {
-	wp_enqueue_style( 'mayflower-block-editor-bootstrap3', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css', false, '3.3.7', 'all' );
 	wp_enqueue_style( 'mayflower-block-editor-styles', get_theme_file_uri( 'css/block-editor.css' ), false, '1.0', 'all' );
 }
 
@@ -695,8 +694,6 @@ function mayflower_bootstrap_responsive_images( $html ) {
 	} else {
 		$html = preg_replace( '/(<img.*?)(\/>)/', '$1 class="' . $classes . '" $2', $html );
 	}
-	// remove dimensions from images,, does not need it!
-	$html = preg_replace( '/(width|height)=\"\d*\"\s/', '', $html );
 	return $html;
 }
 

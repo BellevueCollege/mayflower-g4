@@ -258,7 +258,7 @@ function mayflower_setup() {
 	 * * Video
 	 *
 	 */
-	add_theme_support( 'post-formats', array( 'video' ) );
+	add_theme_support( 'post-formats', array( 'video', 'image' ) );
 
 	/**
 	 * Tabs Shortcode plugin Configuration
@@ -367,6 +367,8 @@ function mayflower_setup() {
 			'slug'      => 'regular',
 		),
 	) );
+
+	add_theme_support('disable-custom-font-sizes');
 
 }
 

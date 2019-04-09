@@ -37,16 +37,18 @@ $caption           = $post->post_excerpt;
 						 */
 						if ( wp_attachment_is_image( $post->id ) ) : ?>
 							<h1><?php the_title();?></h1>
-							&nbsp;
-							<figure class="wp-caption aligncenter">
-								<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" title="<?php the_title(); ?>" rel="attachment">
-									<?php echo wp_get_attachment_image( $post->id, 'large', false, array( 'class' => 'attachment-large img-responsive' ) ); ?>
-								</a>
-								<?php if ( !empty( $caption ) ) { ?>
-										<figcaption class="wp-caption-text"><?php echo $caption; ?></figcaption>
-								<?php } ?>
-							</figure>
+							<div class="wp-block-image">
+								<figure class="aligncenter">
+									<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment">
+										<?php echo wp_get_attachment_image( get_the_ID(), 'large', false, array( 'class' => 'attachment-large img-responsive' ) ); ?>
+									</a>
+									<?php if ( !empty( $caption ) ) { ?>
+											<figcaption><?php echo $caption; ?></figcaption>
+									<?php } ?>
+								</figure>
+							</div>
 							<?php if ( !empty( $description ) ) { ?>
+								<hr>
 								<p><?php echo $description; ?></p>
 							<?php } ?>
 						<?php
