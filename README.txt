@@ -16,6 +16,13 @@ Mayflower has the following dependencies:
 Specific configuration and release information is available in [Bellevue College Docs](https://github.com/BellevueCollege/docs/tree/master/mayflower). 
 
 == Changelog ==
+= 2.22 =
+* Add Image post format for large featured images on posts
+* Fix Alternative (Alt) Text on Attachment pages
+* Restrict Custom Text Sizes in Gutenberg
+* Add Gutenberg File Block
+* Add Globals Styles to Gutenberg and Improve Scoping
+
 = 2.21.2 =
 * Fix spelling issue on 404 page
 * Disable Text and Media block
@@ -72,7 +79,7 @@ Specific configuration and release information is available in [Bellevue College
 * Revert http changes in mayflower-course-description
 
 = 2.16.1 =
-* Fix selector for number of visable slider slides
+* Fix selector for number of visible slider slides
 * Remove hardcoded http link in favor of https
 
 = 2.16 =
@@ -101,7 +108,7 @@ Specific configuration and release information is available in [Bellevue College
 * Bug fix: Prevent long image captions from overflowing bounds
 
 = 2.15 =
-* Make enqueue of g.js dependant on bootstrap.min.js to prevent future issues
+* Make enqueue of g.js dependent on bootstrap.min.js to prevent future issues
 * Improve list of 404 messages
 * Prevent fatal error on single site installs by changing method of getting blog slug
 * Prevent error when activating theme by checking of pantheon functions exist before running
@@ -140,7 +147,7 @@ Specific configuration and release information is available in [Bellevue College
 * Add hidden label to search in Mayflower lite
 
 = 2.9 =
-* Allow extention of sidebar/widget areas
+* Allow extension of sidebar/widget areas
   * Add mayflower_register_sidebar hook
   * Add mayflower_display_sidebar hook
   * Add mayflower_active_sidebar filter
@@ -158,7 +165,7 @@ Specific configuration and release information is available in [Bellevue College
 * Move Admin Only options to Customizer
 * Refactor Mayflower options to use Customizer directly
 * Only display Customizer Mayflower Homepage Options
-  when Mayflower Homepage is actually visable
+  when Mayflower Homepage is actually visible
 * Allow for search scope configuration
 * Use HTML5 Image Tags and Galleries
 * Use consistent styles for all images
@@ -265,11 +272,11 @@ Fix post display on site and post homepages
 * Updated nav page list view
 * Remove all "Read More" links in the theme
 * Fix breakpoints on menus for home page
-* Make form actions protocol indpendent
+* Make form actions protocol independents
 * Remove color scheme option from theme options
 
 = 1.7 =
- Removed rave alert notifcation html.
+ Removed rave alert notification html.
  Removed links of alert-notification file in function.php.
  Moved Rave alert functionality into a plugin.
  Removed cron job and rave alert functionality from the theme.
@@ -317,6 +324,9 @@ Fix post display on site and post homepages
 
 
 == Upgrade Notice ==
+= 2.22 =
+New post format, Block Editor features, and bug fixes
+
 = 2.21 =
 Data API updates and bug fixes
 
