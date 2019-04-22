@@ -267,7 +267,8 @@ function mayflower_blacklist_blocks() {
 	wp_enqueue_script(
 		'mayflower-blacklist-blocks',
 		get_theme_file_uri( 'js/blocks-blacklist.js', __FILE__ ),
-		array( 'wp-blocks' )
+		array( 'wp-blocks' ),
+		MAYFLOWER_STYLE_VERSION
 	);
 }
 
