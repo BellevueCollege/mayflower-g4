@@ -698,16 +698,6 @@ function mayflower_bootstrap_responsive_images( $html ) {
 	return $html;
 }
 
-/*
- * Add responsive classes to video embeds
- *
- */
-
-add_filter( 'embed_oembed_html', 'mayflower_embed_oembed_html', 99, 4 );
-
-function mayflower_embed_oembed_html( $html, $url, $attr, $post_id ) {
-	return '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
-}
 
 /*
  * Alt Text Verification

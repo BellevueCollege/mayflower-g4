@@ -370,6 +370,11 @@ function mayflower_setup() {
 
 	add_theme_support('disable-custom-font-sizes');
 
+	/**
+	 * Add Support for WordPress Style Responsive Embeds (WP 5.0)
+	 */
+	add_theme_support( 'responsive-embeds' );
+
 }
 
 add_action( 'after_setup_theme', 'mayflower_setup', 10 );
