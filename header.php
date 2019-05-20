@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
-global $mayflower_options,
+global $post,
+	   $mayflower_options,
 	   $globals_version,
 	   $globals_url,
 	   $globals_path,
@@ -12,8 +13,9 @@ if ( ! ( is_array( $mayflower_options ) ) ) {
 	$mayflower_options = mayflower_get_options();
 }
 
-$mayflower_theme_version = wp_get_theme(); ?>
-
+$mayflower_theme_version = wp_get_theme();
+$post_meta_data = get_post_custom( $post->ID );
+?>
 <!--[if lt IE 7 ]> <html <?php language_attributes(); ?> class="ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html <?php language_attributes(); ?> class="ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html <?php language_attributes(); ?> class="ie8"> <![endif]-->
@@ -24,9 +26,16 @@ $mayflower_theme_version = wp_get_theme(); ?>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<?php if ( isset( $post_meta_data['_seo_meta_description'][0] ) ) { ?>
-		<meta name="description" content="<?php echo esc_html( $post_meta_data['_seo_meta_description'][0] ); ?>" />
+		<meta property="og:title" content="<?php echo esc_html( $post_meta_data['_seo_custom_page_title'][0] ); ?>" />
+	<?php } else { ?>
+		<meta property="og:title" content="<?php echo get_the_title() . ' :: ' . get_bloginfo( 'name', 'display' ) . ' @ Bellevue College' ?>" />
 	<?php } ?>
+
 	<?php if ( isset( $post_meta_data['_seo_meta_description'][0] ) ) { ?>
+		<meta name="description" content="<?php echo esc_html( $post_meta_data['_seo_meta_description'][0] ); ?>" />
+		<meta property="og:description" content="<?php echo esc_html( $post_meta_data['_seo_meta_description'][0] ); ?>" />
+	<?php } ?>
+	<?php if ( isset( $post_meta_data['_seo_meta_keywords'][0] ) ) { ?>
 		<meta name="keywords" content="<?php echo esc_html( $post_meta_data['_seo_meta_keywords'][0] ); ?>" />
 	<?php } ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -46,13 +55,11 @@ $mayflower_theme_version = wp_get_theme(); ?>
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
 
 	<!--- Open Graph Tags -->
-	<meta property="og:title" content="<?php echo get_the_title() . ' :: ' . get_bloginfo( 'name', 'display' ) . ' @ Bellevue College' ?>" />
 	<?php if ( 'post' === get_post_type( ) ) : ?>
 		<meta property="og:type" content="article" />
 		<meta property="article:published_time" content="<?php echo get_the_date('c') ?>" />
 		<meta property="article:modified_time" content="<?php echo get_the_modified_date('c') ?>" />
-		
-	<?php else: ?>
+	<?php else : ?>
 		<meta property="og:type" content="website" />
 	<?php endif; ?>
 
@@ -70,8 +77,13 @@ $mayflower_theme_version = wp_get_theme(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-
 	<?php
+	if ( function_exists( 'wp_body_open' ) ) {
+		wp_body_open();
+	} else {
+		do_action( 'wp_body_open' );
+	}
+
 	##############################################
 	### Branded or Lite versions of the header
 	##############################################
