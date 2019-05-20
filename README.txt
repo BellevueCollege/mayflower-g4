@@ -17,6 +17,11 @@ Specific configuration and release information is available in [Bellevue College
 
 == Changelog ==
 = 2.22 =
+* Fix page SEO attributes
+* Remove CollegeHumor and MixCloud blocks
+* Remove More block in Gutenberg
+* Change how embeds are embedded (WordPress default instead of BS3)
+= 2.22 =
 * Add Image post format for large featured images on posts
 * Fix Alternative (Alt) Text on Attachment pages
 * Restrict Custom Text Sizes in Gutenberg
@@ -324,6 +329,9 @@ Fix post display on site and post homepages
 
 
 == Upgrade Notice ==
+= 2.23 =
+Bug fixes, bug fixes, and more bug fixes! Embeds behave differently as well. 
+
 = 2.22 =
 New post format, Block Editor features, and bug fixes
 
