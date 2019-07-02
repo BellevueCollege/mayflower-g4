@@ -223,6 +223,27 @@ function mayflower_read_more_override( $more ) {
 	return ' <a class="read-more" href="' . get_permalink() . '">' . __( '...more about ', 'mayflower' ) . get_the_title() . '</a>';
 }
 
+/**
+ * Customize excerpts to include Gutenberg blocks and shortcode content
+ * 
+ */
+
+add_filter('the_excerpt', 'mayflower_the_excerpt_override' );
+
+function mayflower_the_excerpt_override( $excerpt ) {
+	$read_more = mayflower_read_more_override( $more ) ;
+
+	$excerpt_from_content = wpautop( 
+		wp_trim_words(
+			preg_replace("~(?:\[/?)[^/\]]+/?\]~s", '', get_the_content()),
+			55, 
+			$read_more
+		)
+	);
+	
+	// Returns excerpt from content if there is not a custom/manual excerpt
+	return has_excerpt() ? $excerpt : $excerpt_from_content;
+}
 
 add_action( 'widgets_init', 'mayflower_remove_default_widgets' );
 
