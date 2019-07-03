@@ -101,19 +101,20 @@ gulp.task('sass', function() {
 // Watch function (sass) - dev use only
 gulp.task('watch',function() {
   gulp
-    .watch(config.sassPath + '/**/*.scss', ['sass-dev', 'editor-sass-dev']);
+    .watch(config.sassPath + '/**/*.scss', gulp.parallel(
+      'sass-dev',
+      'editor-sass-dev'
+    ));
 });
 
-
-
 // Dev - full dev build
-gulp.task('dev', [
+gulp.task('dev', gulp.parallel(
             'sass-dev',
             'editor-sass-dev'
-          ]);
+          ));
 
 // Default - full production build
-gulp.task('default', [
+gulp.task('default', gulp.parallel(
             'sass',
             'editor-sass-dev'
-          ]);
+          ));
