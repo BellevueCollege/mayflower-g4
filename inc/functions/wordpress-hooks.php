@@ -212,31 +212,20 @@ function mayflower_document_title_separator( $mayflower_document_title_separator
 	return is_front_page() ? '@' : '::';
 }
 
-
 /**
- * Customize 'Read More' text on posts
- *
- */
-add_filter( 'excerpt_more', 'mayflower_read_more_override' );
-
-function mayflower_read_more_override( $more ) {
-	return ' <a class="read-more" href="' . get_permalink() . '">' . __( '...more about ', 'mayflower' ) . get_the_title() . '</a>';
-}
-
-/**
- * Customize excerpts to include Gutenberg blocks and shortcode content
+ * Customize excerpts to include Gutenberg blocks, shortcode content and add a custom read more
  * 
  */
 
 add_filter('the_excerpt', 'mayflower_the_excerpt_override' );
 
 function mayflower_the_excerpt_override( $excerpt ) {
-	$read_more = mayflower_read_more_override( $more ) ;
-
+	$read_more = ' <a class="read-more" href="' . get_permalink() . '">' . __( '...more about ', 'mayflower' ) . get_the_title() . '</a>';
+	
 	$excerpt_from_content = wpautop( 
 		wp_trim_words(
 			preg_replace("~(?:\[/?)[^/\]]+/?\]~s", '', get_the_content()),
-			55, 
+			55 , 
 			$read_more
 		)
 	);
