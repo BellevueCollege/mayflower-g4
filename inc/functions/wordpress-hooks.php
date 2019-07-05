@@ -613,7 +613,37 @@ function mayflower_scripts() {
 	wp_enqueue_script( 'globals', $globals_url . 'j/gfoot-full.min.js', array( 'jquery' ), $globals_version, true );
 	wp_enqueue_script( 'menu', get_template_directory_uri() . '/js/menu.js#deferload', array( 'jquery' ), MAYFLOWER_STYLE_VERSION , true );
 
-	wp_enqueue_script( 'youvisit', 'https://www.youvisit.com/tour/Embed/js2#asyncdeferload', null, null , true );
+	wp_enqueue_script( 'youvisit', 'https://www.youvisit.com/tour/Embed/js2#asyncdeferload', null, null, true );
+
+	/**
+	 * Search script
+	 */
+	if ( mayflower_get_option( 'limit_searchform_scope' ) ) {
+		$mayflower_options       = mayflower_get_options();
+		$limit_searchform_scope  = $mayflower_options['limit_searchform_scope'];
+		$search_url_default      = 'https://www.bellevuecollege.edu/search/';
+		$search_url              = ( $limit_searchform_scope && ( '' !== $mayflower_options['custom_search_url'] ) ) ?
+										$mayflower_options['custom_search_url'] : $search_url_default;
+		$search_field_id         = $limit_searchform_scope ? 'college-search-field-custom' : 'college-search-field'; //
+		$filter_value            = mayflower_trimmed_url();
+		$search_api_key          = '' !== $mayflower_options['custom_search_api_key'] ? $mayflower_options['custom_search_api_key'] :
+									'YUFwdxQ6-Kaa9Zac4rpb'; // <-- Default API Key
+		$search_query_peram      = 'txtQuery';
+		$filter_peram            = 'site[]'; // hardcoded default.
+
+		wp_enqueue_script( 'search', get_template_directory_uri() . '/js/search.js#deferload', array( 'jquery', 'globals' ), MAYFLOWER_STYLE_VERSION, true );
+		wp_add_inline_script(
+			'search',
+			'var limit_searchform_scope =' . esc_attr( $limit_searchform_scope ) .
+				'; var search_api_key ="' . esc_attr( $search_api_key ) .
+				'"; var filter_value ="' . esc_attr( $filter_value ) .
+				'"; var search_field_id ="' . esc_attr( $search_field_id ) .
+				'"; var custom_search_url ="' . esc_attr( $mayflower_options['custom_search_url'] ) .
+				'"; var search_url_default ="' . esc_attr( $search_url_default ) .
+				'";',
+			'before'
+		);
+	}
 
 	if ( current_user_can( 'edit_posts' ) ) {
 		wp_enqueue_script( 'a11y-warnings-js', get_template_directory_uri() . '/js/a11y-warnings.js#deferload', array( 'jquery' ), time(), true );
