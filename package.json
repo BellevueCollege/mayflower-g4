@@ -1,6 +1,6 @@
 {
   "name": "mayflower",
-  "version": "2.23.1",
+  "version": "2.24.0",
   "description": "The Bellevue College Theme",
   "main": " ",
   "browserslist": [
@@ -11,17 +11,17 @@
     "not dead"
   ],
   "dependencies": {
-    "npm": "^6.4.1"
+    "npm": "^6.10.0"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.4.1",
     "globals": "git+https://github.com/BellevueCollege/globals.git",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
     "gulp-notify": "^3.2.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
     "napa": "^3.0.0",
     "uglify-save-license": "^0.4.1"
   },
