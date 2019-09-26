@@ -40,7 +40,7 @@ $caption           = $post->post_excerpt;
 							<div class="wp-block-image">
 								<figure class="aligncenter">
 									<a href="<?php echo wp_get_attachment_url( $post->id ); ?>" rel="attachment">
-										<?php echo wp_get_attachment_image( get_the_ID(), 'large', false, array( 'class' => 'attachment-large img-responsive' ) ); ?>
+										<?php echo wp_get_attachment_image( get_the_ID(), 'large', false, array( 'class' => 'attachment-large img-fluid' ) ); ?>
 									</a>
 									<?php if ( !empty( $caption ) ) { ?>
 											<figcaption><?php echo $caption; ?></figcaption>

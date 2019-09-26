@@ -37,6 +37,10 @@ require( get_template_directory() . '/inc/functions/globals.php' );
 define( 'CLASSESURL', '//www.bellevuecollege.edu/classes/All/' );
 define( 'PREREQUISITEURL', '//www.bellevuecollege.edu/transfer/prerequisites/' );
 
+/**
+ * Load Bootstrap Navwalker (used for menus)
+ */
+require_once get_template_directory() . '/inc/wp-bootstrap-navwalker-4.0.2/class-wp-bootstrap-navwalker.php';
 
 /**
  * Load Mayflower Embedded Plugins

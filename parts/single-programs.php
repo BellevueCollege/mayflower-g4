@@ -20,10 +20,7 @@ if (have_posts()) :
 		?>
 
 
-		<main class="content-padding" role="main">
-
-
-
+		<main role="main">
 			<h1><?php the_title()?></h1>
 
 			<ul>
@@ -60,7 +57,7 @@ if (have_posts()) :
 			<?php endif; ?>
 			<div class="clearfix"></div>
 			<p id="modified-date" class="text-right"><small><?php _e('Last Updated ', 'mayflower'); the_modified_date(); ?></small></p>
-		</main><!--.content-padding-->
+		</main>
 
 	<?php endwhile;
 	wp_reset_query();

@@ -5,10 +5,10 @@
 
 if ( have_posts( ) ) : while ( have_posts( ) ) : the_post( ); ?>
 	<main id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="main">
-		<div class="content-padding post-heading">
+		<div class="post-heading">
 			<h1><?php the_title( ) ?></h1>
 		</div>
-		<article class="content-padding">
+		<article>
 			<?php the_content( ); ?>
 		</article>
 
@@ -91,55 +91,53 @@ if ( have_posts( ) ) : while ( have_posts( ) ) : the_post( ); ?>
 					<noscript>
 						JavaScript is required to view courses. Please enable JavaScript in your browser.
 					</noscript>
-					<div class="content-padding">
-						<?php
-						// Set variables
-						$campusce_base_url = 'https://www.campusce.net/BC/course/course.aspx?C=';
-						$field_id          = CE_Plugin_Settings::get_ce_field_id();
-						$category_ID       = get_post_meta( get_the_ID( ), $field_id , true );
-						// Check if category_ID is properly defined (four digit number)
-						if ( preg_match( '/^(\d{4})/', $category_ID ) ) :
-							// Only load courses if category_ID is defined
-							$courses   = CE_Custom_Functions::cecf_get_courses_by_category_id( $category_ID );
-							$category  = CE_Custom_Functions::cecf_get_category_by_id( $category_ID ); 
-							//Courses loaded to be replaced by the REST API ?>
-							<section id="ce-header">
-								<h2><img src="/wp-includes/images/spinner.gif" alt="" /> &nbsp;Updating Classes...</h2>
-							</section>
-							<section id="ce-courses">
-								<?php if ( !empty( $courses ) ) :
-									$parent_ID = $category->ParentID; ?>
-									<div id="ce-overlay"></div>
-									<h2>Current <?php the_title( ); ?> Classes</h2>
-									<ul class="list-group">
-										<?php foreach ( $courses as $class ) { ?>
-											<?php if ( empty( $class->CourseID ) == FALSE) {
-												//Load title and desc in to variables, and force tags to be balanced
-												$class_title = balanceTags( $class->Title, true );
-												$class_desc  = balanceTags( wp_trim_words( $class->WebDescr, 40, '...' ), true );
-												?>
-												<?php $campusce_url = $campusce_base_url . $class->CourseID . '&mc=' . $class->CategoryID . '&pc=' . $parent_ID; ?>
-												<li class="list-group-item">
-													<h3><a href="<?php echo $campusce_url ?>"><?php echo $class_title ?></a></h3>
-													<p><?php echo $class_desc ?> <a class="btn btn-default btn-xs" href="<?php echo $campusce_url ?>">More <span class="sr-only"> about <?php echo $class_title ?></span> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
-												</li>
-											<?php } ?>
+					<?php
+					// Set variables
+					$campusce_base_url = 'https://www.campusce.net/BC/course/course.aspx?C=';
+					$field_id          = CE_Plugin_Settings::get_ce_field_id();
+					$category_ID       = get_post_meta( get_the_ID( ), $field_id , true );
+					// Check if category_ID is properly defined (four digit number)
+					if ( preg_match( '/^(\d{4})/', $category_ID ) ) :
+						// Only load courses if category_ID is defined
+						$courses   = CE_Custom_Functions::cecf_get_courses_by_category_id( $category_ID );
+						$category  = CE_Custom_Functions::cecf_get_category_by_id( $category_ID ); 
+						//Courses loaded to be replaced by the REST API ?>
+						<section id="ce-header">
+							<h2><img src="/wp-includes/images/spinner.gif" alt="" /> &nbsp;Updating Classes...</h2>
+						</section>
+						<section id="ce-courses">
+							<?php if ( !empty( $courses ) ) :
+								$parent_ID = $category->ParentID; ?>
+								<div id="ce-overlay"></div>
+								<h2>Current <?php the_title( ); ?> Classes</h2>
+								<ul class="list-group">
+									<?php foreach ( $courses as $class ) { ?>
+										<?php if ( empty( $class->CourseID ) == FALSE) {
+											//Load title and desc in to variables, and force tags to be balanced
+											$class_title = balanceTags( $class->Title, true );
+											$class_desc  = balanceTags( wp_trim_words( $class->WebDescr, 40, '...' ), true );
+											?>
+											<?php $campusce_url = $campusce_base_url . $class->CourseID . '&mc=' . $class->CategoryID . '&pc=' . $parent_ID; ?>
+											<li class="list-group-item">
+												<h3><a href="<?php echo $campusce_url ?>"><?php echo $class_title ?></a></h3>
+												<p><?php echo $class_desc ?> <a class="btn btn-default btn-xs" href="<?php echo $campusce_url ?>">More <span class="sr-only"> about <?php echo $class_title ?></span> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+											</li>
 										<?php } ?>
-									</ul>
-								<?php else: // No available courses ?>
-									<br>
-									<div class="well well-sm">
-										<p>Courses have begun. Please check back for future offerings.</p>
-										<p>Also, check out our <a href="https://www.campusce.net/BC/category/category.aspx">online catalog</a> for other offerings.</p>
-									</div>
-								<?php endif; ?>
-							</section>
+									<?php } ?>
+								</ul>
+							<?php else: // No available courses ?>
+								<br>
+								<div class="well well-sm">
+									<p>Courses have begun. Please check back for future offerings.</p>
+									<p>Also, check out our <a href="https://www.campusce.net/BC/category/category.aspx">online catalog</a> for other offerings.</p>
+								</div>
+							<?php endif; ?>
+						</section>
 							
 						<?php else: // if field id is not available
 							echo '<!-- Category ID is not defined, or does not match proper pattern -->';
 						endif; ?>	
 
-					</div>
 				<?php else : ?>
 					<!-- Classes can not be retrieved. Class category code provided is in the wrong format, or is missing.-->
 				<?php endif; ?>

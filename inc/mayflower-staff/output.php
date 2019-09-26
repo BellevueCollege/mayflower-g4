@@ -28,9 +28,9 @@ if ( 'list-view' === $mayflower_options['staff_layout'] && $mayflower_options['s
 			<a class="pull-left" href="<?php the_permalink(); ?>">
 				<?php if ( $mayflower_options['staff_picture_toggle'] == true ) {
 					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'thumbnail', array('class' => 'media-object img-responsive img-thumbnail', 'alt' => the_title_attribute( array( 'after' => ' Picture', 'echo' => false ) ) ) );
+						the_post_thumbnail( 'thumbnail', array('class' => 'media-object img-fluid img-thumbnail', 'alt' => the_title_attribute( array( 'after' => ' Picture', 'echo' => false ) ) ) );
 					} else {
-						echo '<img class="media-object img-responsive img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
+						echo '<img class="media-object img-fluid img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
 					}
 				} ?>
 			</a>
@@ -145,10 +145,10 @@ if ( 'list-view' === $mayflower_options['staff_layout'] && $mayflower_options['s
 					<?php if ( $mayflower_options['staff_picture_toggle'] == true ) {
 						if ( has_post_thumbnail() ) { ?>
 							<a href="<?php the_permalink(); ?>">
-								<?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail', array( 'class' => 'media-object img-responsive img-thumbnail', 'alt' => the_title_attribute( array('after' => ' Picture', 'echo' => false) ) ) ); ?>
+								<?php echo get_the_post_thumbnail(get_the_ID(), 'thumbnail', array( 'class' => 'media-object img-fluid img-thumbnail', 'alt' => the_title_attribute( array('after' => ' Picture', 'echo' => false) ) ) ); ?>
 							</a>
 						<?php } else {
-							echo '<img class="media-object img-responsive img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
+							echo '<img class="media-object img-fluid img-thumbnail" alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
 						}
 					} ?>
 

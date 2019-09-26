@@ -21,7 +21,7 @@
 
 			<?php if ( has_post_thumbnail() ) { ?>
 				<a class="" href="<?php the_permalink(); ?>">
-					<?php the_post_thumbnail( 'medium_large', array( 'class' => 'img-responsive' ) ); ?>
+					<?php the_post_thumbnail( 'medium_large', array( 'class' => 'img-fluid' ) ); ?>
 				</a>
 				<div class="hasimage">
 			<?php } else { ?>

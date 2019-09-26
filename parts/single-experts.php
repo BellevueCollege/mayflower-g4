@@ -1,13 +1,11 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 	<main id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="main">
-		<div class="content-padding post-heading">
-			<h1><?php the_title();?></h1><br />
-		</div>
-		<article class="content-padding">
+		<h1><?php the_title();?></h1><br />
+		<article>
 			<div class="row">
 				<div class="col-md-4 col-sm-5">
 					<?php if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'medium', array( 'class' => 'img-thumbnail img-responsive' ) );
+						the_post_thumbnail( 'medium', array( 'class' => 'img-thumbnail img-fluid' ) );
 					}
 					else {
 						echo '<img alt="" src="' . get_stylesheet_directory_uri() . '/img/thumbnail-default.png" />';
@@ -30,7 +28,7 @@
 				<?php the_content();  ?>
 			<?php endif; ?>
 
-		</article><!-- content-padding -->
+		</article>
 	</main>
 
 <?php endwhile; ?>

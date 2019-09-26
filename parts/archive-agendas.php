@@ -1,27 +1,25 @@
-<div class="content-padding">
-	<?php foreach(posts_by_year() as $year => $posts) : ?>
-		<h1><?php echo $year; ?></h1>
-		<ul>
-			<?php foreach($posts as $post) : setup_postdata($post); ?>
-				<li>
-					<a href="<?php the_permalink(); ?>">
-						<?php $value = get_post_meta( get_the_ID(), 'meeting_date', true );
-						if( !empty( $value ) ) {
-							$display_date = date('F j, Y', strtotime($value));
-							echo $display_date;
-						} ?>
-					</a>
-					<?php $special_meeting = get_post_meta( get_the_ID(), 'special_meeting', true );
-					$special = "";
-					if( $special_meeting ) {
-						$special = "&nbsp;(Special Meeting)";
-						echo $special;
+<?php foreach(posts_by_year() as $year => $posts) : ?>
+	<h1><?php echo $year; ?></h1>
+	<ul>
+		<?php foreach($posts as $post) : setup_postdata($post); ?>
+			<li>
+				<a href="<?php the_permalink(); ?>">
+					<?php $value = get_post_meta( get_the_ID(), 'meeting_date', true );
+					if( !empty( $value ) ) {
+						$display_date = date('F j, Y', strtotime($value));
+						echo $display_date;
 					} ?>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	<?php endforeach; ?>
-</div>
+				</a>
+				<?php $special_meeting = get_post_meta( get_the_ID(), 'special_meeting', true );
+				$special = "";
+				if( $special_meeting ) {
+					$special = "&nbsp;(Special Meeting)";
+					echo $special;
+				} ?>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+<?php endforeach; ?>
 
 <?php
 function posts_by_year() {

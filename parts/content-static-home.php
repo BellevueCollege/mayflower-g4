@@ -12,16 +12,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	* Prevent Empty Container from loading if there is no content
 	*/
 	if ( $post->post_content != "" ) : ?>
-		<div class="content-padding" data-swiftype-name="body" data-swiftype-type="text">
+		<main data-swiftype-name="body" data-swiftype-type="text">
 			<?php the_content(); ?>
-		</div><!--.content-padding-->
+		</main>
 	<?php endif; ?>
 	<?php
 	/**
 	 * Check if posts are displayed on static homepage
 	 */
 	if ( $mayflower_options['blog_homepage_toggle'] === true ) : ?>
-		<div id="static-homepage-posts" class="top-spacing30">
+		<div id="static-homepage-posts">
 
 			<?php // Loop for posts
 			$args = array(

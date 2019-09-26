@@ -8,7 +8,6 @@
  */
 get_header(); ?>
 
-<div class="content-padding row-padding box-shadow" id="content">
 
 	<?php function mayflower_errormsgs() {
 		/** These are the error messages that are randomly displayed */
@@ -43,7 +42,6 @@ get_header(); ?>
 		<li class="five">Click the <a href="javascript:history.go(-1)">Back</a> button and try another link.</li>
 	</ol>
 
-</div><!-- content-padding -->
 
 
 <?php get_footer();

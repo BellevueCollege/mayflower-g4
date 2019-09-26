@@ -4,28 +4,26 @@ $mayflower_options = mayflower_get_options();
 
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	<main id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="main">
-		<div class="content-padding post-heading">
-			<h1><?php the_title();?></h1>
-			<?php // Check if post date or author should be displayed
-			if ( $mayflower_options['display_post_author'] || $mayflower_options['display_post_date'] ) : ?>
-				<p class="entry-date">
-					<?php //Check if post date should be displayed
-					if ( $mayflower_options['display_post_date'] ) : ?>
-						<?php _e( 'Date posted: ', 'mayflower');
-						the_date(); ?>
-					<?php endif;
-					// Check if post author should be displayed
-					if ( $mayflower_options['display_post_author'] ) : ?>
-						&nbsp;<span class="pull-right"><?php _e( 'Author: ', 'mayflower' ) ?><?php the_author_posts_link(); ?></span>
-					<?php endif; ?>
-				</p>
-			<?php endif; ?>
+		<h1><?php the_title();?></h1>
+		<?php // Check if post date or author should be displayed
+		if ( $mayflower_options['display_post_author'] || $mayflower_options['display_post_date'] ) : ?>
+			<p class="entry-date">
+				<?php //Check if post date should be displayed
+				if ( $mayflower_options['display_post_date'] ) : ?>
+					<?php _e( 'Date posted: ', 'mayflower');
+					the_date(); ?>
+				<?php endif;
+				// Check if post author should be displayed
+				if ( $mayflower_options['display_post_author'] ) : ?>
+					&nbsp;<span class="pull-right"><?php _e( 'Author: ', 'mayflower' ) ?><?php the_author_posts_link(); ?></span>
+				<?php endif; ?>
+			</p>
+		<?php endif; ?>
 
-		</div>
 		<?php if ( function_exists( 'post_and_page_asides_return_title' ) ) :
 			get_template_part( 'parts/aside' );
 		endif; ?>
-		<article class="content-padding" data-swiftype-name="body" data-swiftype-type="text">
+		<article data-swiftype-name="body" data-swiftype-type="text">
 
 			<?php if ( has_post_thumbnail() && get_post_format() != 'video' ) : ?>
 
@@ -36,7 +34,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					$width = $img[1]; ?>
 					<div class="wp-block-image">
 						<figure class="aligncenter">
-							<?php the_post_thumbnail( 'large', ['class' => 'img-responsive']); ?>
+							<?php the_post_thumbnail( 'large', ['class' => 'img-fluid']); ?>
 							<?php if ( get_post( get_post_thumbnail_id() )->post_excerpt ) : ?>
 								<figcaption class="featured-caption wp-caption-text"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></figcaption>
 							<?php endif; ?>
@@ -67,7 +65,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<?php the_content(); ?>
 			<div class="clearfix"></div>
 			<p id="modified-date" class="text-right"><small><?php _e('Last Updated ', 'mayflower'); the_modified_date(); ?></small></p>
-		</article><!-- content-padding -->
+		</article>
 	</main>
 	<?php endwhile; ?>
 

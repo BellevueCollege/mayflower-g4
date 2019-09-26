@@ -27,7 +27,7 @@
 
 				<?php if ( has_post_thumbnail() ) { ?>
 					<a class="" href="<?php the_permalink(); ?>">
-						<?php the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-responsive' ) ); ?>
+						<?php the_post_thumbnail( 'home-small-ad', array( 'class' => 'img-fluid' ) ); ?>
 					</a>
 				<?php } else {} ?>
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>

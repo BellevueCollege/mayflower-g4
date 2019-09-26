@@ -727,7 +727,7 @@ add_filter( 'the_content','mayflower_bootstrap_responsive_images',10 );
 add_filter( 'post_thumbnail_html', 'mayflower_bootstrap_responsive_images', 10 );
 
 function mayflower_bootstrap_responsive_images( $html ) {
-	$classes = 'img-responsive'; // separated by spaces, e.g. 'img image-link'
+	$classes = 'img-fluid'; // separated by spaces, e.g. 'img image-link'
 
 	// check if there are already classes assigned to the anchor
 	if ( preg_match( '/<img.*? class="/', $html ) ) {

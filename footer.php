@@ -1,13 +1,6 @@
-<?php
-global $mayflower_brand;
-if ( $mayflower_brand == 'lite' ) {
-	get_template_part( 'parts/flexnav' );
-} else { }
-?>
-			</div><!-- row -->
-		</div><!-- col-md-12 -->
-	</div><!-- #main .container -->
-</div><!-- #main-wrap -->
+<?php global $mayflower_brand; ?>
+	</div><!-- row -->
+</div><!-- #main .container -->
 
 <?php
 
