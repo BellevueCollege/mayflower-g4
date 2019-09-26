@@ -17,7 +17,6 @@
 		Archive<!-- No Page Title Available -->
 	<?php } ?>
 </h1>
-<div class="top-spacing30"></div>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	<?php get_template_part( 'format', get_post_format() ); ?>
 <?php endwhile;?>

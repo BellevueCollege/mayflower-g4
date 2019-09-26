@@ -14,9 +14,9 @@ $loop = new WP_Query( array(
 
 if ( 'list-view' === $mayflower_options['staff_layout'] && $mayflower_options['staff_toggle'] ) {
 	if ( $mayflower_options['staff_picture_toggle'] == true ) { ?>
-		<div class="top-spacing15 staff-details">
+		<div class="staff-details">
 	<?php } else { ?>
-		<div class="top-spacing15 staff-details">
+		<div class="staff-details">
 	<?php }
 
 	while ( $loop->have_posts() ) : $loop->the_post();
@@ -133,9 +133,9 @@ if ( 'list-view' === $mayflower_options['staff_layout'] && $mayflower_options['s
 		$count++;
 		if ($count == 1) {
 			if ( $mayflower_options['staff_picture_toggle'] == true ) {
-				echo '<div class="row top-spacing15">';
+				echo '<div class="row">';
 			} else {
-				echo '<div class="row top-spacing15 staff-details-grid-top">';
+				echo '<div class="row staff-details-grid-top">';
 			}
 		} ?>
 

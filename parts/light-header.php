@@ -45,28 +45,43 @@ global $post,
 												if ( '' === get_bloginfo( 'description' ) ) {
 													echo 'header-social-links-no-margin ';
 												} ?>">
-			<div class="d-flex justify-content-end social-media <?php 
+			<div class="social-media <?php 
 										if( empty( $mayflower_options['facebook'] ) && empty( $mayflower_options['twitter'] ) && empty( $mayflower_options['youtube'] ) && empty( $mayflower_options['instagram'] ) && empty( $mayflower_options['linkedin'] ) ){
 											echo 'social-media-no-margin'; 
 										} ?>">
 				<?php if ( ! empty( $mayflower_options['facebook'] ) ) { ?>
-					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['facebook'] ); ?>" title="Facebook"><img src="<?php echo esc_url( $globals_url ); ?>i/facebook.png" alt="facebook" /></a>
+					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['facebook'] ); ?>" title="Facebook">
+						<i class="fab fa-facebook-square" aria-hidden="true"></i>
+						<span class="sr-only">Facebook</span></a>
+					</a>
 				<?php } ?>
 
 				<?php if ( ! empty( $mayflower_options['twitter'] ) ) { ?>
-					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['twitter'] ); ?>" title="Twitter"><img src="<?php echo esc_url( $globals_url ); ?>i/twitter.png" alt="twitter" /></a>
+					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['twitter'] ); ?>" title="Twitter">
+						<i class="fab fa-twitter-square" aria-hidden="true"></i>
+						<span class="sr-only">Twitter</span>
+					</a>
 				<?php } ?>
 
 				<?php if ( ! empty( $mayflower_options['youtube'] ) ) { ?>
-					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['youtube'] ); ?>" title="YouTube"><img src="<?php echo esc_url( $globals_url ); ?>i/youtube.png" alt="youtube" /></a>
+					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['youtube'] ); ?>" title="YouTube">
+						<i class="fab fa-youtube-square" aria-hidden="true"></i>
+						<span class="sr-only">YouTube</span></a>
+					</a>
 				<?php } ?>
 
 				<?php if ( ! empty( $mayflower_options['instagram'] ) ) { ?>
-					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['instagram'] ); ?>" title="Instagram"><img src="<?php echo esc_url( $globals_url ); ?>i/instagram.png" alt="instagram" /></a>
+					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['instagram'] ); ?>" title="Instagram">
+						<i class="fab fa-instagram" aria-hidden="true"></i>
+						<span class="sr-only">Instagram</span></a>
+					</a>
 				<?php } ?>
 
 				<?php if ( ! empty( $mayflower_options['linkedin'] ) ) { ?>
-					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['linkedin'] ); ?>" title="LinkedIn"><img src="<?php echo esc_url( $globals_url ); ?>i/linkedin.png" alt="linkedin" /></a>
+					<a class="px-2 py-1" href="<?php echo esc_url( $mayflower_options['linkedin'] ); ?>" title="LinkedIn">
+						<i class="fab fa-linkedin" aria-hidden="true"></i>
+						<span class="sr-only">LinkedIn</span></a>
+					</a>
 				<?php } ?>
 			</div><!-- social-media -->
 

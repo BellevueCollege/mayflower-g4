@@ -22,7 +22,7 @@
 			echo '<div class="row">';
 		} ?>
 
-		<div class="col-md-4 top-spacing15">
+		<div class="col-md-4">
 			<article id="post-<?php the_ID(); ?>" <?php post_class('content-padding nav-page'); ?>>
 
 				<?php if ( has_post_thumbnail() ) { ?>
