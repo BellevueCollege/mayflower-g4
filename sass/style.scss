@@ -522,33 +522,27 @@ ul.header-social-links li {
 
 // Hide cloned sidebar content in header
 #top-wrap .sidebar,
-#top .sidebar {
+#secondary-header .sidebar {
 	display:none;
 }
 // Target Mobile Breakpoints Only
 @media screen and (max-width: $breakpoint-bs-sm - 1) {
 
 	// Hide sidebar in content (Lite)
-	#top-wrap.lite.mobile-s17 + #main-wrap .flexwrap .sidebar {
-		display: none;
-	}
-
-	// Hide sidebar in content (Branded)
-	#top-wrap.branded.mobile-s17 + .flexwrap .sidebar {
+	.sidebar {
 		display: none;
 	}
 
 
-	#top-wrap.branded.mobile-s17,
-	.globals-lite #top.mobile-s17 {
-		& .sidebar {
+	#top-wrap.branded,
+	#secondary-header.lite {
+		.sidebar {
 			display: block;
 
 			background: #fff;
-			margin: 1em;
 			padding: .25em;
 
-
+			border: 1em solid $brand-primary;
 		}
 	}
 
@@ -557,12 +551,20 @@ ul.header-social-links li {
 
 
 .sidebar {
+	&.sidebarleft {
+		padding-left: 0;
+	}
+
+	&.sidebarright {
+		padding-right: 0;
+	}
+
 	.wp-widget {
 		margin-bottom: 1em;
 		
 		
 		ul {
-			margin-top: 0;
+			margin-top: .5em;
 		}
 		
 		li:last-child {
@@ -608,7 +610,7 @@ ul.header-social-links li {
 		
 		a {
 			border-bottom: 1px solid darken( $bg-color, 5% );
-			padding: .125em 0 .125em 2em;
+			padding: .125em 0 .125em 1rem;
 			width: 100%;
 			display: block;
 		}
@@ -628,12 +630,12 @@ ul.header-social-links li {
 	
 	ul.sub-menu li.menu-item {
 		a {
-			padding-left: 2.5em;
+			padding-left: 1.5em;
 		}
 		a:before {
-			content: "\2013"; //emdash
+			content: "\2012"; //small endash
 			display: inline-block;
-			margin-right: .5em
+			margin-right: .25em
 		}
 		a.menu-expand-button:before {
 			content: none;
@@ -696,7 +698,8 @@ ul.header-social-links li {
 	}
 	
 	.textwidget {
-		margin-left: 2em;
+		margin-top: .5em;
+		margin-left: 1em;
 		margin-right: .5em;
 
 		li {
@@ -713,8 +716,7 @@ ul.header-social-links li {
 	}
 }
 
-/* JavaScript Specific Sidebars */
-.js .sidebar {
+.sidebar {
 	ul.sub-menu {
 		display: none;
 	}
@@ -727,17 +729,18 @@ ul.header-social-links li {
 		padding-right: 1.4em;
 	}
 	
-	a.menu-expand-button,
-	a.menu-expand-button:focus,
-	a.menu-expand-button:active,
-	a.menu-expand-button:hover {
-		display: inline;
+	.menu-item a.menu-expand-button,
+	.menu-item a.menu-expand-button:focus,
+	.menu-item a.menu-expand-button:active,
+	.menu-item a.menu-expand-button:hover {
+		display: block;
 		float: right;
 		width: auto;
-		padding: .2em .2em 0 0;
+		padding: .2em .5em;
 		border: 0 none transparent;
 		background: transparent;
 		box-shadow: none;
+		color: #666;
 	}
 	
 }

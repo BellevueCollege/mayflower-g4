@@ -100,7 +100,7 @@ if ( ! function_exists( 'mayflower_pagination' ) ) {
 		) );
 		// Output Pagination
 		if ( $GLOBALS['wp_query']->max_num_pages > 1 ) { ?>
-			<nav class="text-center content-padding">
+			<nav class="text-center px-3">
 				<ul class="pagination">
 					<?php foreach ( $paginated_links as $link ) {
 						// Check if 'Current' class appears in string

@@ -459,7 +459,7 @@ function mayflower_register_top_global_sidebar() {
 		'description' => __( 'This is the top global widget area. Items will appear on all pages throughout the web site.', 'mayflower' ),
 		'before_widget' => '<div class="wp-widget wp-widget-global %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h2 class="widget-title content-padding">',
+		'before_title' => '<h2 class="widget-title px-3">',
 		'after_title' => '</h2>',
 	) );
 }
@@ -476,7 +476,7 @@ function mayflower_register_static_sidebar() {
 		'description' => __( 'This is the static page widget area. Items will appear on all static pages.', 'mayflower' ),
 		'before_widget' => '<div class="wp-widget wp-widget-static %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h2 class="widget-title content-padding">',
+		'before_title' => '<h2 class="widget-title px-3">',
 		'after_title' => '</h2>',
 	) );
 }
@@ -493,7 +493,7 @@ function mayflower_register_blog_sidebar() {
 		'description' => __( 'This is the blog widget area. Items will appear on all blog related pages.', 'mayflower' ),
 		'before_widget' => '<div class="wp-widget wp-widget-blog %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h2 class="widget-title content-padding">',
+		'before_title' => '<h2 class="widget-title px-3">',
 		'after_title' => '</h2>',
 	) );
 }
@@ -510,7 +510,7 @@ function mayflower_register_bottom_global_sidebar() {
 		'description' => __( 'This is the bottom global widget area. Items will appear on all pages throughout the web site.', 'mayflower' ),
 		'before_widget' => '<div class="wp-widget wp-widget-global %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h2 class="widget-title content-padding">',
+		'before_title' => '<h2 class="widget-title px-3">',
 		'after_title' => '</h2>',
 	) );
 }

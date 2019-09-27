@@ -24,7 +24,7 @@ $caption           = $post->post_excerpt;
 	<div class="row row-padding">
 
 		<?php if ( has_active_sidebar() ) : ?>
-			<div class="col-md-9 <?php  if ( $current_layout == 'sidebar-content' ) { ?>col-md-push-3<?php } ?>">
+			<div class="col-md-9 <?php  if ( $current_layout == 'sidebar-content' ) { ?>order-md-1<?php } ?>">
 		<?php else : // Full Width Container ?>
 			<div class="col-md-12">
 		<?php endif; ?>
