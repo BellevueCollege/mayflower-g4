@@ -12,13 +12,9 @@
 				'posts_per_page' => ( $mayflower_options['slider_number_slides'] ),
 			));
 			while ( $the_query->have_posts() ) :
-				$the_query->the_post();
-				if ( $the_query->current_post == 0 ) { ?>
-					<li data-target="#carousel-featured-in-content" data-slide-to="<?php echo $number++; ?>" class="active"></li>
-				<?php } else { ?>
-					<li data-target="#carousel-featured-in-content" data-slide-to="<?php echo $number++; ?>"></li>
-				<?php }
-			endwhile; wp_reset_postdata(); ?>
+				$the_query->the_post(); ?>
+					<li data-target="#carousel-featured-in-content" data-slide-to="<?php echo $number++; ?>" <?php echo $the_query->current_post === 0 ? 'class="active"' : ''; ?>></li>
+			<?php endwhile; wp_reset_postdata(); ?>
 			</ol>
 
 
@@ -32,30 +28,26 @@
 				));
 				while ( $the_query->have_posts() ) :
 					$the_query->the_post(); ?>
-					<?php if ( $the_query->current_post == 0 ) { ?>
-						<div class="item active">
-					<?php } else { ?>
-						<div class="item">
-					<?php } ?>
+					
+					<div class="carousel-item <?php echo $the_query->current_post === 0 ? 'active' : ''; ?>">
 
 						<?php // If url field has content, add the URL to the post thumbnail.
 						$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
 						if ( !empty( $slider_ext_url ) ) { ?>
-							<a href="<?php echo esc_url($slider_ext_url);?>"><?php the_post_thumbnail('featured-in-content'); ?></a>
+							<a href="<?php echo esc_url($slider_ext_url);?>"><?php the_post_thumbnail('featured-in-content', ['class' => 'd-block w-100']); ?></a>
 						<?php } else { ?>
-							<a href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail('featured-in-content'); ?></a>
+							<?php the_post_thumbnail('featured-in-content', ['class' => 'd-block w-100']); ?>
 						<?php } //end else ?>
 						<?php //should we show title & excerpt?
 						$mayflower_options = mayflower_get_options();
 						if ($mayflower_options['slider_title'] == 'true' || $mayflower_options['slider_excerpt'] == 'true' ) { ?>
-							<div class="carousel-caption">
+							<div class="carousel-caption d-block">
 								<?php if ($mayflower_options['slider_title'] == 'true') {
 									// If a post class has input, sanitize it and add it to the post class array.
-									$slider_ext_url = get_post_meta($post->ID, '_slider_url', true);
 									if ( !empty( $slider_ext_url ) ) { ?>
 										<h2><a href="<?php echo esc_url($slider_ext_url);?>"><?php the_title(); ?></a></h2>
 									<?php } else { ?>
-										<h2><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>
+										<h2><?php the_title();?></h2>
 									<?php } //end else ?>
 								<?php } else {
 									echo '<!-- No Title -->';
@@ -77,14 +69,16 @@
 			</div><!-- carousel-inner -->
 			<!-- Controls -->
 			<?php $published_posts = wp_count_posts('slider')->publish;
-			if ($published_posts >1 ) : ?>
-				<a class="left carousel-control" href="#carousel-featured-in-content" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				</a>
-				<a class="right carousel-control" href="#carousel-featured-in-content" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				</a>
-			<?php endif; ?>
+			if ($published_posts > 1 ) : ?>
+			<a class="carousel-control-prev" href="#carousel-featured-in-content" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous Slide</span>
+			</a>
+			<a class="carousel-control-next" href="#carousel-featured-in-content" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next Slide</span>
+			</a>
+		<?php endif; ?>
 		</div>
 	<?php endif; //slider toggle ?>
 <?php endif; //front page ?>
