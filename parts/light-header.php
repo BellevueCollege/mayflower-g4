@@ -117,6 +117,6 @@ global $post,
 	
 	
 	<?php
-		get_template_part( 'parts/flexnav' );
+		get_template_part( 'parts/light-nav' );
 	?>
 </header>
