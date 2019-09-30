@@ -69,7 +69,8 @@ if ( have_posts( ) ) : while ( have_posts( ) ) : the_post( ); ?>
                                         // Build HTML output
                                         output += '<li class\="list-group-item">';
                                         output += '<h3><a href="' + campusce_url + '">' + title + '</a></h3>';
-                                        output += '<p>' + descr + ' <a class="btn btn-default btn-xs" href="' + campusce_url + '">More <span class="sr-only"> about ' + title + '</span> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>';
+                                        output += '<p>' + descr + ' <a class="btn btn-default btn-xs" href="' + campusce_url + '">More <span class="sr-only"> about ' + title + '</span> <i class="fas fa-chevron-right" aria-hidden="true"></i>
+</a></p>';
                                         output += '</li>';
                                     });
                                     output += '</ul>';
@@ -120,7 +121,8 @@ if ( have_posts( ) ) : while ( have_posts( ) ) : the_post( ); ?>
 											<?php $campusce_url = $campusce_base_url . $class->CourseID . '&mc=' . $class->CategoryID . '&pc=' . $parent_ID; ?>
 											<li class="list-group-item">
 												<h3><a href="<?php echo $campusce_url ?>"><?php echo $class_title ?></a></h3>
-												<p><?php echo $class_desc ?> <a class="btn btn-default btn-xs" href="<?php echo $campusce_url ?>">More <span class="sr-only"> about <?php echo $class_title ?></span> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+												<p><?php echo $class_desc ?> <a class="btn btn-default btn-xs" href="<?php echo $campusce_url ?>">More <span class="sr-only"> about <?php echo $class_title ?></span> <i class="fas fa-chevron-right" aria-hidden="true"></i>
+</a></p>
 											</li>
 										<?php } ?>
 									<?php } ?>

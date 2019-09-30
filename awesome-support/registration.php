@@ -31,8 +31,11 @@ $wrapper_class = 'allow' !== $registration ? 'wpas-login-only' : 'wpas-login-reg
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-sm-8 col-md-offset-2">
-						<p><a href="<?php echo wp_login_url( get_permalink() ) ?>&option=saml_user_login" class="btn btn-lg btn-block btn-primary">
-							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log In</a></p>
+						<p>
+							<a href="<?php echo wp_login_url( get_permalink() ) ?>&option=saml_user_login" class="btn btn-lg btn-block btn-primary">
+								<i class="fas fa-sign-in-alt" aria-hidden="true"></i> Log In
+							</a>
+						</p>
 					</div>
 				</div>
 			</div>
