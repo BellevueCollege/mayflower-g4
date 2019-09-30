@@ -14,7 +14,7 @@ if ( ! ( is_array( $mayflower_options ) ) ) {
 }
 
 $mayflower_theme_version = wp_get_theme();
-$post_meta_data = get_post_custom( $post->ID );
+$post_meta_data = get_post_custom( $post->ID ?? null );
 ?>
 
 <html <?php language_attributes(); ?>>
@@ -38,11 +38,11 @@ $post_meta_data = get_post_custom( $post->ID );
 	<link rel="icon" href="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/bellevue.ico" />
 
 	<!-- Swiftype meta tags -->
-	<meta class='swiftype' name='popularity' data-type='integer' content='<?php echo is_front_page( $post->ID ) ? 5 : 1 ?>' />
+	<meta class='swiftype' name='popularity' data-type='integer' content='<?php echo is_front_page( $post->ID ?? null ) ? 5 : 1 ?>' />
 	<meta class="swiftype" name="published_at" data-type="date" content="<?php the_modified_date( 'Y-m-d' ) ?>" />
 	<meta class="swiftype" name="site_home_url" data-type="string" content="<?php echo esc_textarea( mayflower_trimmed_url() ) ?>" />
 
-	<?php if ( is_archive( $post->ID ) ) { ?>
+	<?php if ( is_archive( $post->ID ?? null ) ) { ?>
 		<meta name="robots" content="noindex, follow">
 	<?php } ?>
 	<!-- / Swiftype meta tags -->
@@ -93,7 +93,7 @@ $post_meta_data = get_post_custom( $post->ID );
 		//display site title on branded version
 		if ( is_404() ) { ?>
 			<div id="main-wrap" class="<?php echo esc_attr( $mayflower_brand_css ); ?>">
-				<div id="main" class="container no-padding">
+				<div id="main" class="container <?php echo esc_attr( $mayflower_brand_css ); ?>">
 		<?php } else { ?>
 
 			<div id="site-header" class="container <?php echo esc_attr( $mayflower_brand_css ); ?>">
