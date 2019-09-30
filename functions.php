@@ -94,23 +94,23 @@ if ( ! function_exists( 'mayflower_pagination' ) ) {
 			'format' => '?paged=%#%',
 			'current' => max( 1, get_query_var( 'paged' ) ),
 			'type' => 'array',
-			'prev_text' => '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Previous',
-			'next_text' => 'Next <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>',
+			'prev_text' => '<i class="fas fa-chevron-left" aria-hidden="true"></i><span class="sr-only">Previous Page</span>',
+			'next_text' => '<i class="fas fa-chevron-right" aria-hidden="true"></i><span class="sr-only">Next Page</span>',
 			'before_page_number' => '<span class="sr-only">Page</span>',
 		) );
 		// Output Pagination
 		if ( $GLOBALS['wp_query']->max_num_pages > 1 ) { ?>
-			<nav class="text-center px-3">
-				<ul class="pagination">
+			<nav aria-label="Archive Pagination">
+				<ul class="pagination justify-content-center">
 					<?php foreach ( $paginated_links as $link ) {
 						// Check if 'Current' class appears in string
 						$is_current = strpos( $link, 'current' );
 						if ( false === $is_current ) {
-							echo '<li>';
+							echo '<li class="page-item">';
 							echo $link;
 							echo '</li>';
 						} else {
-							echo '<li class="active">';
+							echo '<li class="page-item active">';
 							echo $link;
 							echo '</li>';
 						}
