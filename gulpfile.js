@@ -13,7 +13,7 @@ var config = {
   sassPath: './sass',
   cssPath:  '.',
   npmPath:  './node_modules',
-  globalsPath:  './node_modules/globals/g/3'
+  globalsPath:  './node_modules/globals/g/4'
 }
 
 /**
@@ -28,7 +28,8 @@ var sassOptions = {
   outputStyle: 'compressed',
   sourceComments: false,
   includePaths: [
-      config.npmPath + '/bootstrap-sass/assets/stylesheets',
+      config.npmPath + '/bootstrap/scss',
+      config.npmPath + '/@fortawesome/fontawesome-free/scss',
       config.sassPath
   ],
   precision: 10
@@ -39,7 +40,8 @@ var sassDevOptions = {
   outputStyle: 'nested',
   sourceComments: true,
   includePaths: [
-      config.npmPath + '/bootstrap-sass/assets/stylesheets',
+      config.npmPath + '/bootstrap/scss',
+      config.npmPath + '/@fortawesome/fontawesome-free/scss',
       config.sassPath
   ],
   precision: 10
