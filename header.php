@@ -2,12 +2,10 @@
 <?php
 global $post,
 	   $mayflower_options,
-	   $globals_version,
-	   $globals_url,
-	   $globals_path,
 	   $mayflower_brand,
 	   $mayflower_brand_css,
 	   $mayflower_theme_version;
+
 
 if ( ! ( is_array( $mayflower_options ) ) ) {
 	$mayflower_options = mayflower_get_options();
@@ -87,8 +85,8 @@ $post_meta_data = get_post_custom( $post->ID ?? null );
 		###############################
 		### --- Branded version --- ###
 		###############################
-
-		bc_tophead_big();
+		$globals = new Globals();
+		$globals->tophead_big();
 
 		//display site title on branded version
 		if ( is_404() ) { ?>

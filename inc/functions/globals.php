@@ -6,128 +6,122 @@
  *
  */
 
-/**
- * Set Up Globals Paths
- */
-$mayflower_globals_settings = get_option( 'globals_network_settings' ); 
-if ( is_multisite() ) {
-	$mayflower_globals_settings = get_site_option( 'globals_network_settings' );
-}
-$globals_path = $mayflower_globals_settings['globals_path'];
-$append_path = $mayflower_globals_settings['append_path'];
-if ( empty( $globals_path ) ) {
-	$globals_path =  $_SERVER['DOCUMENT_ROOT'] . "/g/3/";
-} else if ( $append_path == true ) {
-	// Append globals path to document root if box is checked
-	$globals_path = $_SERVER['DOCUMENT_ROOT'] . $globals_path;
-}
-$globals_url = $mayflower_globals_settings['globals_url'];
-if ( empty( $globals_url) ) {
-	$globals_url = "/g/3";
-}
-$globals_version = $mayflower_globals_settings['globals_version'];
-$globals_path_over_http = $globals_url;
-$globals_google_analytics_code = $mayflower_globals_settings['globals_google_analytics_code'];
+class Globals {
 
-$bc_globals_html_filepath      = $globals_path . "h/";
-$bc_globals_lhead_filename     = 'lhead.html';
-$bc_globals_bhead_filename     = 'bhead.html';
-$bc_globals_bfoot_filename     = 'bfoot.html';
-$bc_globals_legal_filename     = 'legal.html';
-$bc_globals_galite_filename    = 'galite.html';
-$bc_globals_gabranded_filename = 'gabranded.html';
+	public $settings;
+	public $path;
+	public $url;
+	public $version;
+	public $analytics;
 
-/**
- * Add Globals 'lite' Header
- */
-function bc_tophead(){
-	global $bc_globals_html_filepath,
-		$bc_globals_lhead_filename;
+	public $html_filepath;
+	public $lhead_filename     = 'lhead.html';
+	public $bhead_filename     = 'bhead.html';
+	public $bfoot_filename     = 'bfoot.html';
+	public $legal_filename     = 'legal.html';
+	public $galite_filename    = 'galite.html';
+	public $gabranded_filename = 'gabranded.html';
+	
+	
+	public function __construct() {
 
-	$header_top =  $bc_globals_html_filepath . $bc_globals_lhead_filename;
-	include_once($header_top);
-}
-add_action('mayflower_header','bc_tophead');
-
-/**
- * Add Globals 'branded' Header
- */
-function bc_tophead_big() {
-	global $bc_globals_html_filepath,
-		$bc_globals_bhead_filename;
-
-	$header_top_big = $bc_globals_html_filepath . $bc_globals_bhead_filename;
-	include_once($header_top_big);
-}
-add_action('mayflower_header','bc_tophead_big');
+		/**
+		 * Load Settings Array
+		 */
+		$this->settings = is_multisite() ? get_network_option( null, 'globals_network_settings' ) : get_option( 'globals_network_settings' );
 
 
-/**
- * Add Globals 'branded' Footer
- *
- * Function is pluggable for easy changes in child themes
- */
-if ( ! function_exists ( 'bc_footer' ) ) {
-	function bc_footer() {
-		global $bc_globals_html_filepath,
-			$bc_globals_bfoot_filename,
-			$bc_globals_legal_filename;
+		/**
+		 * Globals Path (local filesystem)
+		 */
+		$this->path = (
+				! empty( $this->get_globals_option('globals_path') ) && true === $this->get_globals_option('append_path')
+			) ? $_SERVER['DOCUMENT_ROOT'] . $this->get_globals_option('globals_path') :
+			$this->get_globals_option('globals_path');
 
-		$bc_footer =  $bc_globals_html_filepath . $bc_globals_bfoot_filename;
-		$bc_footerlegal =  $bc_globals_html_filepath . $bc_globals_legal_filename;
-		include_once($bc_footer);
-		include_once($bc_footerlegal);
-	}
-}
-add_action('mayflower_footer', 'bc_footer', 50);
+		/**
+		 * Filenames
+		 */
+		$this->html_filepath = $this->path . 'h/';
 
-/**
- * Add Legal Footer
- */
-function bc_footer_legal() {
-	global $bc_globals_html_filepath,
-		$bc_globals_legal_filename;
+		/**
+		 * Globals URL
+		 */
+		$this->url = $this->get_globals_option('globals_url') ?? '/g/3';
 
-	$bc_footerlegal =  $bc_globals_html_filepath . $bc_globals_legal_filename;
-	include_once($bc_footerlegal);
-}
-add_action('mayflower_footer', 'bc_footer_legal', 50);
+		/**
+		 * Globals Version
+		 */
+		$this->version = $this->get_globals_option('globals_version');
 
+		/**
+		 * Analytics
+		 */
+		$this->analytics = $this->get_globals_option('globals_google_analytics_code');
 
-/**
- * Add Google Analytics Scripts
- */
-function mayflower_analytics () {
-	global $bc_globals_html_filepath,
-		$mayflower_brand,
-		$bc_globals_galite_filename,
-		$bc_globals_gabranded_filename;
+		/**
+		 * Actions
+		 */
+		add_action( 'mayflower_header', array( $this, 'tophead' ) );
+		add_action( 'mayflower_header', array( $this, 'tophead_big' ) );
+		add_action( 'mayflower_footer', array( $this, 'footer' ), 50);
+		add_action( 'wp_head', array( $this, 'analytics' ), 30);
 
-	$bc_gacode_lite = $bc_globals_html_filepath . $bc_globals_galite_filename;
-	$bc_gacode_branded =  $bc_globals_html_filepath . $bc_globals_gabranded_filename;
-
-	if ( $mayflower_brand == 'lite' ) {
-		include_once($bc_gacode_lite);
-	} else {
-		include_once($bc_gacode_branded);
 	}
 
-	$mayflower_options = mayflower_get_options();
+	private function get_globals_option( $option ) {
+		return $this->settings[ $option ];
+	}
 
-	if ($mayflower_options['ga_code']) {
-		// Format reference https://developers.google.com/analytics/devguides/collection/gajs/?hl=nl&csw=1#MultipleCommands
-		?>
-		<script type="text/javascript">
-			/* Load google analytics scripts (may be duplicate) */
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			/*Site-Specific GA code*/
-			ga('create','<?php echo $mayflower_options['ga_code'] ?>','bellevuecollege.edu',{'name':'singlesite'}); 
-			ga('singlesite.send','pageview');
-		</script>
-	<?php }
+	/**
+	 * Lite Header
+	 */
+	public function tophead() {
+		$header_top = $this->html_filepath . $this->lhead_filename;
+		include_once($header_top);
+	}
 
-} // end function
-add_action('wp_head', 'mayflower_analytics', 30);
+	/**
+	 * Branded Header
+	 */
+	public function tophead_big() {
+
+		$header_top_big = $this->html_filepath . $this->bhead_filename;
+		include_once($header_top_big);
+	}
+
+	public function footer() {
+		$footer = $this->html_filepath . $this->bfoot_filename;
+		include_once($footer);
+
+		$this->footer_legal();
+	}
+
+	public function footer_legal() {
+		$footerlegal = $this->html_filepath . $this->legal_filename;
+		include_once($footerlegal);
+	}
+
+	public function analytics() {
+		$ga_code = $this->html_filepath . ( 'lite' === mayflower_get_option( 'mayflower_brand' ) ? $this->galite_filename : $this->gabranded_filename );
+		
+		include_once($ga_code);
+
+		if ( mayflower_get_option( 'ga_code' ) ) :
+			// Format reference https://developers.google.com/analytics/devguides/collection/gajs/?hl=nl&csw=1#MultipleCommands
+			?>
+			<script type="text/javascript">
+				/* Load google analytics scripts (may be duplicate) */
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				/*Site-Specific GA code*/
+				ga('create','<?php echo $mayflower_options['ga_code'] ?>','bellevuecollege.edu',{'name':'singlesite'}); 
+				ga('singlesite.send','pageview');
+			</script>
+		<?php endif;
+
+	}
+}
+

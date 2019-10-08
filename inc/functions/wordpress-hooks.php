@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mayflower Theme WordPress Core Hooks
  *
@@ -299,9 +300,9 @@ function mayflower_blacklist_blocks() {
 add_action( 'init', 'mayflower_add_editor_styles' );
 
 function mayflower_add_editor_styles() {
-	global $globals_url, $globals_version;
+	$globals = new Globals;
 	add_editor_style( array(
-		$globals_url . 'c/g.css?=' . $globals_version,
+		$globals->url . 'c/g.css?=' . $globals->version,
 		'style.css?=' . MAYFLOWER_STYLE_VERSION,
 		'css/custom-editor-style.css',
 	) );
@@ -603,14 +604,14 @@ function mayflower_defer_async_scripts( $url ) {
 add_action( 'wp_enqueue_scripts', 'mayflower_scripts' );
 
 function mayflower_scripts() {
-	global $globals_url, $globals_version;
-	wp_enqueue_style( 'globals', $globals_url . 'c/g.css', null, $globals_version, 'screen' );
-	wp_enqueue_style( 'globals-print', $globals_url . 'c/p.css', null, $globals_version, 'print' );
+	$globals = new Globals;
+	wp_enqueue_style( 'globals', $globals->url . 'c/g.css', null, $globals->version, 'screen' );
+	wp_enqueue_style( 'globals-print', $globals->url . 'c/p.css', null, $globals->version, 'print' );
 	wp_enqueue_style( 'mayflower', get_stylesheet_uri(), null, MAYFLOWER_STYLE_VERSION );
 
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'globals-head', $globals_url . 'j/ghead-full.min.js', array( 'jquery' ), $globals_version, false );
-	wp_enqueue_script( 'globals', $globals_url . 'j/gfoot-full.min.js', array( 'jquery' ), $globals_version, true );
+	wp_enqueue_script( 'globals-head', $globals->url . 'j/ghead-full.min.js', array( 'jquery' ), $globals->version, false );
+	wp_enqueue_script( 'globals', $globals->url . 'j/gfoot-full.min.js', array( 'jquery' ), $globals->version, true );
 	wp_enqueue_script( 'menu', get_template_directory_uri() . '/js/menu.js#deferload', array( 'jquery' ), MAYFLOWER_STYLE_VERSION , true );
 
 	wp_enqueue_script( 'youvisit', 'https://www.youvisit.com/tour/Embed/js2#asyncdeferload', null, null, true );
@@ -711,7 +712,7 @@ function mayflower_google_analytics_dashboard() {
 					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-				ga('create', '<?php echo esc_attr( $globals_google_analytics_code ); ?>', 'bellevuecollege.edu', {'siteSpeedSampleRate': 100});
+				ga('create', '<?php echo esc_attr( $globals->analytics ); ?>', 'bellevuecollege.edu', {'siteSpeedSampleRate': 100});
 				ga('send', 'pageview');
 			</script>
 			<?php

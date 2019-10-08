@@ -24,11 +24,11 @@ require( get_template_directory() . '/inc/functions/options-customizer.php' );
 
 /* Load Mayflower Options in to Variable */
 $mayflower_options = mayflower_get_options();
+require( get_template_directory() . '/inc/functions/globals-options.php' );
+require( get_template_directory() . '/inc/functions/globals.php' );
 
 require( get_template_directory() . '/inc/functions/wordpress-hooks.php' );
 require( get_template_directory() . '/inc/functions/plugin-hooks.php' );
-require( get_template_directory() . '/inc/functions/globals-options.php' );
-require( get_template_directory() . '/inc/functions/globals.php' );
 
 
 #####################################################

@@ -1,13 +1,16 @@
-<?php global $mayflower_brand; ?>
+<?php 
+	global $mayflower_brand;
+	$globals = new Globals();
+?>
 	</div><!-- row -->
 </div><!-- #main .container -->
 
 <?php
 
 if ( $mayflower_brand == 'lite' ) {
-	bc_footer_legal();
+	$globals->footer_legal();
 } else {
-	bc_footer();
+	$globals->footer();
 }
 wp_footer();
 ?>

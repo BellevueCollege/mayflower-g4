@@ -1,11 +1,9 @@
 <?php
-bc_tophead();
+$globals = new Globals;
+$globals->tophead();
 
 global $post,
 	   $mayflower_options,
-	   $globals_version,
-	   $globals_url,
-	   $globals_path,
 	   $mayflower_brand,
 	   $mayflower_brand_css,
 	   $mayflower_theme_version;
