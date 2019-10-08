@@ -43,6 +43,15 @@ define( 'PREREQUISITEURL', '//www.bellevuecollege.edu/transfer/prerequisites/' )
 require_once get_template_directory() . '/inc/wp-bootstrap-navwalker-4.0.2/class-wp-bootstrap-navwalker.php';
 
 /**
+ * Load Globals 4 Instead of Globals 3
+ */
+function mayflower_globals_4_filter( $path ) {
+	return str_replace( '3', '4', $path );
+}
+add_filter( 'mayflower_globals_path', 'mayflower_globals_4_filter', 10, 3 );
+add_filter( 'mayflower_globals_url', 'mayflower_globals_4_filter', 10, 3 );
+
+/**
  * Load Mayflower Embedded Plugins
  *
  * These files provide plugin-like functionality embedded within Mayflower.

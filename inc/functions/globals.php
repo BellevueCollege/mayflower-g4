@@ -39,6 +39,8 @@ class Globals {
 			) ? $_SERVER['DOCUMENT_ROOT'] . $this->get_globals_option('globals_path') :
 			$this->get_globals_option('globals_path');
 
+		$this->path = apply_filters( 'mayflower_globals_path', $this->path );
+
 		/**
 		 * Filenames
 		 */
@@ -48,6 +50,7 @@ class Globals {
 		 * Globals URL
 		 */
 		$this->url = $this->get_globals_option('globals_url') ?? '/g/3';
+		$this->url = apply_filters( 'mayflower_globals_url', $this->url );
 
 		/**
 		 * Globals Version
