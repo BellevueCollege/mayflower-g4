@@ -95,9 +95,7 @@ add_action( 'update_option_sidebars_widgets', function() {
  *
  * Start tab index at position 9 so we don't conflict with skip to links or wp admin bar
  */
-add_filter( 'gform_tabindex', function(){
-	return 9;
-} ); // Do we need this? uses positive tabindex = bad
+add_filter( 'gform_tabindex', '__return_false' );
 
 /**
  * Filter GravityForms buttons
@@ -128,7 +126,7 @@ function mayflower_gf_add_class_to_button( $button, $form, $new_classes ) {
 add_filter( 'gform_submit_button', 'mayflower_gf_add_class_to_submit_button', 10, 2 );
 
 function mayflower_gf_add_class_to_submit_button( $button, $form ) {
-	$new_classes = 'btn btn-primary pull-right';
+	$new_classes = 'btn btn-primary float-right';
 	return mayflower_gf_add_class_to_button( $button, $form, $new_classes );
 }
 
@@ -138,7 +136,7 @@ function mayflower_gf_add_class_to_submit_button( $button, $form ) {
 add_filter( 'gform_next_button', 'mayflower_gf_add_class_to_next_button', 10, 2 );
 
 function mayflower_gf_add_class_to_next_button( $button, $form ) {
-	$new_classes = 'btn btn-primary pull-right';
+	$new_classes = 'btn btn-primary float-right';
 	return mayflower_gf_add_class_to_button( $button, $form, $new_classes );
 }
 
@@ -149,6 +147,6 @@ function mayflower_gf_add_class_to_next_button( $button, $form ) {
 add_filter( 'gform_previous_button', 'mayflower_gf_add_class_to_previous_button', 10, 2 );
 
 function mayflower_gf_add_class_to_previous_button( $button, $form ) {
-	$new_classes = 'btn btn-default pull-left';
+	$new_classes = 'btn btn-outline-secondary float-left';
 	return mayflower_gf_add_class_to_button( $button, $form, $new_classes );
 }
