@@ -31,9 +31,9 @@ if ( have_posts( ) ) : while ( have_posts( ) ) : the_post( ); ?>
 					<hr />
 					<script type="text/javascript">
 						/*
-						 * Pull course data from CampusCE
-						 *
-						 */
+						* Pull course data from CampusCE
+						*
+						*/
 						jQuery( document ).ready( function( $ ) { //START: Ajax
 
 							// Hide response area so it can slide down later
@@ -52,41 +52,41 @@ if ( have_posts( ) ) : while ( have_posts( ) ) : the_post( ); ?>
 							}).done(function(campusce_data){
 								$('#ce-header, #ce-overlay').remove();
 
-                                var data = campusce_data; // Data from CampusCE
-                                var output = '';
+								var data = campusce_data; // Data from CampusCE
+								var output = '';
 
-                                // verify data returned is JSON 
-                                if ( typeof data == 'object' ) {
+								// verify data returned is JSON 
+								if ( typeof data == 'object' ) {
 									output += '<h2>Current <?php the_title( ); ?> Classes</h2>'
-                                    output += '<ul class="list-group">';
-                                    $.each( data.courses, function( i, course ) {
+									output += '<ul class="list-group">';
+									$.each( data.courses, function( i, course ) {
 
-                                        // Set variables for ease of use
-                                        var campusce_url = campusce_base_url + course.CourseID + '&mc=' + course.CategoryID + '&pc=' + data.category.ParentID;
-                                        var title = course.Title;
-                                        var descr = course.WebDescr;
+										// Set variables for ease of use
+										var campusce_url = campusce_base_url + course.CourseID + '&mc=' + course.CategoryID + '&pc=' + data.category.ParentID;
+										var title = course.Title;
+										var descr = course.WebDescr;
 
-                                        // Build HTML output
-                                        output += '<li class\="list-group-item">';
-                                        output += '<h3><a href="' + campusce_url + '">' + title + '</a></h3>';
-                                        output += '<p>' + descr + ' <a class="btn btn-default btn-xs" href="' + campusce_url + '">More <span class="sr-only"> about ' + title + '</span> <i class="fas fa-chevron-right" aria-hidden="true"></i>
-</a></p>';
-                                        output += '</li>';
-                                    });
-                                    output += '</ul>';
+										// Build HTML output
+										output += '<li class\="list-group-item">';
+										output += '<h3><a href="' + campusce_url + '">' + title + '</a></h3>';
+										output += '<p>' + descr + ' <a class="btn btn-outline-primary btn-sm" href="' + campusce_url + '">More <span class="sr-only"> about ' + title + '</span> <i class="fas fa-chevron-right" aria-hidden="true"></i></a></p>';
+										output += '</li>';
+									});
+									output += '</ul>';
 
-                                } else { // if non - JSON data is returned
-                                    output += '<div class="well well-sm">';
-                                    output += data;
-                                    output += '</div>';
-                                }
+								} else { // if non - JSON data is returned
+									output += '<div class="card card-body bg-light">';
+									output += data;
+									output += '</div>';
+								}
 
-                                // Output to DOM
+								// Output to DOM
 								$("#ce-courses").html( output ).slideDown();
-                            }).error(function(error){
-                                console.log('Error calling REST API: ' );
-                                console.log(error.responseText);
-                            });
+							}).error(function(error){
+								console.log('Error calling REST API: ' );
+								console.log(error.responseText);
+								$('#ce-header, #ce-overlay').remove();
+							});
 						});
 					</script> 
 					<noscript>
@@ -121,17 +121,18 @@ if ( have_posts( ) ) : while ( have_posts( ) ) : the_post( ); ?>
 											<?php $campusce_url = $campusce_base_url . $class->CourseID . '&mc=' . $class->CategoryID . '&pc=' . $parent_ID; ?>
 											<li class="list-group-item">
 												<h3><a href="<?php echo $campusce_url ?>"><?php echo $class_title ?></a></h3>
-												<p><?php echo $class_desc ?> <a class="btn btn-default btn-xs" href="<?php echo $campusce_url ?>">More <span class="sr-only"> about <?php echo $class_title ?></span> <i class="fas fa-chevron-right" aria-hidden="true"></i>
-</a></p>
+												<p><?php echo $class_desc ?> <a class="btn btn-outline-primary btn-sm" href="<?php echo $campusce_url ?>">More <span class="sr-only"> about <?php echo $class_title ?></span> <i class="fas fa-chevron-right" aria-hidden="true"></i></a></p>
 											</li>
 										<?php } ?>
 									<?php } ?>
 								</ul>
 							<?php else: // No available courses ?>
 								<br>
-								<div class="well well-sm">
-									<p>Courses have begun. Please check back for future offerings.</p>
-									<p>Also, check out our <a href="https://www.campusce.net/BC/category/category.aspx">online catalog</a> for other offerings.</p>
+								<div class="card">
+									<div class="card-body bg-light">
+										<p class="card-text">Courses have begun. Please check back for future offerings.</p>
+										<p class="card-text">Also, check out our <a href="https://www.campusce.net/BC/category/category.aspx">online catalog</a> for other offerings.</p>
+									</div>
 								</div>
 							<?php endif; ?>
 						</section>
