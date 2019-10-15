@@ -836,6 +836,15 @@ function mayflower_register_theme_customizer( $wp_customize ) {
 add_action( 'customize_register', 'mayflower_register_theme_customizer' );
 
 /**
+ * Disable custom icon
+ */
+function mf_remove_icon_customtizer( $wp_customize ) {
+	$wp_customize->remove_control('site_icon');
+}
+add_action( 'customize_register', 'mf_remove_icon_customtizer', 20, 1 );  
+
+
+/**
  * Load options and merge with defaults array
  *
  * Returns array of all mayflower options.

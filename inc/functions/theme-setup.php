@@ -50,6 +50,20 @@ function mayflower_setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
+	/**
+	 * Add theme support for WordPress logos
+	 * 
+	 * 
+	 */
+
+	add_theme_support( 'custom-logo', array(
+		'height'      => 100,
+		'width'       => 690,
+		'flex-height' => false,
+		'flex-width'  => true,
+	) );
+
+
 	/*
 	 * Add Theme support for Post Thumbmails
 	 *
@@ -236,20 +250,6 @@ function mayflower_setup() {
 	 *
 	 */
 	add_post_type_support( 'page', 'excerpt' );
-
-	/**
-	 * Add theme support for a custom header image
-	 *
-	 * Allows logo display in Mayflower Lite
-	 *
-	 */
-	add_theme_support( 'custom-header', array(
-		'default-image' => '',
-		'width'         => 690,
-		'height'        => 100,
-		'flex-height'   => true,
-		'header-text'   => false
-	));
 
 	/**
 	 * Add support post formats

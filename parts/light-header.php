@@ -14,13 +14,17 @@ global $post,
 		<div class="col-md-8">
 			<div id="site-branding">
 				<?php
-					$header_image = get_header_image();
-					if ( ! empty( $header_image ) ) :
+					if ( has_custom_logo() ) :
 				?>
 						<div class="header-image">
-							<a title="Return to Home Page" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-								<img src="<?php header_image(); ?>" class="header-image"  alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> : <?php bloginfo( 'description' ); ?>" />
-							</a>
+							<?php
+								if ( function_exists( 'the_custom_logo' ) ) {
+									$custom_logo_id = get_theme_mod( 'custom_logo' );
+									$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+									echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" class="header-image">';
+
+								}
+							?>
 						</div><!-- header-image -->
 				<?php 
 					else : // no header image
