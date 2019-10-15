@@ -17,16 +17,14 @@
 		$image_data = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium_large' );
 		?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="max-width: <?php echo $image_data[1]; ?>px">
+		<article id="post-<?php the_ID(); ?>" <?php post_class('card mb-3'); ?> style="max-width: <?php echo $image_data[1]; ?>px">
 
 			<?php if ( has_post_thumbnail() ) { ?>
-				<a class="" href="<?php the_permalink(); ?>">
-					<?php the_post_thumbnail( 'medium_large', array( 'class' => 'img-fluid' ) ); ?>
+				<a class="card-img-top" href="<?php the_permalink(); ?>">
+					<?php the_post_thumbnail( 'medium_large', array( 'class' => 'card-img-top' ) ); ?>
 				</a>
-				<div class="hasimage">
-			<?php } else { ?>
-				<div>
-			<?php } ?>
+			<?php }?>
+				<div class="card-body">
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<?php
 					the_excerpt();

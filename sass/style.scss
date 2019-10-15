@@ -265,31 +265,15 @@ $fluid-grid-min-column-width: 200px;
  **/
 .child-pages.fluid-grid {
 
-	div {
-		padding: 0 1em 1em 1em;
-		border: 1px solid #ccc;
-	}
-
-	div.hasimage {
-		border-top: 1px solid #fff0;
-	}
 
 	div.grid-sizer,
 	& > article { 
 		width: calc(50% - 10px);
-		padding: 0;
-		border: 0;
 		min-width: $fluid-grid-min-column-width;
-		margin-bottom: 20px;
-		background: #fff;
 	}
 }
 
-.child-pages.fluid-grid:after {
-	content: '';
-	display: block;
-	clear: both;
-}
+
 
 @media screen and (max-width: ($fluid-grid-min-column-width+30px)*2) {
 	.child-pages.fluid-grid {
