@@ -89,10 +89,7 @@ $post_meta_data = get_post_custom( $post->ID ?? null );
 		$globals->tophead_big();
 
 		//display site title on branded version
-		if ( is_404() ) { ?>
-			<div id="main-wrap" class="<?php echo esc_attr( $mayflower_brand_css ); ?>">
-				<div id="main" class="container <?php echo esc_attr( $mayflower_brand_css ); ?>">
-		<?php } else { ?>
+		if ( ! is_404() ) : ?>
 
 			<div id="site-header" class="container <?php echo esc_attr( $mayflower_brand_css ); ?>">
 				<p class="site-title">
@@ -102,7 +99,7 @@ $post_meta_data = get_post_custom( $post->ID ?? null );
 				</p>
 			</div>
 
-		<?php }
+		<?php endif;
 	else :
 		############################
 		### --- Lite version --- ###
