@@ -1,19 +1,32 @@
+<?php
+/**
+ * Shared Navigation Page List Template
+ *
+ * Used by both Page Template and Block
+ *
+ * @package Mayflower
+ */
+
+?>
+
 <section class="content-padding nav-page nav-page-list">
 	<?php
-	// Use Gutenberg attribute if available (in editor), or use get_the_ID if not
+	// Use Gutenberg attribute if available (in editor), or use get_the_ID if not.
 	$attributes['pageID'] = empty( $attributes['pageID'] ) ? get_the_ID() : $attributes['pageID'];
 
 	$args = array(
-		'post_type' => 'page',
+		'post_type'      => 'page',
 		'posts_per_page' => -1,
-		'order' => 'ASC',
-		'orderby' => 'menu_order title',
-		'post_status' => 'publish',
-		'post_parent' => $attributes['pageID'],
+		'order'          => 'ASC',
+		'orderby'        => 'menu_order title',
+		'post_status'    => 'publish',
+		'post_parent'    => $attributes['pageID'],
 	);
 	$loop = new WP_Query( $args );
 
-	while ( $loop->have_posts() ) : $loop->the_post(); ?>
+	while ( $loop->have_posts() ) :
+		$loop->the_post();
+		?>
 		<article <?php post_class(); ?>>
 			<h2 <?php post_class(); ?>>
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

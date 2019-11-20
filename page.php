@@ -2,41 +2,40 @@
 /**
  * Page Template File
  *
- */
-
-get_header(); ?>
-<?php
-/**
- * Load Variables
+ * Output page content.
  *
+ * @package Mayflower
  */
-global $mayflower_brand;
-$mayflower_options = mayflower_get_options();
-$current_layout = $mayflower_options['default_layout'];
-?>
 
+get_header();
+?>
 <?php if ( has_active_sidebar() ) : ?>
-	<div class="col-md-9 <?php  if ( $current_layout == 'sidebar-content' ) { ?>order-md-1<?php } ?>">
-<?php else : // Full Width Container ?>
+	<div class="col-md-9 <?php echo 'sidebar-content' === mayflower_get_option( 'default_layout' ) ? 'order-md-1' : ''; ?>">
+<?php else : // Full Width Container. ?>
 	<div class="col-md-12">
 <?php endif; ?>
 		<?php if ( have_posts() ) : ?>
 			<?php
 			// Start the loop.
-			while ( have_posts() ) : the_post(); ?>
+			while ( have_posts() ) :
+				the_post();
+				?>
 				<main id="post-<?php the_ID(); ?>" <?php post_class( '' ); ?> role="main">
 					<?php get_template_part( 'parts/page' ); ?>
 				</main>
-			<?php endwhile;
-		// If no content, include the "No posts found" template.
+				<?php
+			endwhile;
+			// If no content, include the "No posts found" template.
 		else :
 			get_template_part( 'parts/content', 'none' );
 
-		endif; ?>
+		endif;
+		?>
 	</div>
-<?php if ( has_active_sidebar() ) : ?>
-	<?php get_sidebar();
-endif; ?>
+<?php
+if ( has_active_sidebar() ) {
+	get_sidebar();
+}
 
-
-<?php get_footer(); ?>
+get_footer();
+?>

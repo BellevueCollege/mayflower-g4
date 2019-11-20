@@ -4,75 +4,71 @@
  *
  * Loads Blog and Static Homepages in Mayflower
  *
+ * @package Mayflower
  */
 
 get_header(); ?>
 
 <?php
 /**
- * Load Variables
+ * Load Featured Slideshow Full Width
  *
+ * Load if selected, or if there is no sidebar.
  */
-global $mayflower_brand;
-$mayflower_options = mayflower_get_options();
-$current_layout = $mayflower_options['default_layout'];
+if ( ! ( has_active_sidebar() ) ||
+	( 'featured-full' === $mayflower_options['slider_layout'] &&
+	'true' == $mayflower_options['slider_toggle'] ) ) {
+	get_template_part( 'parts/featured-full' );
+}
 ?>
-
-	<?php
-	/**
-	 * Load Featured Slideshow Full Width
-	 *
-	 * Load if selected, or if there is no sidebar.
-	 */
-	if ( !( has_active_sidebar() ) ||
-		 ( $mayflower_options['slider_layout'] == 'featured-full' &&
-		 $mayflower_options['slider_toggle'] == 'true' ) ) {
-		get_template_part('parts/featured-full');
-	} ?>
-		<?php if ( has_active_sidebar() ) : ?>
-			<div class="col-md-9 <?php  if ( $current_layout == 'sidebar-content' ) { ?>order-md-1<?php } ?>">
-		<?php else : // Full Width Container ?>
-			<div class="col-md-12">
-		<?php endif; ?>
-				<main role="main">
+	<?php if ( has_active_sidebar() ) : ?>
+		<div class="col-md-9 <?php echo 'sidebar-content' === mayflower_get_option( 'default_layout' ) ? 'order-md-1' : ''; ?>">
+	<?php else : // Full Width Container. ?>
+		<div class="col-md-12">
+	<?php endif; ?>
+			<main role="main">
+				<?php
+				/**
+				 * Load Featured Slideshow in Content
+				 */
+				if ( has_active_sidebar() &&
+					'true' == $mayflower_options['slider_toggle'] &&
+					'featured-in-content' === $mayflower_options['slider_layout'] ) {
+					get_template_part( 'parts/featured-in-content' );
+					?>
 					<?php
-					/**
-					 * Load Featured Slideshow in Content
-					 *
-					 */
-					if ( has_active_sidebar() &&
-						$mayflower_options['slider_toggle'] == 'true' &&
-						$mayflower_options['slider_layout'] == 'featured-in-content' ) {
-						get_template_part( 'parts/featured-in-content' );?>
-					<?php }
-					/**
-					 * Check if static homepage is set
-					 */
-					if ( 'page' == get_option( 'show_on_front' ) ) {
+				}
+				/**
+				 * Check if static homepage is set
+				 */
+				if ( 'page' === get_option( 'show_on_front' ) ) {
+					/*
+					* Check if using page template
+					*
+					* Page templates are over-ridden by using front-page.php
+					* Continue as normal if using full-width template.
+					*/
+					if ( is_page_template() && ! is_page_template( 'page-full-width.php' ) ) {
 						/*
-						* Check if using page template
+						* Load page template
 						*
-						* Page templates are over-ridden by using front-page.php
-						* Continue as normal if using full-width template.
-						*/
-						if ( is_page_template() && ! is_page_template( 'page-full-width.php' ) ) {
-							/*
-							* Load page template
-							*
-							* Look for file matching template name within parts/ directory
-							**/
-							$template_name = str_replace( '.php', '', get_page_template_slug() );
-							get_template_part( "parts/$template_name" );
-						} else {
-							get_template_part( 'parts/content', 'static-home' );
-						}
+						* Look for file matching template name within parts/ directory
+						**/
+						$template_name = str_replace( '.php', '', get_page_template_slug() );
+						get_template_part( "parts/$template_name" );
 					} else {
-						get_template_part( 'parts/content', 'blog-home' );
-					}?>
-				</main>
-		
-		</div>
-		<?php if ( has_active_sidebar() ) : ?>
-			<?php get_sidebar();
-		endif; ?>
+						get_template_part( 'parts/content', 'static-home' );
+					}
+				} else {
+					get_template_part( 'parts/content', 'blog-home' );
+				}
+				?>
+			</main>
+
+	</div>
+	<?php if ( has_active_sidebar() ) : ?>
+		<?php
+		get_sidebar();
+	endif;
+	?>
 <?php get_footer(); ?>

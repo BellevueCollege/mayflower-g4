@@ -1,13 +1,19 @@
-<?php 
-	global $mayflower_brand;
-	$globals = new Globals();
+<?php
+/**
+ * Footer Content
+ *
+ * @package Mayflower
+ */
+
+global $mayflower_brand;
+$globals = new Globals();
 ?>
 	</div><!-- row -->
 </div><!-- #main .container -->
 
 <?php
 
-if ( $mayflower_brand == 'lite' ) {
+if ( 'lite' === $mayflower_brand ) {
 	$globals->footer_legal();
 } else {
 	$globals->footer();
@@ -15,10 +21,13 @@ if ( $mayflower_brand == 'lite' ) {
 wp_footer();
 ?>
 
-<!-- <?php
-$mayflower_version = wp_get_theme();
-echo $mayflower_version->Name . " version " . $mayflower_version->Version;
-?>  -->
+<!--
+	<?php
+	$mayflower_version = wp_get_theme();
+	echo esc_attr( $mayflower_version->get( 'Name' ) . ' version ' . $mayflower_version->get( 'Version' ) );
+	?>
+
+-->
 
 </body>
 </html>

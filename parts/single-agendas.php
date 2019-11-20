@@ -1,32 +1,36 @@
 <?php
 /**
- * Template for displaying post type for the Trustees Agendas plugin.
- * https://github.com/BellevueCollege/trustees-agenda
+ * Board of Trustees Agenda Single View
+ *
+ * @link https://github.com/BellevueCollege/trustees-agenda
+ * @package Mayflower
  */
 
-if (have_posts()) : while (have_posts()) : the_post(); ?>
+if ( have_posts() ) :
+	while ( have_posts() ) :
+		the_post(); ?>
 	<main role="main">
-		<h1><?php the_title();
+		<h1>
+		<?php
+		the_title();
+		$value = get_post_meta( get_the_ID(), 'meeting_date', true );
 
-			$value = get_post_meta( get_the_ID(), 'meeting_date', true );
-
-			if( !empty( $value ) ) {
-				$display_date = date('F j, Y', strtotime($value));
+		if ( ! empty( $value ) ) {
+			$display_date = gmdate( 'F j, Y', strtotime( $value ) );
 
 			?>
-		<br /><?php echo $display_date; ?></h1>
+		<br /><?php echo esc_attr( $display_date ); ?></h1>
 			<?php } ?>
 		</h1>
-		<?php
-		$content = the_content();
-		if ( $content=="" ) {
-		/* Don't display empty the_content or surround divs */
-		} else {
-			echo $content;
-		} ?>
+			<?php
+			$content = the_content();
+			if ( '' !== $content ) {
+				echo wp_kses_post( $content );
+			}
+			?>
 	</main>
 
-<?php
+			<?php
 endwhile;
-wp_reset_query();
+	wp_reset_postdata();
 endif;

@@ -2,31 +2,31 @@
 /**
  * The template for displaying 404 pages (Not Found).
  *
- * @package WordPress
- * @subpackage Twenty_Twelve
+ * @package Mayflower
  * @since Twenty Twelve 1.0
  */
+
 get_header(); ?>
 
 
 	<?php
-		$error_messages = [
+		$error_messages = array(
 			'It was here, we promise!',
 			'We\'ve led you astray...',
 			'Oh no!',
 			'You\'ve found a broken link!',
-		];
+		);
 
-		// And then randomly choose a line
+		// And then randomly choose a line.
 		$chosen_error = wptexturize( $error_messages[ mt_rand( 0, count( $error_messages ) - 1 ) ] );
-	?>
+		?>
 	<div class="col-12">
 		<div class="jumbotron">
 			<h1 class="display-4">
-				<span class="badge badge-warning badge-pill text-monospace">404</span> 
+				<span class="badge badge-warning badge-pill text-monospace">404</span>
 				Page not Found
 			</h1>
-			<p class="lead"><?php echo $chosen_error; ?></p>
+			<p class="lead"><?php echo wp_kses_post( $chosen_error ); ?></p>
 			<hr />
 			<h2>Below are a few things you can try to find it:</h2>
 			<ol>
@@ -40,4 +40,5 @@ get_header(); ?>
 	</div>
 
 
-<?php get_footer();
+<?php
+get_footer();
