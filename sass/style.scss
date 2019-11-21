@@ -364,51 +364,12 @@ $fluid-grid-min-column-width: 200px;
 
 }
 
-.staff-details-card {
-
-	.pull-left {
-		float: none !important;
-	}
-
-	.media-body {
-		float: left;
-		width: 100%;
-	}
-
-	img {
-		margin: auto;
-	}
-
-	@media screen and (min-width: $breakpoint-bs-sm) {
-
-		.pull-left {
-			float: left !important;
-		}
-
-		.media-body {
-			float: none;
-			width: 100%;
-		}
-
-		img {
-			margin: 0;
-		}
-	}
-}
 
 .staff-details-header {
 	text-align: center;
 
 	@media screen and (min-width: $breakpoint-bs-sm) {
 		text-align: initial;
-	}
-}
-
-.staff-biography-single.content-padding {
-
-	@media screen and (min-width: $breakpoint-bs-sm) {
-		padding: 0;
-		margin-top: 1em;
 	}
 }
 
