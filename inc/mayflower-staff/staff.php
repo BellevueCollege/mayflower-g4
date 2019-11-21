@@ -51,6 +51,7 @@ function bc_staff_register() {
 		'has_archive'   => true,
 		'rewrite'       => true,
 		'menu_position' => 4,
+		'show_in_rest'  => true,
 		'supports'      => array( 'title', 'editor', 'thumbnail', 'category', 'author', 'revisions', 'author', 'comments' ),
 		'taxonomies'    => array(),
 	);

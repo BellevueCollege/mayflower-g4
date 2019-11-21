@@ -26,8 +26,6 @@ add_filter( 'page-links-to-post-types', 'remove_plt_from_slider' );
 
 /**
  * Register Slider CPT
- *
- * @todo Add API Support for Gutenberg
  */
 function bc_slider_register() {
 	$labels = array(
@@ -55,6 +53,7 @@ function bc_slider_register() {
 		'has_archive'   => true,
 		'rewrite'       => true,
 		'menu_position' => 4,
+		'show_in_rest'  => true,
 		'supports'      => array( 'title', 'editor', 'thumbnail', 'category', 'author', 'revisions', 'author', 'comments' ),
 		'taxonomies'    => array(),
 	);
