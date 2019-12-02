@@ -49,7 +49,6 @@ $breakpoint-bs-lg: 75em;
 /* ###################################### */
 
 /* Make sure videos and embeds fit their containers. */
-test
 embed,
 iframe,
 object,
@@ -113,8 +112,8 @@ video {
 }
 
 // Image widget
-.wp-widget .wp-caption.alignnone,
-.wp-widget img.image {
+.wp-widget img.image,
+.wp-widget .wp-caption.alignnone {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 0;
@@ -290,8 +289,6 @@ $fluid-grid-min-column-width: 200px;
 	}
 }
 
-
-
 @media screen and (max-width: ($fluid-grid-min-column-width+30px)*2) {
 
 	.child-pages.fluid-grid {
@@ -323,87 +320,14 @@ $fluid-grid-min-column-width: 200px;
 
 /* ###################################### */
 
-/* Note- these are replicated in block for editor styles! */
+/* Note- these are replicated in block for both editor and front-end styles! */
 
-.staff-details h1,
-.staff-details h2,
-.staff-details h3 {
-	padding: 0;
-	margin: 0;
-}
-
-/*.staff-details h3 {
-	margin-bottom: 21px;
-}*/
-.staff-details h2 {
-	margin-bottom: 0.25em;
-	color: #000;
-}
-
-.staff-details h3 {
-	font-style: normal;
-	color: #000;
-}
-
-.staff-details ul {
+ul.staff-details-list {
 	padding: 0;
 	margin: 1em 0;
 
-}
-
-.staff-details li {
-	list-style: none;
-}
-
-.staff-details-top {
-	margin-top: 1em;
-
-	@media screen and (min-width: $breakpoint-bs-sm) {
-		margin-top: 0;
-	}
-
-}
-
-
-.staff-details-header {
-	text-align: center;
-
-	@media screen and (min-width: $breakpoint-bs-sm) {
-		text-align: initial;
-	}
-}
-
-/*
-	* Staff Grid-only styles
-	*/
-
-.staff-details-grid-top {
-	margin-top: 1em;
-}
-
-.staff-details-card-grid {
-	text-align: center;
-	border-bottom: 1px solid #eee;
-
-	@media screen and (min-width: $breakpoint-bs-md) {
-		border-bottom: none;
-	}
-
-	img {
-		margin: auto;
-	}
-
-	a {
-		display: inline-block;
-		margin-bottom: -7px;
-	}
-}
-
-@media screen and (max-width: $breakpoint-bs-md) {
-
-	.col-md-4.staff-details-col:first-child,
-	.col-md-4.staff-details-col:first-child + .col-md-4.staff-details-col {
-		margin-bottom: 1em;
+	li {
+		list-style: none;
 	}
 
 }
@@ -587,8 +511,6 @@ ul.header-social-links li {
 	}
 
 }
-
-
 
 .sidebar {
 
