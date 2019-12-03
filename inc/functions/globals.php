@@ -112,7 +112,7 @@ class Globals {
 		 * Globals Path (local filesystem)
 		 */
 		$this->path = (
-				! empty( $this->get_globals_option( 'globals_path' ) ) && true === $this->get_globals_option( 'append_path' )
+				! empty( $this->get_globals_option( 'globals_path' ) ) && "1" === $this->get_globals_option( 'append_path' )
 			) ? $_SERVER['DOCUMENT_ROOT'] . $this->get_globals_option( 'globals_path' ) :
 			$this->get_globals_option( 'globals_path' );
 
