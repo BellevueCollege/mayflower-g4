@@ -106,15 +106,7 @@ function globals_settings() {
 							</th>
 							<td>
 								<input size="50" type="text" name="globals_settings[globals_path]" id="globals_settings[globals_path]"
-									value="
-									<?php
-									if ( empty( $globals_path ) ) {
-										echo $_SERVER['DOCUMENT_ROOT'] . '/g/3/';
-									} else {
-										echo esc_attr( $globals_path );
-									}
-									?>
-									"/>
+									value="<?php echo esc_attr( $globals_path ?? $_SERVER['DOCUMENT_ROOT'] . '/g/3/' ); ?>"/>
 								<i class="fa fa-question-circle"></i>
 								<br /><small><strong>Apache example:</strong> /var/www/g/3/</small>
 								<br /><small><strong>Nginx example:</strong> /usr/share/nginx/www.bellevuecollege.edu/g/3/</small>
@@ -133,7 +125,7 @@ function globals_settings() {
 								</label>
 							</th>
 							<td>
-								<input size="50" type="text" name="globals_settings[globals_url]" id="globals_settings[globals_url]" value="<?php echo esc_attr( $globals_url ); ?>"/>
+								<input size="50" type="text" name="globals_settings[globals_url]" id="globals_settings[globals_url]" value="<?php echo esc_url( $globals_url ); ?>"/>
 								<br /><small><strong>Example:</strong> //s.bellevuecollege.edu/g/3/ </small>
 							</td>
 						</tr>
