@@ -8,7 +8,7 @@
  */
 
 ?>
-<div class="sidebar col-md-3 <?php echo 'sidebar-content' === mayflower_get_options( 'default_layout' ) ? 'sidebarleft col-md-pull-9' : 'sidebarright'; ?>">
+<div class="sidebar col-md-3 <?php echo 'sidebar-content' === mayflower_get_option( 'default_layout' ) ? 'sidebarleft' : 'sidebarright'; ?>">
 
 		<?php if ( is_active_sidebar( 'top-global-widget-area' ) ) : ?>
 			<?php dynamic_sidebar( 'top-global-widget-area' ); ?>
