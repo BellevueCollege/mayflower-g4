@@ -163,7 +163,7 @@ if ( 'list-view' === $mayflower_options['staff_layout'] && $mayflower_options['s
 		$post_meta_data = get_post_custom( get_the_ID() );
 		?>
 
-		<div class="col-md-4 staff-details">
+		<div class="col-lg-4 col-sm-6 staff-details">
 			<div class="card text-center">
 				<?php
 				if ( true === $mayflower_options['staff_picture_toggle'] ) {
