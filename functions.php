@@ -373,3 +373,18 @@ function mayflower_cpt_update_post_order() {
 	die( '1' );
 }
 add_action( 'wp_ajax_mayflower_cpt_update_post_order', 'mayflower_cpt_update_post_order' );
+
+/**
+ * Sitewide Notice
+ */
+function mayflower_sitewide_notice() {
+	if ( class_exists( 'MFSN' ) && MFSN::active() ) {
+		?>
+		<div class="sitewide-notice container">
+			<div class="alert alert-danger">
+				<?php MFSN::display(); ?>
+			</div>
+		</div>
+		<?php
+	}
+}

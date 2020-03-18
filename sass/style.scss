@@ -1434,3 +1434,20 @@ section.page {
 	height: 100%;
 	z-index: 10;
 }
+
+.sitewide-notice {
+	padding: 0.25em 0.5em;
+	background: #c4122f;
+
+	.alert {
+		margin: 0;
+		padding: 0.5em;
+	}
+}
+
+@media screen and (min-width: $breakpoint-bs-md) {
+
+	.sitewide-notice {
+		padding: 0.5em 2em;
+	}
+}
