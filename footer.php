@@ -9,7 +9,7 @@ global $mayflower_brand;
 $globals = new Globals();
 ?>
 	</div><!-- row -->
-</div><!-- #main .container -->
+</div><!-- #main .container --><!--noindex-->
 
 <?php
 
@@ -28,6 +28,6 @@ wp_footer();
 	?>
 
 -->
-
+<!--endnoindex-->
 </body>
 </html>
