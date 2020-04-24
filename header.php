@@ -115,5 +115,5 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	endif; // End if.
 	mayflower_sitewide_notice();
 	?>
-	<div id="main" class="<?php echo esc_attr( $mayflower_brand_css ); ?> container shadow">
+	<div id="main" class="<?php echo esc_attr( $mayflower_brand_css ); ?> container">
 		<div class="row pt-4">
