@@ -35,6 +35,7 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	<?php if ( isset( $post_meta_data['_seo_meta_keywords'][0] ) ) { ?>
 		<meta name="keywords" content="<?php echo esc_html( $post_meta_data['_seo_meta_keywords'][0] ); ?>" />
 	<?php } ?>
+
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/bellevue.ico" />
@@ -49,6 +50,11 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	<?php } ?>
 	<!-- / Swiftype meta tags -->
 
+	<meta class="funnelback" name="fb_site_name" content="<?php echo get_bloginfo( 'name', 'display' ) ?>" />
+	<?php if ( get_the_post_thumbnail_url( get_the_ID(), 'medium' ) ) : ?>
+		<meta class="funnelback" name="fb_featured_image" content="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'medium' ) ); ?>" />
+	<?php endif; ?>
+
 	<link rel="profile" href="https://gmpg.org/xfn/11" />
 
 	<!--- Open Graph Tags -->
@@ -56,8 +62,10 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 		<meta property="og:type" content="article" />
 		<meta property="article:published_time" content="<?php echo esc_attr( get_the_date( 'c' ) ); ?>" />
 		<meta property="article:modified_time" content="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>" />
+		<meta property="og:updated_time" content="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>" />
 	<?php else : ?>
 		<meta property="og:type" content="website" />
+		<meta property="og:updated_time" content="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>" />
 	<?php endif; ?>
 
 	<?php if ( get_the_post_thumbnail_url( get_the_ID(), 'medium' ) ) : ?>
@@ -65,7 +73,6 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	<?php else : ?>
 		<meta property="og:image" content="https://www.bellevuecollege.edu/bc-og-default.jpg" />
 	<?php endif; ?>
-
 	<meta property="og:url" content="<?php echo esc_url( get_permalink() ); ?>" />
 	<meta property="og:site_name" content="Bellevue College" />
 
@@ -73,7 +80,7 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?>><!--noindex-->
 	<?php
 	if ( function_exists( 'wp_body_open' ) ) {
 		wp_body_open();
@@ -115,5 +122,5 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	endif; // End if.
 	mayflower_sitewide_notice();
 	?>
-	<div id="main" class="<?php echo esc_attr( $mayflower_brand_css ); ?> container">
-		<div class="row pt-4">
+	<div id="main" class="<?php echo esc_attr( $mayflower_brand_css ); ?> container <?php echo 'lite' === $mayflower_brand ? 'shadow' : ''; ?>">
+		<div class="row pt-4"><!--endnoindex-->
