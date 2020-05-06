@@ -14,23 +14,6 @@ if ( typeof limit_searchform_scope !== 'undefined' ||
 		// Double check this should run
 		if ( limit_searchform_scope ) {
 
-			// Build search history dropdown, from Globals
-			$('#bc-search-container-lite').searchHistory({
-				field: '#college-search-field-custom',
-				localStorageKey: 'searchHistory' + '_' + btoa( search_api_key + filter_value ),
-				searchURL: (custom_search_url !== '' ? custom_search_url : search_url_default),
-				searchPerams: (function() {
-					if ( '' == custom_search_url ) {
-						return {
-							site: [
-								filter_value
-							]
-						};
-					}
-					return {};
-				}())
-			});
-
 			/* Generate search URL in dropdown */
 			$('#college-search-site-link').click( function( event ) {
 
