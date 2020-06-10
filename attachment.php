@@ -19,14 +19,6 @@ $description       = $post->post_content;
 $caption           = $post->post_excerpt;
 ?>
 
-<div id="content" data-swiftype-index='true'
-<?php
-if ( 'branded' === $mayflower_brand ) {
-	?>
-  class="box-shadow"<?php } ?>>
-
-	<div class="row row-padding">
-
 		<?php if ( has_active_sidebar() ) : ?>
 			<div class="col-md-9
 			<?php
@@ -42,7 +34,7 @@ if ( 'branded' === $mayflower_brand ) {
 					while ( have_posts() ) :
 						the_post(); /* Template format for images */
 						?>
-					<main class="content-padding" role="main">
+					<main role="main">
 											<?php
 											/*
 											 * Check if attachment is an image
@@ -99,8 +91,5 @@ endif;
 			get_sidebar();
 		endif;
 		?>
-	</div>
-
-</div><!-- #content-->
 
 <?php get_footer(); ?>
