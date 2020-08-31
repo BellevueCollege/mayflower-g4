@@ -178,6 +178,14 @@ video {
 
 /* ----- Image Gallery Styles ----- */
 
+/* Fix Gallery Block on Edge */
+.blocks-gallery-grid,
+.wp-block-gallery {
+	max-width: 100%;
+}
+
+
+
 /* ###################################### */
 
 /* Mixins to automate column options */
