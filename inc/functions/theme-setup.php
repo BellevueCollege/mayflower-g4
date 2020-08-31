@@ -381,6 +381,14 @@ function mayflower_setup() {
 	 */
 	add_theme_support( 'responsive-embeds' );
 
+	/**
+	 *
+	 * Remove Core Patterns
+	 *
+	 * Many core patterns in WP 5.5 include blocks that we have removed
+	 */
+	remove_theme_support( 'core-block-patterns' );
+
 }
 
 add_action( 'after_setup_theme', 'mayflower_setup', 10 );
