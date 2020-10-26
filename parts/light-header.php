@@ -19,14 +19,16 @@ global $post, $mayflower_options, $mayflower_brand, $mayflower_brand_css, $mayfl
 				if ( has_custom_logo() ) :
 					?>
 						<div class="header-image">
-						<?php
-						if ( function_exists( 'the_custom_logo' ) ) {
-							$custom_logo_id = get_theme_mod( 'custom_logo' );
-							$logo           = wp_get_attachment_image_src( $custom_logo_id, 'full' );
-							echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="header-image">';
+							<a title="Return to Home Page" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+								<?php
+								if ( function_exists( 'the_custom_logo' ) ) {
+									$custom_logo_id = get_theme_mod( 'custom_logo' );
+									$logo           = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+									echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="header-image">';
 
-						}
-						?>
+								}
+								?>
+							</a>
 						</div><!-- header-image -->
 					<?php
 					else : // no header image.
