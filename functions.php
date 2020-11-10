@@ -171,11 +171,11 @@ if ( ! function_exists( 'mayflower_pagination' ) ) {
 						$is_current = strpos( $link, 'current' );
 						if ( false === $is_current ) {
 							echo '<li class="page-item">';
-							echo esc_url( $link );
+							echo $link;
 							echo '</li>';
 						} else {
 							echo '<li class="page-item active">';
-							echo esc_url( $link );
+							echo $link;
 							echo '</li>';
 						}
 					}
