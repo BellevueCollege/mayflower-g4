@@ -44,9 +44,7 @@ if ( have_posts() ) :
 					while ( $loop->have_posts() ) :
 						$loop->the_post();
 						?>
-				<div class="content-padding">
 						<?php get_template_part( 'format', get_post_format() ); ?>
-				</div><!-- content-padding -->
 				<?php endwhile; ?>
 				<?php else : ?>
 			<?php endif; ?>

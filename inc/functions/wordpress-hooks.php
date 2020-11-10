@@ -574,7 +574,7 @@ function mayflower_scripts() {
 	wp_enqueue_style( 'mayflower', get_stylesheet_uri(), null, MAYFLOWER_STYLE_VERSION );
 
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'globals-head', $globals->url . 'j/ghead-full.min.js', array( 'jquery' ), $globals->version, false );
+	// wp_enqueue_script( 'globals-head', $globals->url . 'j/ghead-full.min.js', array( 'jquery' ), $globals->version, false );
 	wp_enqueue_script( 'globals', $globals->url . 'j/gfoot-full.min.js', array( 'jquery' ), $globals->version, true );
 	wp_enqueue_script( 'menu', get_template_directory_uri() . '/js/menu.js#deferload', array( 'jquery' ), MAYFLOWER_STYLE_VERSION, true );
 
