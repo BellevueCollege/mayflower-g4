@@ -27,8 +27,3 @@ function expandLink( linkText ) {
 function collapseLink( linkText ) {
 	return '<a class="menu-expand-button expanded" href="#" aria-expanded="true"><i class="fas fa-minus" aria-hidden="true"></i><span class="sr-only">Collapse ' + linkText + ' Submenu</span></a';
 }
-
-// Handle globals mobile-s17 menu integration
-jQuery(document).ready(function($) {
-	$('.sidebar').first().clone().appendTo("#college-navbar");
-});

@@ -123,4 +123,4 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	mayflower_sitewide_notice();
 	?>
 	<div id="main" class="<?php echo esc_attr( $mayflower_brand_css ); ?> container <?php echo 'lite' === $mayflower_brand ? 'shadow' : ''; ?>">
-		<div class="row pt-4"><!--endnoindex-->
+		<div class="row pt-md-4"><!--endnoindex-->

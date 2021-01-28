@@ -24,7 +24,7 @@ $caption           = $post->post_excerpt;
 			<?php
 			if ( 'sidebar-content' === $current_layout ) {
 				?>
-				order-md-1<?php } ?>">
+				order-1<?php } ?>">
 		<?php else : // Full Width Container. ?>
 			<div class="col-md-12">
 		<?php endif; ?>
