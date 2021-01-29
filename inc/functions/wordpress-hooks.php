@@ -218,7 +218,7 @@ remove_action( 'wp_head', 'wp_generator' );
  * Enqueue block editor style
  */
 function mayflower_block_editor_styles() {
-	wp_enqueue_style( 'mayflower-block-editor-styles', get_theme_file_uri( 'css/block-editor.css' ), false, '1.0', 'all' );
+	wp_enqueue_style( 'mayflower-block-editor-styles', get_theme_file_uri( 'css/block-editor.css' ), false, '1.1', 'all' );
 }
 add_action( 'enqueue_block_editor_assets', 'mayflower_block_editor_styles' );
 
