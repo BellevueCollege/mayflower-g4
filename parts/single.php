@@ -41,7 +41,7 @@ if ( have_posts() ) :
 				get_template_part( 'parts/aside' );
 			endif;
 			?>
-		<article data-swiftype-name="body" data-swiftype-type="text">
+		<article>
 
 			<?php if ( has_post_thumbnail() && 'video' !== get_post_format() ) : ?>
 

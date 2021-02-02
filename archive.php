@@ -18,13 +18,13 @@ $current_layout    = $mayflower_options['default_layout'];
 ?>
 
 		<?php if ( has_active_sidebar() ) : ?>
-			<div data-swiftype-index='true' class="col-md-9
+			<div class="col-md-9 order-1
 			<?php
-			if ( 'sidebar-content' === $current_layout ) {
+			if ( 'sidebar-content' !== $current_layout ) {
 				?>
-				order-1<?php } ?>">
+				order-md-0<?php } ?>">
 		<?php else : // Full Width Container. ?>
-			<div data-swiftype-index='true' class="col-md-12">
+			<div class="col-md-12">
 		<?php endif; ?>
 				<main role="main">
 					<?php

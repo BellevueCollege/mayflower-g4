@@ -12,7 +12,7 @@ if ( function_exists( 'post_and_page_asides_return_title' ) ) :
 	get_template_part( 'parts/aside' );
 endif;
 ?>
-<article data-swiftype-name="body" data-swiftype-type="text">
+<article>
 	<?php the_content(); ?>
 	<div class="clearfix"></div>
 	<p id="modified-date" class="text-right"><small>
