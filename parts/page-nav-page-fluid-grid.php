@@ -20,7 +20,7 @@
 		<?php
 		if ( '' !== $post->post_content ) :
 			?>
-			<article data-swiftype-name="body" data-swiftype-type="text">
+			<article>
 				<?php the_content(); ?>
 			</article>
 		<?php endif; ?>

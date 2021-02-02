@@ -24,6 +24,6 @@
 		<?php } ?>
 	</div>
 <?php endif; ?>
-<div data-swiftype-name="body" data-swiftype-type="text">
+<div>
 	<?php the_content(); ?>
 </div>
