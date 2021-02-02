@@ -29,7 +29,7 @@ if ( have_posts() ) :
 		if ( ! ( in_array( 'Unchartered', $club_statuses, true ) ) ) {
 			$is_chartered = true;
 		} ?>
-		<main data-swiftype-name="body" data-swiftype-type="text" role="main">
+		<main role="main">
 
 			<?php
 			/**

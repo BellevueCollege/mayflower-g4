@@ -38,9 +38,9 @@ $std-margin: 1em;
 $sm-margin: $std-margin/3;
 
 // Bootstrap Breakpoints
-$breakpoint-bs-sm: 48em;
-$breakpoint-bs-md: 62em;
-$breakpoint-bs-lg: 75em;
+$breakpoint-bs-sm: 576px;
+$breakpoint-bs-md: 768px;
+$breakpoint-bs-lg: 992px;
 
 /* ###################################### */
 
@@ -493,7 +493,7 @@ ul.header-social-links li {
 /* ###################################### */
 
 // Target Mobile Breakpoints Only
-@media screen and (max-width: $breakpoint-bs-sm - 1) {
+@media screen and (max-width: $breakpoint-bs-md - 1) {
 	body {
 		display: flex;
 		flex-direction: column;
