@@ -100,6 +100,16 @@ gulp.task('sass', function() {
       .pipe(gulp.dest(config.cssPath));
 });
 
+gulp.task('editor-sass', function() {
+  return gulp
+      .src(config.sassPath + '/block-editor.scss')
+      .pipe(sass(sassOptions).on('error', notify.onError(function (error) {
+          return "Error: " + error.message;
+      })))
+      .pipe(autoprefixer())
+      .pipe(gulp.dest('./css'));
+});
+
 // Watch function (sass) - dev use only
 gulp.task('watch',function() {
   gulp
@@ -118,5 +128,5 @@ gulp.task('dev', gulp.parallel(
 // Default - full production build
 gulp.task('default', gulp.parallel(
             'sass',
-            'editor-sass-dev'
+            'editor-sass'
           ));
