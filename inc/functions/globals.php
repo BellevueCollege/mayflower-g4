@@ -179,10 +179,17 @@ class Globals {
 	 * Footer
 	 */
 	public function footer() {
-		$footer = $this->html_filepath . $this->bfoot_filename;
-		include_once $footer;
+		$this->big_footer();
 
 		$this->footer_legal();
+	}
+
+	/**
+	 * Footer
+	 */
+	public function big_footer() {
+		$footer = $this->html_filepath . $this->bfoot_filename;
+		include_once $footer;
 	}
 
 	/**

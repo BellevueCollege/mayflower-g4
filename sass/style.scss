@@ -4,7 +4,7 @@ Theme URI: http://www.bellevuecollege.edu/its/
 Description: The Bellevue College Theme (Globals 4 Migration Edition)
 Author: Bellevue College Integration
 Author URI: http://www.bellevuecollege.edu
-Version: 1--#{versionStamp}#
+Version: 1.1--#{versionStamp}#
 GitHub Theme URI: bellevuecollege/mayflower
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -492,33 +492,44 @@ ul.header-social-links li {
 
 /* ###################################### */
 
-/* Integrate with mobile-s17 globals navigation */
-
-// Hide cloned sidebar content in header
-#top-wrap .sidebar,
-#secondary-header .sidebar {
-	display: none;
-}
 // Target Mobile Breakpoints Only
 @media screen and (max-width: $breakpoint-bs-sm - 1) {
-
-	// Hide sidebar in content (Lite)
+	body {
+		display: flex;
+		flex-direction: column;
+	}
 	.sidebar {
 		display: none;
+		margin: 0 0 1em 0;
+		padding: 1em !important;
+		background: $brand-primary;
+
+		.wp-widget {
+			background: #fff;
+		}
+
 	}
 
-
-	#top-wrap.branded,
-	#secondary-header.lite {
+	header.action-menu ~ #main {
 
 		.sidebar {
 			display: block;
 
-			background: #fff;
-			padding: 0.25em;
-
-			border: 1em solid $brand-primary;
 		}
+	}
+
+	header.action-menu ~ #site-header {
+		background: $brand-primary;
+		margin-bottom: 0;
+		a {
+			color: #fff;
+			font-size: 1.5rem;
+			text-decoration: underline;
+		}
+
+	}
+	header.action-menu ~ .sitewide-notice {
+		display: none;
 	}
 
 }
@@ -730,6 +741,7 @@ ul.header-social-links li {
 		background: transparent;
 		box-shadow: none;
 		color: #666;
+		max-height: 1.5em;
 	}
 
 }
