@@ -145,7 +145,6 @@ class Globals {
 		add_action( 'mayflower_header', array( $this, 'tophead' ) );
 		add_action( 'mayflower_header', array( $this, 'tophead_big' ) );
 		add_action( 'mayflower_footer', array( $this, 'footer' ), 50 );
-		add_action( 'wp_head', array( $this, 'analytics' ), 30 );
 
 	}
 
@@ -209,21 +208,42 @@ class Globals {
 		include_once $ga_code;
 
 		if ( mayflower_get_option( 'ga_code' ) ) :
-			// Format reference https://developers.google.com/analytics/devguides/collection/gajs/?hl=nl&csw=1#MultipleCommands.
-			?>
-			<script type="text/javascript">
-				/* Load google analytics scripts (may be duplicate) */
-				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-				/*Site-Specific GA code*/
-				ga('create','<?php echo esc_attr( $mayflower_options['ga_code'] ); ?>','bellevuecollege.edu',{'name':'singlesite'});
-				ga('singlesite.send','pageview');
-			</script>
-			<?php
+
+			if ( substr( mayflower_get_option('ga_code'), 0, 3 ) === 'UA-' ) :
+				// Format reference https://developers.google.com/analytics/devguides/collection/gajs/?hl=nl&csw=1#MultipleCommands.
+
+				?><script type="text/javascript">
+					/* Load google analytics scripts (may be duplicate) */
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+					/*Site-Specific GA code*/
+					ga('create','<?php echo esc_attr( mayflower_get_option('ga_code') ); ?>','bellevuecollege.edu',{'name':'singlesite'});
+					ga('singlesite.send','pageview');
+				</script>
+				<?php
+			elseif ( substr( mayflower_get_option('ga_code'), 0, 2 ) === 'U-' ) :
+				?><!-- Global site tag (gtag.js) - Google Analytics -->
+				<script async src="https://www.googletagmanager.com/gtag/js?id=G-D205WT30XL"></script>
+				<script>
+				  window.dataLayer = window.dataLayer || [];
+				  function gtag(){dataLayer.push(arguments);}
+				  gtag('js', new Date());
+
+				  gtag('config', '<?php echo esc_attr( mayflower_get_option('ga_code') ); ?>');
+				</script>
+				<?php
+			endif;
 		endif;
 
+	}
+
+	/**
+	 * Hook Analytics into Header
+	 */
+	public function hook_analytics() {
+		add_action( 'wp_head', array( $this, 'analytics' ), 30 );
 	}
 }
 

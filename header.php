@@ -8,7 +8,7 @@
  */
 
 /* Globally declare variables used in a variety of locations */
-global $post, $mayflower_options, $mayflower_brand, $mayflower_brand_css, $mayflower_theme_version;
+global $post, $mayflower_options, $mayflower_brand, $mayflower_brand_css, $mayflower_theme_version, $globals;
 
 
 if ( ! ( is_array( $mayflower_options ) ) ) {
@@ -71,7 +71,14 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	<meta property="og:site_name" content="Bellevue College" />
 
 
-	<?php wp_head(); ?>
+	<?php
+
+
+	$globals = new Globals();
+	$globals->hook_analytics();
+	wp_head();
+
+	?>
 </head>
 
 <body <?php body_class(); ?>><!--noindex-->
@@ -87,7 +94,7 @@ $post_meta_data          = get_post_custom( $post->ID ?? null );
 	 */
 	if ( 'branded' === $mayflower_brand ) :
 
-		$globals = new Globals();
+
 		$globals->tophead_big();
 
 		/**
