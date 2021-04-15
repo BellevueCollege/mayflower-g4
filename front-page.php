@@ -17,14 +17,13 @@ get_header(); ?>
  */
 if ( ! ( has_active_sidebar() ) ||
 	( 'featured-full' === $mayflower_options['slider_layout'] &&
-	'true' == $mayflower_options['slider_toggle'] ) ) {
-	get_template_part( 'parts/featured-full' );
-}
-?>
+	'true' == $mayflower_options['slider_toggle'] ) ) { ?>
+	<div class="col-12 order-2 order-md-0 carousel-col p-0"><?php get_template_part( 'parts/featured-full' ); ?></div>
+<?php } ?>
 	<?php if ( has_active_sidebar() ) : ?>
-		<div class="col-md-9 order-1 <?php echo 'sidebar-content' === mayflower_get_option( 'default_layout' ) ? '' : 'order-md-0'; ?>">
+		<div class="col-md-9 order-3 <?php echo 'sidebar-content' === mayflower_get_option( 'default_layout' ) ? '' : 'order-md-0'; ?>">
 	<?php else : // Full Width Container. ?>
-		<div class="col-md-12">
+		<div class="col-md-12 order-3">
 	<?php endif; ?>
 			<main role="main">
 				<?php
