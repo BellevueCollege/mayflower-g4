@@ -4,7 +4,7 @@ Theme URI: http://www.bellevuecollege.edu/its/
 Description: The Bellevue College Theme (Globals 4 Migration Edition)
 Author: Bellevue College Integration
 Author URI: http://www.bellevuecollege.edu
-Version: 1.1.2--#{versionStamp}#
+Version: 1.1.3--#{versionStamp}#
 GitHub Theme URI: bellevuecollege/mayflower
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -509,10 +509,24 @@ ul.header-social-links li {
 		}
 
 	}
-
+	#carousel-featured-full {
+		margin-top: 0;
+	}
+	#main {
+		padding-top: 1rem;
+	}
+	.carousel-col {
+		margin-top: -1rem;
+	}
 	header.action-menu ~ #main {
+		padding-top: 0;
+
+		.carousel-col {
+			//order: 2;
+		}
 
 		.sidebar {
+			//order: 1;
 			display: block;
 
 		}
