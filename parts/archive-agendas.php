@@ -9,8 +9,8 @@ foreach ( posts_by_year() as $yr => $posts_in_yr ) : ?>
 	<h1><?php echo wp_kses_post( $yr ); ?></h1>
 	<ul>
 		<?php
-		foreach ( $posts_in_yr as $post_in_yr ) :
-			setup_postdata( $post_in_yr );
+		foreach ( $posts_in_yr as $post ) :
+			setup_postdata( $post );
 			?>
 			<li>
 				<a href="<?php the_permalink(); ?>">

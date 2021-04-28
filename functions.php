@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || die( 'Sorry, no direct access allowed' );
 /**
  * Define constant used to bust style caches
  */
-define( 'MAYFLOWER_STYLE_VERSION', '1.1.3' );
+define( 'MAYFLOWER_STYLE_VERSION', '1.1.4' );
 
 /*
  * Load theme options framework
