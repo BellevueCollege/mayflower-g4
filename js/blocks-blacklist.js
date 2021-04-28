@@ -13,7 +13,7 @@ window.onload = function () {
 	wp.blocks.unregisterBlockType('core/button');
 	wp.blocks.unregisterBlockType('core/buttons');
 	//wp.blocks.unregisterBlockType('core/media-text');
-	wp.blocks.unregisterBlockType('core/more');
+	//wp.blocks.unregisterBlockType('core/more');
 	wp.blocks.unregisterBlockType('core/search');
 	wp.blocks.unregisterBlockType('core/calendar');
 	wp.blocks.unregisterBlockType('core-embed/collegehumor');
