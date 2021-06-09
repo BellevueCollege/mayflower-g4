@@ -250,6 +250,12 @@ $staff_custom_meta_fields = array(
 		'id'    => $prefix . 'office_location',
 		'type'  => 'office_location',
 	),
+	array(
+		'label' => 'Appointment Schedule Link',
+		'desc'  => '',
+		'id'    => $prefix . 'appt_link',
+		'type'  => 'appt_link',
+	),
 );
 
 /**
@@ -441,7 +447,16 @@ function mayflower_manage_staff_columns( $column, $post_id ) {
 				echo esc_attr( $staff_meta );
 			}
 			break;
+		case 'staff_appt_link':
+			/* Get the post meta. */
+			$staff_meta = get_post_meta( $post_id, '_staff_appt_link', true );
 
+			if ( empty( $staff_meta ) ) {
+				echo '';
+			} else {
+				echo esc_attr( $staff_meta );
+			}
+			break;
 		default:
 	} // end switch
 }

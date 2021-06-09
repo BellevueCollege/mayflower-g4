@@ -68,6 +68,9 @@ if ( have_posts() ) :
 					<?php } ?>
 
 				</ul>
+				<?php if ( isset( $post_meta_data['_staff_appt_link'][0] ) ) { ?>
+					<a class="btn btn-info" href="<?php echo esc_attr( $post_meta_data['_staff_appt_link'][0] ); ?>">Schedule an Appointment</a>
+				<?php } ?>
 
 			</div><!-- media-body -->
 
