@@ -146,7 +146,7 @@ function mayflower_gf_add_class_to_button( $button, $form, $new_classes ) {
  * @param string $form Form.
  */
 function mayflower_gf_add_class_to_submit_button( $button, $form ) {
-	$new_classes = 'btn btn-primary float-right';
+	$new_classes = 'btn btn-primary';
 	return mayflower_gf_add_class_to_button( $button, $form, $new_classes );
 }
 add_filter( 'gform_submit_button', 'mayflower_gf_add_class_to_submit_button', 10, 2 );
@@ -157,7 +157,7 @@ add_filter( 'gform_submit_button', 'mayflower_gf_add_class_to_submit_button', 10
  * @param string $form Form.
  */
 function mayflower_gf_add_class_to_next_button( $button, $form ) {
-	$new_classes = 'btn btn-primary float-right';
+	$new_classes = 'btn btn-primary';
 	return mayflower_gf_add_class_to_button( $button, $form, $new_classes );
 }
 add_filter( 'gform_next_button', 'mayflower_gf_add_class_to_next_button', 10, 2 );
@@ -169,7 +169,19 @@ add_filter( 'gform_next_button', 'mayflower_gf_add_class_to_next_button', 10, 2 
  * @param string $form Form.
  */
 function mayflower_gf_add_class_to_previous_button( $button, $form ) {
-	$new_classes = 'btn btn-outline-secondary float-left';
+	$new_classes = 'btn btn-outline-secondary';
 	return mayflower_gf_add_class_to_button( $button, $form, $new_classes );
 }
 add_filter( 'gform_previous_button', 'mayflower_gf_add_class_to_previous_button', 10, 2 );
+
+/**
+ * Filter GravityForms Save button to add Bootstrap classes
+ *
+ * @param string $button Button.
+ * @param string $form Form.
+ */
+function mayflower_gf_add_class_to_save_button( $button, $form ) {
+	$new_classes = 'btn btn-link';
+	return mayflower_gf_add_class_to_button( $button, $form, $new_classes );
+}
+add_filter( 'gform_savecontinue_link', 'mayflower_gf_add_class_to_save_button', 10, 2 );
