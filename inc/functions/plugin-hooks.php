@@ -126,17 +126,22 @@ add_filter( 'gform_tabindex', '__return_false' );
 function mayflower_gf_add_class_to_button( $button, $form, $new_classes ) {
 
 	preg_match( "/class='[\.a-zA-Z_ -]+'/", $button, $classes );
-	$classes[0]    = substr( $classes[0], 0, -1 );
-	$classes[0]   .= ' ';
-	$classes[0]   .= esc_attr( $new_classes );
-	$classes[0]   .= "'";
-	$button_pieces = preg_split(
-		"/class='[\.a-zA-Z_ -]+'/",
-		$button,
-		-1,
-		PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
-	);
-	return $button_pieces[0] . $classes[0] . $button_pieces[1];
+	if ( is_array( $classes ) && $button ) {
+		$classes[0]    = substr( $classes[0], 0, -1 );
+		$classes[0]   .= ' ';
+		$classes[0]   .= esc_attr( $new_classes );
+		$classes[0]   .= "'";
+		$button_pieces = preg_split(
+			"/class='[\.a-zA-Z_ -]+'/",
+			$button,
+			-1,
+			PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
+		);
+
+		return $button_pieces[0] . $classes[0] . $button_pieces[1];
+	} else {
+		return $button;
+	}
 }
 
 /**
