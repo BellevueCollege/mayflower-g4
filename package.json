@@ -1,13 +1,13 @@
 {
   "name": "mayflower",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "The Bellevue College Theme",
   "main": " ",
   "browserslist": [
     "> 2% in my stats",
     "last 2 major versions",
     "Firefox ESR",
-    "not ie <= 10",
+    "not ie <= 11",
     "not dead"
   ],
   "dependencies": {
@@ -15,7 +15,7 @@
     "jquery": "^1.12.4",
     "npm": "^6.14.15",
     "popper.js": "^1.16.1",
-    "prettier": "^2.3.2"
+    "prettier": "^2.4.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
