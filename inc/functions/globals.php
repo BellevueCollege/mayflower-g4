@@ -223,9 +223,9 @@ class Globals {
 					ga('singlesite.send','pageview');
 				</script>
 				<?php
-			elseif ( substr( mayflower_get_option('ga_code'), 0, 2 ) === 'U-' ) :
+			elseif ( substr( mayflower_get_option('ga_code'), 0, 2 ) === 'U-' || substr( mayflower_get_option('ga_code'), 0, 2 ) === 'G-' ) :
 				?><!-- Global site tag (gtag.js) - Google Analytics -->
-				<script async src="https://www.googletagmanager.com/gtag/js?id=G-D205WT30XL"></script>
+				<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( mayflower_get_option('ga_code') ); ?>"></script>
 				<script>
 				  window.dataLayer = window.dataLayer || [];
 				  function gtag(){dataLayer.push(arguments);}
