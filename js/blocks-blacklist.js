@@ -14,4 +14,14 @@ window.onload = function () {
 	wp.blocks.unregisterBlockType('core/buttons');
 	wp.blocks.unregisterBlockType('core/search');
 	wp.blocks.unregisterBlockType('core/calendar');
+
+	wp.blocks.unregisterBlockType('core/navigation');
+	wp.blocks.unregisterBlockType('core/navigation-link');
+	wp.blocks.unregisterBlockType('core/navigation-submenu');
+	wp.blocks.unregisterBlockType('core/site-logo');
+	wp.blocks.unregisterBlockType('core/site-title');
+	wp.blocks.unregisterBlockType('core/site-tagline');
+	wp.blocks.unregisterBlockType('core/post-comments');
+	wp.blocks.unregisterBlockType('core/loginout');
+	wp.blocks.unregisterBlockVariation( 'core/group', 'group-row' );
 }

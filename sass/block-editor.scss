@@ -10,7 +10,7 @@ $brand-danger:          #C4122F; // BC Brand Red
 
 /* Import from Globals */
 
-.wp-block div[class^="wp-block-"] {
+.wp-block {
 
 	@import "./node_modules/globals/src/4/sass/partials/base";
 	@import "./node_modules/globals/src/4/sass/partials/bootstrap-overrides";
