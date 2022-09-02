@@ -24,4 +24,10 @@ window.onload = function () {
 	wp.blocks.unregisterBlockType('core/post-comments');
 	wp.blocks.unregisterBlockType('core/loginout');
 	wp.blocks.unregisterBlockVariation( 'core/group', 'group-row' );
-}
+
+	// WordPress 6.0.x
+	wp.blocks.unregisterBlockType('core/avatar');
+	wp.blocks.unregisterBlockType('core/comments-query-loop');
+	wp.blocks.unregisterBlockType('core/post-comments-form');
+	wp.blocks.unregisterBlockType('core/post-author-biography');
+};
