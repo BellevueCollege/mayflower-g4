@@ -217,7 +217,7 @@ if ( 'list-view' === $mayflower_options['staff_layout'] && $mayflower_options['s
 	</div>
 	<?php
 } elseif ( ! $mayflower_options['staff_toggle'] ) {
-	echo '<p class="alert alert-danger">Staff functionality is not currently enabled on this website</p>';
+	echo '<!--Staff functionality is not currently enabled on this website-->';
 }
 
 wp_reset_postdata();
