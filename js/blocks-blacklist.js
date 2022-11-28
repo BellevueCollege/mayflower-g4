@@ -30,4 +30,7 @@ window.onload = function () {
 	wp.blocks.unregisterBlockType('core/comments-query-loop');
 	wp.blocks.unregisterBlockType('core/post-comments-form');
 	wp.blocks.unregisterBlockType('core/post-author-biography');
+
+	// WordPress 6.1.x
+	wp.blocks.unregisterBlockType('core/comments');
 };
