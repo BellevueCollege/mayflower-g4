@@ -1,6 +1,6 @@
 {
   "name": "mayflower-g4",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "The Bellevue College Theme",
   "main": " ",
   "browserslist": [
@@ -36,7 +36,10 @@
     "uglify-save-license": "^0.4.1"
   },
   "scripts": {
-    "test": " "
+    "build" : "npm run build:dev",
+		"build:dev" : "gulp dev",
+		"build:prod" : "gulp",
+		"start" : "gulp watch"
   },
   "author": "Bellevue College ITS",
   "license": "GPL-2.0",
