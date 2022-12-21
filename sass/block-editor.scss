@@ -13,6 +13,13 @@ $brand-danger:          #C4122F; // BC Brand Red
 .wp-block {
 
 	@import "./node_modules/globals/src/4/sass/partials/base";
+
+	/* Third party libraries */
+	@import "bootstrap";
+	@import "fontawesome";
+	@import "solid";
+	@import "brands";
+
 	@import "./node_modules/globals/src/4/sass/partials/bootstrap-overrides";
 	@import "./node_modules/globals/src/4/sass/partials/typography";
 	@import "./node_modules/globals/src/4/sass/partials/structure";
