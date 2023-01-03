@@ -316,7 +316,7 @@ function is_multisite_home() {
 function mayflower_trimmed_url() {
 	$site_url = get_site_url( null, '', 'https' );
 	$parsed   = wp_parse_url( $site_url );
-	$output   = $parsed['host'] . $parsed['path'];
+	$output   = $parsed['host'] . $parsed['path'] ?? '';
 
 	/**
 	 * Filter Mayflower Trimmed URL
